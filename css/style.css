@@ -174,25 +174,24 @@ body{
   background-color: aliceblue;
 }
 /* BST */
-.collection {
+.container {
   max-width: 1200px;
   margin: auto;
   text-align: center;
   padding: 40px 0;
 }
-.collection h2{
+.container .content-1 h2,.content-2 h2{
   font-size: 25px;
   color: #ed8383;
-  margin-bottom: 50px;
 }
-.collection-container {
+.content-1 .container.collection {
   display: flex;
   gap: 20px;
   justify-content: center;
   flex-wrap: wrap;
 }
 
-.product {
+.content-1 .product {
   cursor: pointer;
   background: #fff;
   border-radius: 10px;
@@ -203,33 +202,33 @@ body{
   transition: transform 0.3s ease;
 }
 
-.product:hover {
+.content-1 .product:hover {
   transform: scale(1.05);
 }
 
-.product img {
+.content-1 .product img {
   width: 100%;
   border-radius: 10px;
 }
 
-.product h3 {
+.content-1 .product h3 {
   font-size: 18px;
   color: #333;
   margin: 10px 0;
 }
 
-.price {
+.content-1 .price {
   font-size: 20px;
   font-weight: bold;
   color: #d19c00;
 }
 
-.promo {
+.content-1 .promo {
   font-size: 14px;
   color: #888;
 }
 
-.btn {
+.content-1 .btn {
   background: #FFE4E1;
   color: white;
   border: none;
@@ -241,6 +240,30 @@ body{
   transition: background 0.3s;
 }
 
-.btn:hover {
+.content-1 .btn:hover {
   background: #ed8383;
+}
+/* content-2 */
+.directory_list{
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+.content-2 .directory .img{
+  height: 200px;
+  width: 200px;
+  overflow: hidden;
+} 
+.content-2 .directory img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.directory h4 {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333; /* Thay đổi màu chữ */
+  display: block; /* Đảm bảo nó hiển thị */
 }
