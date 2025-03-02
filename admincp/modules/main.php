@@ -8,9 +8,14 @@
         $query = '';
     }
     if($tam == 'quanlydanhmucsanpham' && $query == 'them'){
+        include('category_productMNG/create.php');
+        include('category_productMNG/list.php');
+    }elseif($tam == 'quanlydanhmucsanpham' && $query == 'sua'){
+        include('category_productMNG/edit.php');
+    }elseif($tam == 'quanlysanpham' && $query == 'them'){
         include('productMNG/create.php');
         include('productMNG/list.php');
-    }elseif($tam == 'quanlydanhmucsanpham' && $query == 'sua'){
+    }elseif($tam == 'quanlysanpham' && $query == 'sua'){
         include('productMNG/edit.php');
     }else{
         include('dashboard.php');

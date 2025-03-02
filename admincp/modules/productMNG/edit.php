@@ -1,66 +1,91 @@
 <?php
 
-$sql_lietke_danhmucsp = "SELECT * FROM tbl_danhmuc WHERE id_danhmuc='$_GET[id_danhmuc]' LIMIT 1";
-$query_lietke_danhmucsp = mysqli_query($mysqli, $sql_lietke_danhmucsp);
+$sql_lietke_sp = "SELECT * FROM tbl_sanpham WHERE id_sanpham='$_GET[id_sanpham]' LIMIT 1";
+$query_lietke_sp = mysqli_query($mysqli, $sql_lietke_sp);
 
 ?>
-<style>
+  
+  
+  <style>
         body {
             font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
         }
-        table {
-            width: 50%;
-            border-collapse: collapse;
-            margin: 20px 0;
-            font-size: 18px;
-            text-align: left;
+        .container {
+            max-width: 500px;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin: auto;
         }
-        th, td {
-            padding: 10px;
-            border: 1px solid #ddd;
+        h2 {
+            text-align: center;
+            color: #333;
         }
-        th {
-            background-color: #f4f4f4;
+        label {
+            font-weight: bold;
         }
-        input[type="text"] {
+        input, textarea, select {
             width: 100%;
             padding: 8px;
-            box-sizing: border-box;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
         }
-        input[type="submit"] {
+        button {
             width: 100%;
             padding: 10px;
             background-color: #28a745;
             color: white;
             border: none;
+            border-radius: 4px;
             cursor: pointer;
+            font-size: 16px;
         }
-        input[type="submit"]:hover {
+        button:hover {
             background-color: #218838;
         }
     </style>
 
+    <div class="container">
+        <h2>Thêm sản phẩm</h2>
+        <?php
+            while ($row = mysqli_fetch_array($query_lietke_sp)) {
+                ?>
+        <form method="POST" action="modules/productMNG/handle.php" enctype="multipart/form-data">
+            <label for="tensanpham"><?php echo $row['tensanpham']; ?></label>
+            <input type="text" id="tensanpham" name="nameproduct">
 
-    <h2>Sửa Danh Mục Sản Phẩm</h2>
-    <?php
-    while ($row = mysqli_fetch_array($query_lietke_danhmucsp)) {
-        ?>
-        <form method="POST" action="modules/productMNG/handle.php?id_danhmuc=<?php echo $row['id_danhmuc']; ?>">
-            <table>
-                <tr>
-                    <td><label for="namecategory">Tên danh mục</label></td>
-                    <td><input type="text"  name="namecategory" value="<?php echo $row['tendanhmuc']; ?>" required></td>
-                </tr>
-                <tr>
-                    <td><label for="order">Thứ tự</label></td>
-                    <td><input type="text"  name="order" value="<?php echo $row['thutu']; ?>" required></td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <input type="submit" name="editcategory" value="ok">
-                    </td>
-                </tr>
-            </table>
+            <label for="masp"><?php echo $row['masp']; ?></label>
+            <input type="text" id="masp" name="codeproduct">
+
+            <label for="giasp"><?php echo $row['giasp']; ?></label>
+            <input type="text" id="giasp" name="priceproduct">
+
+            <label for="soluong"><?php echo $row['soluong']; ?></label>
+            <input type="number" id="soluong" name="quantity">
+
+            <label for="hinhanh"><?php echo $row['hinhanh']; ?></label>
+            <input type="file" id="hinhanh" name="image">
+
+            <label for="tomtat"><?php echo $row['tomtat']; ?></label>
+            <textarea id="tomtat" name="summary" rows="3"></textarea>
+
+            <label for="noidung"><?php echo $row['noidung']; ?></label>
+            <textarea id="noidung" name="content" rows="5"></textarea>
+
+            <select id="tinhtrang" name="status">
+                <option value="1">Kích hoạt</option>
+                <option value="0">Ẩn</option>
+            </select>
+
+            <button type="submit" name="addproduct">Thêm sản phẩm</button>
         </form>
         <?php
-    }
+        }
+        ?>
+    </div>
+
