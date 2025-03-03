@@ -1,12 +1,12 @@
 <?php
-
+  include("../../config/config.php");
 $sql_lietke_sp = "SELECT * FROM tbl_sanpham WHERE id_sanpham='$_GET[id_sanpham]' LIMIT 1";
 $query_lietke_sp = mysqli_query($mysqli, $sql_lietke_sp);
 
 ?>
   
   
-  <style>
+  <style>   
         body {
             font-family: Arial, sans-serif;
             background-color: #f8f9fa;
@@ -55,34 +55,34 @@ $query_lietke_sp = mysqli_query($mysqli, $sql_lietke_sp);
         <?php
             while ($row = mysqli_fetch_array($query_lietke_sp)) {
                 ?>
-        <form method="POST" action="modules/productMNG/handle.php" enctype="multipart/form-data">
-            <label for="tensanpham"><?php echo $row['tensanpham']; ?></label>
-            <input type="text" id="tensanpham" name="nameproduct">
+        <form method="POST" action="handle.php?id_sanpham=<?php echo $row['id_sanpham'];?>" enctype="multipart/form-data">
+            <label for="tensanpham">Tên sản phẩm</label>
+            <input type="text" id="tensanpham" name="nameproduct" value="<?php echo $row['tensanpham']; ?>">
 
-            <label for="masp"><?php echo $row['masp']; ?></label>
-            <input type="text" id="masp" name="codeproduct">
+            <label for="masp">Mã sản phẩm</label>
+            <input type="text" id="masp" name="codeproduct" value="<?php echo $row['masp']; ?>">
 
-            <label for="giasp"><?php echo $row['giasp']; ?></label>
-            <input type="text" id="giasp" name="priceproduct">
+            <label for="giasp">Giá sản phẩm</label>
+            <input type="text" id="giasp" name="priceproduct" value="<?php echo $row['giasp']; ?>">
 
-            <label for="soluong"><?php echo $row['soluong']; ?></label>
-            <input type="number" id="soluong" name="quantity">
+            <label for="soluong">Số lượng</label>
+            <input type="number" id="soluong" name="quantity" value="<?php echo $row['soluong']; ?>">
 
-            <label for="hinhanh"><?php echo $row['hinhanh']; ?></label>
-            <input type="file" id="hinhanh" name="image">
+            <label for="hinhanh">Hình ảnh</label>
+            <input type="file" id="hinhanh" name="image" value="<?php echo $row['hinhanh']; ?>">
 
-            <label for="tomtat"><?php echo $row['tomtat']; ?></label>
-            <textarea id="tomtat" name="summary" rows="3"></textarea>
+            <label for="tomtat">Tóm tắt</label>
+            <textarea id="tomtat" name="summary" rows="3"><?php echo $row['tomtat']; ?></textarea>
 
-            <label for="noidung"><?php echo $row['noidung']; ?></label>
-            <textarea id="noidung" name="content" rows="5"></textarea>
+            <label for="noidung">Nội dung</label>
+            <textarea id="noidung" name="content" rows="5" ><?php echo $row['noidung']; ?></textarea>
 
             <select id="tinhtrang" name="status">
                 <option value="1">Kích hoạt</option>
                 <option value="0">Ẩn</option>
             </select>
 
-            <button type="submit" name="addproduct">Thêm sản phẩm</button>
+            <button type="submit" name="editproduct">sua sp</button>
         </form>
         <?php
         }

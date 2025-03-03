@@ -37,7 +37,7 @@
 
 
     <h2>Thêm Danh Mục Sản Phẩm</h2>
-    <form method="POST" action="modules/productMNG/handle.php">
+    <form method="POST" action="modules/category_productMNG/handle.php">
         <table>
             <tr>
                 <td><label for="namecategory">Tên danh mục</label></td>

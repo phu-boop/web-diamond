@@ -88,7 +88,7 @@ $query_lietke_sp = mysqli_query($mysqli, $sql_lietke_sp);
                 <td><?php echo ($row['trangthai'] == 1) ? 'Kích hoạt' : 'Ẩn'; ?></td>
                 <td class="actions">
                     <a href="modules/productMNG/handle.php?id_sanpham=<?php echo $row['id_sanpham']; ?>" class="delete">Xóa</a>
-                    <a href="modules/quanlysanpham/xuly.php?query=sua&id_sanpham=<?php echo $row['id_sanpham']; ?>" class="edit">Sửa</a>
+                    <a href="modules/productMNG/edit.php?query=sua&id_sanpham=<?php echo $row['id_sanpham']; ?>" class="edit">Sửa</a>
                 </td>
             </tr>
             <?php } ?>
