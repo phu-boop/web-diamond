@@ -1,3 +1,8 @@
+<?php
+    $sql_lietke_danhmucsp = "SELECT * FROM tbl_danhmuc ORDER BY id_danhmuc DESC";
+    $query_lietke_danhmucsp = mysqli_query($mysqli, $sql_lietke_danhmucsp);
+?>
+
 <header class="header">
             <div class="logo">
                 <div class="logo-1">
@@ -34,7 +39,16 @@
             <nav class="nav" id="navbar" >
                 <ul class="nav__list">
                     <li><a href="index.php">Trang chủ</a></li>
-                    <li><a href="index.php?quanly=sanpham&id=1">Sản Phẩm</a></li>
+                    <li class="has-dropdown">
+                        <a href="index.php?quanly=sanpham">Sản Phẩm</a>
+                        <div class="dropdown" >
+                            <?php while ($row = mysqli_fetch_array($query_lietke_danhmucsp)) { ?>
+                                <a href="index.php?quanly=danhmucsanpham&id=<?php echo $row['id_danhmuc'] ?>">
+                                    <?php echo $row['tendanhmuc'] ?>
+                                </a>
+                            <?php } ?>
+                        </div>
+                    </li>
                     <li><a href="index.php?quanly=tintuc">Tin tức</a></li>
                     <li><a href="index.php?quanly=lienhe">Liên hệ</a></li>
                 </ul>

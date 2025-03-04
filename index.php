@@ -21,11 +21,12 @@
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
     <title>Luxury</title>
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <wrapper class="wrapper">
         <?php
+            include("admincp/config/config.php");
             include("pages/header.php");
             include("pages/main.php");
             include("pages/footer.php");

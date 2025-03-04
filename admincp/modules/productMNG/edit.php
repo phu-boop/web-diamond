@@ -70,6 +70,24 @@ $query_lietke_sp = mysqli_query($mysqli, $sql_lietke_sp);
 
             <label for="hinhanh">Hình ảnh</label>
             <input type="file" id="hinhanh" name="image" value="<?php echo $row['hinhanh']; ?>">
+            
+            <select id="tinhtrang" name="status">
+                <option value="1">Kích hoạt</option>
+                <option value="0">Ẩn</option>
+            </select>
+
+            <label for="danhmuc">Danh mục</label>
+            <select id="danhmuc" name="category">
+                <?php
+                 $sql_lietke_danhmuc = "SELECT * FROM tbl_danhmuc ORDER BY id_danhmuc DESC";
+                 $query_lietke_danhmuc = mysqli_query($mysqli, $sql_lietke_danhmuc);
+                    while ($row = mysqli_fetch_array($query_lietke_danhmuc)) {
+                ?>
+                <option value="<?php echo $row['id_danhmuc'] ?>" ><?php echo $row['tendanhmuc'] ?></option>
+                <?php
+                }
+                ?>
+            </select>
 
             <label for="tomtat">Tóm tắt</label>
             <textarea id="tomtat" name="summary" rows="3"><?php echo $row['tomtat']; ?></textarea>
@@ -77,10 +95,6 @@ $query_lietke_sp = mysqli_query($mysqli, $sql_lietke_sp);
             <label for="noidung">Nội dung</label>
             <textarea id="noidung" name="content" rows="5" ><?php echo $row['noidung']; ?></textarea>
 
-            <select id="tinhtrang" name="status">
-                <option value="1">Kích hoạt</option>
-                <option value="0">Ẩn</option>
-            </select>
 
             <button type="submit" name="editproduct">sua sp</button>
         </form>

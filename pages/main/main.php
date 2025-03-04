@@ -1,34 +1,23 @@
+<?php
+$sql_lietke_sanpham = "SELECT * FROM tbl_danhmuc ORDER BY giasp DESC Limit 4";
+$query_lietke_sanpham = mysqli_query($mysqli, $sql_lietke_sanpham);
+?>
+
 <div >
-                <img class="img" src="./images/love-knot-pc_1740041249.jpg" alt="Luxury Logo">
+                <img class="img" src="admincp/modules/productMNG/image_product/<?php echo $row['hinhanh']?>" alt="Luxury Logo">
             </div>
             <div class="container">
                 <div class="content-1">
                     <h2>Bộ sưu tập trang sức đẳng cấp</h2>
                     <div class="container collection">
+                        <?php while ($row = mysqli_fetch_array($query_lietke_sanpham)) { ?>
                         <div class="product">
-                            <img src="./images/sp-giztxmh000002-hat-charm-vang-14k-dinh-da-sythetic-pnj-hello-kitty-1.png" alt="Lắc tay Vàng 14K">
+                            <img src="" alt="Lắc tay Vàng 14K">
                             <h3>Lắc tay Vàng 14K đính đá Synthetic</h3>
                             <p class="price">9.439.000 đ</p>
                             <p class="promo">Tặng trang sức đến 2 triệu</p>
                         </div>
-                        <div class="product">
-                            <img src="bracelet2.jpg" alt="Lắc tay Vàng 14K">
-                            <h3>Lắc tay Vàng 14K đính đá Synthetic</h3>
-                            <p class="price">7.520.000 đ</p>
-                            <p class="promo">Tặng trang sức đến 2 triệu</p>
-                        </div>
-                        <div class="product">
-                            <img src="necklace.jpg" alt="Dây cổ Vàng 14K">
-                            <h3>Dây cổ Vàng 14K đính đá Synthetic</h3>
-                            <p class="price">10.316.000 đ</p>
-                            <p class="promo">Tặng trang sức đến 2 triệu</p>
-                        </div>
-                        <div class="product">
-                            <img src="ring.jpg" alt="Nhẫn Vàng 14K">
-                            <h3>Nhẫn Vàng 14K đính đá Synthetic</h3>
-                            <p class="price">6.401.000 đ</p>
-                            <p class="promo">Tặng trang sức đến 2 triệu</p>
-                        </div>
+                        <?php } ?>
                     </div>
                     <button class="btn">Xem thêm</button>
                 </div>
@@ -98,3 +87,5 @@
                     </div>
                 </div>
             </div>
+
+            

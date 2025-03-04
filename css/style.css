@@ -264,6 +264,67 @@ body{
 .directory h4 {
   font-size: 18px;
   font-weight: bold;
-  color: #333; /* Thay đổi màu chữ */
-  display: block; /* Đảm bảo nó hiển thị */
+  color: #333; 
+  display: block; 
+}
+
+
+
+
+/*  Dropdown menu */
+.has-dropdown {
+  position: relative;
+}
+
+.has-dropdown a {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.has-dropdown .dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  min-width: 200px;
+  border-radius: 10px;
+  box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+  display: none;
+  flex-direction: column;
+  z-index: 1000;
+  overflow: hidden;
+  transform: translateY(15px);
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.has-dropdown .dropdown a {
+  color: #333;
+  padding: 12px 15px;
+  text-decoration: none;
+  display: block;
+  transition: background 0.3s, color 0.3s;
+  font-size: 15px;
+}
+
+.has-dropdown .dropdown a:hover {
+  background: #ed8383;
+  color: white;
+}
+
+/* ✅ Khi hover vào <li>, dropdown hiển thị */
+.has-dropdown:hover .dropdown {
+  display: flex;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ✅ Icon mũi tên xuống */
+.has-dropdown i {
+  font-size: 12px;
+  transition: transform 0.3s;
+}
+
+.has-dropdown:hover i {
+  transform: rotate(180deg);
 }
