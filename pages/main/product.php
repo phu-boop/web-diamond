@@ -1,30 +1,28 @@
-<div class="content-1">
-                    <h2>Bộ sưu tập trang sức đẳng cấp</h2>
-                    <div class="container collection">
-                        <div class="product">
-                            <img src="./images/sp-giztxmh000002-hat-charm-vang-14k-dinh-da-sythetic-pnj-hello-kitty-1.png" alt="Lắc tay Vàng 14K">
-                            <h3>Lắc tay Vàng 14K đính đá Synthetic</h3>
-                            <p class="price">9.439.000 đ</p>
-                            <p class="promo">Tặng trang sức đến 2 triệu</p>
-                        </div>
-                        <div class="product">
-                            <img src="bracelet2.jpg" alt="Lắc tay Vàng 14K">
-                            <h3>Lắc tay Vàng 14K đính đá Synthetic</h3>
-                            <p class="price">7.520.000 đ</p>
-                            <p class="promo">Tặng trang sức đến 2 triệu</p>
-                        </div>
-                        <div class="product">
-                            <img src="necklace.jpg" alt="Dây cổ Vàng 14K">
-                            <h3>Dây cổ Vàng 14K đính đá Synthetic</h3>
-                            <p class="price">10.316.000 đ</p>
-                            <p class="promo">Tặng trang sức đến 2 triệu</p>
-                        </div>
-                        <div class="product">
-                            <img src="ring.jpg" alt="Nhẫn Vàng 14K">
-                            <h3>Nhẫn Vàng 14K đính đá Synthetic</h3>
-                            <p class="price">6.401.000 đ</p>
-                            <p class="promo">Tặng trang sức đến 2 triệu</p>
-                        </div>
-                    </div>
-                    <button class="btn">Xem thêm</button>
+<?php
+if(isset($_GET['id']))
+{
+    $id = $_GET['id'];
+    $lietke_sp = "SELECT * FROM tbl_sanpham WHERE id_danhmuc = '$id' ORDER BY id_sanpham DESC";
+}else
+{
+    $lietke_sp = "SELECT * FROM tbl_sanpham ORDER BY id_sanpham DESC";   
+}
+    $query_lietke_sp = mysqli_query($mysqli, $lietke_sp);
+    ?>
+<div class="container">
+    <div class="content-1">
+        <div class="container collection">
+         <?php while ($row = mysqli_fetch_array($query_lietke_sp)) {?>
+            <a href="index.php?xem=chitietsanpham&id=<?php echo $row['id_sanpham'] ?>">
+                <div class="product">
+                    <img src="admincp/modules/productMNG/image_product/<?php echo $row['hinhanh'] ?>" alt="ảnh sản phẩm">
+                    <h3><?php echo $row['tensanpham'] ?></h3>
+                    <p class="price"><?php echo number_format($row['giasp'], 0, ',', '.') ?> đ</p>
+                    <p class="promo">Tặng trang sức đến 2 triệu</p>
                 </div>
+            </a>
+        <?php } ?>
+        </div>
+    </div>
+</div>
+    

@@ -43,7 +43,7 @@
                         <a href="index.php?quanly=sanpham">Sản Phẩm</a>
                         <div class="dropdown" >
                             <?php while ($row = mysqli_fetch_array($query_lietke_danhmucsp)) { ?>
-                                <a href="index.php?quanly=danhmucsanpham&id=<?php echo $row['id_danhmuc'] ?>">
+                                <a href="index.php?quanly=sanpham&id=<?php echo $row['id_danhmuc'] ?>">
                                     <?php echo $row['tendanhmuc'] ?>
                                 </a>
                             <?php } ?>
