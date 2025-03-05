@@ -18,6 +18,7 @@
     {
     }elseif($tam == 'giohang')
     {
+        include('main/cart.php');
     }else{
         include('main/main.php');
     }

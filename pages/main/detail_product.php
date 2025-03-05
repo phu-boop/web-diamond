@@ -51,10 +51,10 @@ $row = mysqli_fetch_assoc($result);
 
             <p><strong>Mô tả ngắn:</strong> <?php echo nl2br(htmlspecialchars($row['tomtat'])); ?></p>
 
-            <form method="POST" action="indext/pages/main/cart.php?id=<?php echo $id; ?>">
+            <form method="POST" action="pages/main/add_cart.php?id=<?php echo $id; ?>">
                 <label for="soluong">Số lượng:</label>
                 <input type="number" name="soluong" value="1" min="1" max="<?php echo $row['soluong']; ?>" class="form-control w-25">
-                <button type="submit" class="btn btn-primary mt-3">Thêm vào giỏ hàng</button>
+                <button type="submit" name="themgiohang" class="btn btn-primary mt-3">Thêm vào giỏ hàng</button>
             </form>
         </div>
     </div>
