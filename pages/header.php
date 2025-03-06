@@ -2,7 +2,6 @@
     $sql_lietke_danhmucsp = "SELECT * FROM tbl_danhmuc ORDER BY id_danhmuc DESC";
     $query_lietke_danhmucsp = mysqli_query($mysqli, $sql_lietke_danhmucsp);
 ?>
-
 <header class="header">
             <div class="logo">
                 <div class="logo-1">
