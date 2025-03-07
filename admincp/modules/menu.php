@@ -1,9 +1,4 @@
-<?php
-if(isset($_GET['action'])=='logout'){
-    unset($_SESSION['username']);
-    header('location:login.php');
-}
-?>
+
 
 <ul>
     <li><a href="index.php?action=quanlydanhmucsanpham&&query=them">quản lý danh mục sản phẩm</a></li>

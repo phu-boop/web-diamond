@@ -1,6 +1,4 @@
-<?php
-session_start();
-?>
+
 
 
     <style>
@@ -98,11 +96,11 @@ session_start();
                     <td><img src="<?= $item['hinhanh']; ?>" alt="<?= $item['tensanpham']; ?>"></td>
                     <td><?= $item['tensanpham']; ?></td>
                     <td><?= $item['masp']; ?></td>
-                    <td><a href="add_cart.php?cong=<?php echo $item['id']?>">cong</a><?= $item['soluong']; ?><a href="add_cart.php?giam=<?php echo $item['id']?>">giam</a></td>
+                    <td><a href="pages/main/add_cart.php?cong=<?php echo $item['id']?>">cong</a><?= $item['soluong']; ?><a href="pages/main/add_cart.php?giam=<?php echo $item['id']?>">giam</a></td>
                     <td><?= number_format($item['giasp'], 0, ',', '.'); ?> VND</td>
                     <td><?= number_format($thanhTien, 0, ',', '.'); ?> VND</td>
                     <td>
-                        <a href="add_cart.php?xoa=<?php echo $item['id'] ?>"><button class="btn btn-danger">🗑 Xóa</button> </a>
+                        <a href="pages/main/add_cart.php?xoa=<?php echo $item['id'] ?>"><button class="btn btn-danger">🗑 Xóa</button> </a>
                     </td>
                 </tr>
                 <?php endforeach; ?>
@@ -118,8 +116,15 @@ session_start();
 
         <div class="btn-container">
             <a href="index.php" class="btn btn-primary">🔙 Tiếp tục mua hàng</a>
-            <a href="checkout.php" class="btn btn-success">🛍 Thanh toán</a>
-            <a href="add_cart.php?xoatatca" class="btn btn-success">🛍 Xóa tất cả</a>
+            <?php
+            if(($_SESSION['dangky']) && $_SESSION['dangky'] === true)
+            {?>
+                <a href="checkout.php" class="btn btn-success">🛍 Thanh toán</a>
+        <?php}else{
+            ?>
+                <a href="?quanly=dangky" class="btn btn-success">🛍 Đăng ký mua hàng </a>
+            <?php } ?>
+            <a href="pages/main/add_cart.php?xoatatca" class="btn btn-success">🛍 Xóa tất cả</a>
         </div>
 
     <?php else: ?>

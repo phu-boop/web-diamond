@@ -42,6 +42,7 @@ if (isset($_POST['themgiohang'])) {
             $_SESSION['cart'] = $new_product;
         }
     }
+    header("Location:../../?quanly=chitietsanpham&id=" . $id);
 }
 // Xóa sản phẩm khỏi giỏ hàng
 if (isset($_GET['xoa'])) {
@@ -53,12 +54,12 @@ if (isset($_GET['xoa'])) {
         }
     }
     $_SESSION['cart'] = $product;
-    header('location:cart.php');
+    header('location:../../?quanly=giohang');
 }
 //xoa tất cả
 if(isset($_GET['xoatatca'])){
     unset($_SESSION['cart']);
-    header('location:cart.php');
+    header('location:../../?quanly=giohang');
 }
 //cập nhật số lượng
 if(isset($_GET['cong'])){
@@ -70,7 +71,7 @@ if(isset($_GET['cong'])){
         $product[] = $cart_itm;
     }
     $_SESSION['cart'] = $product;
-    header('location:cart.php');
+    header('location:../../?quanly=giohang');
 }
 if(isset($_GET['giam'])){
     $id = $_GET['giam'];
@@ -87,7 +88,7 @@ if(isset($_GET['giam'])){
         $product[]=$cart_itm;
     }
     $_SESSION['cart']=$product;
-    header('location:cart.php');
+    header('location:../../?quanly=giohang');
 }
 
 ?>

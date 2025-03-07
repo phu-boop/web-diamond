@@ -8,19 +8,20 @@
         $tam = '';
     }
 
-    if($tam == 'sanpham')
+    if($tam == 'giohang')
     {
-        include('main/product.php');
+        include('pages/main/cart.php');
+    }elseif($tam == 'sanpham')
+    {
+        include('pages/main/product.php');
     }elseif($tam == 'chitietsanpham')
     {
-        include('main/detail_product.php');
-    }elseif($tam == 'lienhe')
+        include('pages/main/detail_product.php');
+    }elseif($tam == 'Dangky')
     {
-    }elseif($tam == 'giohang')
-    {
-        include('main/cart.php');
+        include('pages/main/dangky.php');
     }else{
-        include('main/main.php');
+        include('pages/main/main.php');
     }
     ?>
 </main>
