@@ -7,7 +7,14 @@
                 <div class="logo-1">
                     <i class="fa-solid fa-store"></i>
                     <div class="search-container">
-                        <i id="search-icon" class="fa-solid fa-search"></i>
+                        <form action="" method="GET">
+                            <input type="hidden" name="quanly" value="timkiem">
+                            <input type="text" placeholder="Nhập từ khóa" name="key">
+                            <button type="submit">
+                                <i id="search-icon" class="fa-solid fa-search"></i>
+                            </button>
+                        </form>
+
                     </div>
 
                 </div>

@@ -11,7 +11,14 @@
     if($tam == 'giohang')
     {
         include('pages/main/cart.php');
-    }elseif($tam == 'sanpham')
+    }elseif($tam == 'dangnhap'){
+        include('pages/main/login.php');
+    }elseif($tam=='timkiem')
+    {
+        include('pages/main/search.php');
+    }
+    
+    elseif($tam == 'sanpham')
     {
         include('pages/main/product.php');
     }elseif($tam == 'chitietsanpham')

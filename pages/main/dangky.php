@@ -1,14 +1,6 @@
 
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f3f4f6;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
+
         .container {
             background: white;
             padding: 20px;
@@ -50,8 +42,14 @@ if(isset($_POST['submit'])) {
     $dienthoai = $_POST['dienthoai'];
 
     $sql = "INSERT INTO tbl_dangky (tenkhachhang, email, diachi, matkhau, dienthoai) VALUES ('$tenkhachhang', '$email', '$diachi', '$matkhau', '$dienthoai')";
-    $sql_query=mysqli_query($mysqli,$sql);
-    $_SESSION['dangky'] = true; 
+    
+    if(mysqli_query($mysqli,$sql))
+    {
+        $_SESSION['id_khachhang']=mysqli_insert_id($mysqli);
+        $_SESSION['dangky']=$tenkhachhang; 
+
+    }
+
 }
 
 

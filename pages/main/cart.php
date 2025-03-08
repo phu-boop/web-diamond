@@ -116,13 +116,15 @@
 
         <div class="btn-container">
             <a href="index.php" class="btn btn-primary">🔙 Tiếp tục mua hàng</a>
-            <?php
-            if(($_SESSION['dangky']) && $_SESSION['dangky'] === true)
-            {?>
-                <a href="checkout.php" class="btn btn-success">🛍 Thanh toán</a>
-        <?php}else{
+                <?php
+            if(isset(($_SESSION['dangky'])))
+            {   ?>
+                <a href="pages/main/payment.php" class="btn btn-success">🛍 Thanh toán</a>
+                <?php
+            }else
+            {
             ?>
-                <a href="?quanly=dangky" class="btn btn-success">🛍 Đăng ký mua hàng </a>
+                <a href="?quanly=Dangky" class="btn btn-success">🛍 Đăng ký mua hàng </a>
             <?php } ?>
             <a href="pages/main/add_cart.php?xoatatca" class="btn btn-success">🛍 Xóa tất cả</a>
         </div>
