@@ -1,27 +1,31 @@
 <?php
-if(isset($_POST['login']))
-{
-    $username=$_POST['username'];
-    $passwork=md5($_POST['password']);
-    $sql="SELECT * FROM tbl_dangky WHERE email='$username' AND matkhau='$passwork' LIMIT 1";
-    $sql_query=mysqli_query($mysqli,$sql);
-    $row_count=mysqli_num_rows($sql_query);
-    if($row_count>0)
-    {   
-        $_SESSION['dangnhap']=$username;
+if (isset($_POST['login'])) {
+    $username = $_POST['username'];
+    $password = md5($_POST['password']);
+
+    // Truy vấn kiểm tra tài khoản
+    $sql = "SELECT * FROM tbl_dangky WHERE email='$username' AND matkhau='$password' LIMIT 1";
+    $sql_query = mysqli_query($mysqli, $sql);
+
+    // Đếm số dòng trả về
+    $row_count = mysqli_num_rows($sql_query);
+
+    if ($row_count > 0) {   
+        // Lấy dữ liệu từ kết quả truy vấn
         $row = mysqli_fetch_assoc($sql_query);
-        $_SESSION['id_khachhang']=$row['id_dangky'];
-        echo "<p> ban đăng nhập thành công</p>";
-    }
-    else{
-        echo "<p> bạ đăng nhập thât bại </p>";
+        
+        // Lưu thông tin vào session
+        $_SESSION['dangky'] = $username;
+        $_SESSION['dangnhap'] = $username;
+        $_SESSION['id_khachhang'] = $row['id_dangky']; // Đã có giá trị từ truy vấn
+        
+        echo "<p>Bạn đã đăng nhập thành công</p>";
+    } else {
+        echo "<p>Sai tên đăng nhập hoặc mật khẩu!</p>";
     }
 }
-
-
-
-
 ?>
+
 
 
 
@@ -111,7 +115,7 @@ input:focus {
                 <input type="password" id="password" name="password" required>
             </div>
             <button type="submit" class="btn" name="login">Đăng nhập</button>
-            <p class="register-link">Chưa có tài khoản? <a href="register.html">Đăng ký ngay</a></p>
+            <p class="register-link">Chưa có tài khoản? <a href="index.php?quanly=Dangky">Đăng ký ngay</a></p>
         </form>
     </div>
 </body>

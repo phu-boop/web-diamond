@@ -57,7 +57,18 @@
                     </li>
                     <li><a href="index.php?quanly=tintuc">Tin tức</a></li>
                     <li><a href="index.php?quanly=lienhe">Liên hệ</a></li>
-                    <li><a href="index.php?quanly=Dangky">Đăng Ký</a></li>
+                    <?php
+                    if(isset($_SESSION['dangky'])) {
+                    ?>
+                        <li><a href="index.php?dangxuat=1">Đăng xuất</a></li>
+                        <li><a href="index.php?quanly=doimatkhau">Đổi mật khẩu</a></li>
+                    <?php 
+                    } else {
+                    ?>
+                        <li><a href="index.php?quanly=dangnhap">Đăng nhập</a></li>
+                    <?php 
+                    }
+                    ?>
                 </ul>
             </nav>
 </header>

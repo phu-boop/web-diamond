@@ -1,6 +1,10 @@
 
 <main>
     <?php
+    if(isset($_GET['dangxuat'])&&$_GET['dangxuat']==1)
+    {
+        unset($_SESSION['dangky']);
+    }
     if(isset($_GET['quanly']))
     {
         $tam = $_GET['quanly'];
@@ -11,14 +15,13 @@
     if($tam == 'giohang')
     {
         include('pages/main/cart.php');
-    }elseif($tam == 'dangnhap'){
+    }elseif($tam == 'dangnhap')
+    {
         include('pages/main/login.php');
     }elseif($tam=='timkiem')
     {
         include('pages/main/search.php');
-    }
-    
-    elseif($tam == 'sanpham')
+    }elseif($tam == 'sanpham')
     {
         include('pages/main/product.php');
     }elseif($tam == 'chitietsanpham')
@@ -27,7 +30,12 @@
     }elseif($tam == 'Dangky')
     {
         include('pages/main/dangky.php');
-    }else{
+    }elseif($tam == 'doimatkhau')
+    {
+        include('pages/main/changePassword.php');
+    }
+    
+    else{
         include('pages/main/main.php');
     }
     ?>
