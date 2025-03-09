@@ -16,9 +16,7 @@ if (isset($_POST['login'])) {
         
         // Lưu thông tin vào session
         $_SESSION['dangky'] = $username;
-        $_SESSION['dangnhap'] = $username;
         $_SESSION['id_khachhang'] = $row['id_dangky']; // Đã có giá trị từ truy vấn
-        
         echo "<p>Bạn đã đăng nhập thành công</p>";
     } else {
         echo "<p>Sai tên đăng nhập hoặc mật khẩu!</p>";

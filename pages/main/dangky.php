@@ -1,4 +1,22 @@
+<?php
+include('admincp/config/config.php');
+if(isset($_POST['submit'])) {
+    $tenkhachhang = $_POST['tenkhachhang'];
+    $email = $_POST['email'];
+    $diachi = $_POST['diachi'];
+    $matkhau = md5($_POST['matkhau']);
+    $dienthoai = $_POST['dienthoai'];
 
+    $sql = "INSERT INTO tbl_dangky (tenkhachhang, email, diachi, matkhau, dienthoai) VALUES ('$tenkhachhang', '$email', '$diachi', '$matkhau', '$dienthoai')";
+    
+    if(mysqli_query($mysqli,$sql))
+    {
+        $_SESSION['id_khachhang']=mysqli_insert_id($mysqli);
+        $_SESSION['dangky']=$tenkhachhang;
+
+    }
+}
+?>
     <style>
 
         .container {
@@ -32,32 +50,7 @@
             background: #0056b3;
         }
     </style>
-<?php
-include('admincp/config/config.php');
-if(isset($_POST['submit'])) {
-    $tenkhachhang = $_POST['tenkhachhang'];
-    $email = $_POST['email'];
-    $diachi = $_POST['diachi'];
-    $matkhau = password_hash($_POST['matkhau'], PASSWORD_DEFAULT);
-    $dienthoai = $_POST['dienthoai'];
 
-    $sql = "INSERT INTO tbl_dangky (tenkhachhang, email, diachi, matkhau, dienthoai) VALUES ('$tenkhachhang', '$email', '$diachi', '$matkhau', '$dienthoai')";
-    
-    if(mysqli_query($mysqli,$sql))
-    {
-        $_SESSION['id_khachhang']=mysqli_insert_id($mysqli);
-        $_SESSION['dangky']=$tenkhachhang; 
-
-    }
-
-}
-
-
-
-
-
-
-?>
     <div class="container">
         <h2>Đăng Ký</h2>
         <form method="POST" action="">

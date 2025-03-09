@@ -6,12 +6,12 @@ if(isset($_POST['changePassword']))
     $confirm_password=md5($_POST['confirm_password']);
     if($confirm_password==$new_password)
     {
-        $sql = "UPDATE tbl_dangky SET matkhau = '$new_password' WHERE matkhau=".$current_password." AND id_dangky = '".$_SESSION['id_khachhang']."'";
-        if(mysqli_query($mysqli,$sql))
-        {
-            echo "đmk thành công";
-        }else{
-            echo "saimatkhau";
+        $sql = "UPDATE tbl_dangky SET matkhau = '$new_password' WHERE matkhau='$current_password' AND id_dangky = '".$_SESSION['id_khachhang']."'";
+        $query=mysqli_query($mysqli,$sql);
+        if (mysqli_affected_rows($mysqli) > 0) {
+            echo "Đổi mật khẩu thành công";
+        } else {
+            echo "Sai mật khẩu hiện tại hoặc không có thay đổi!";
         }
     }else{
         echo "xac nhận mk không đúng";

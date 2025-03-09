@@ -4,6 +4,7 @@
     if(isset($_GET['dangxuat'])&&$_GET['dangxuat']==1)
     {
         unset($_SESSION['dangky']);
+        unset($_SESSION['id_khachhang']);
     }
     if(isset($_GET['quanly']))
     {
@@ -38,6 +39,8 @@
     else{
         include('pages/main/main.php');
     }
+    
+
     ?>
 </main>
 
