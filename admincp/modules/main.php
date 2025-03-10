@@ -35,7 +35,7 @@
 </div>
 
 <?php
-if(isset($_GET['action'])=='logout'){
+if(isset($_GET['action'])=='logout'&&isset($_GET['logout'])==1){
     unset($_SESSION['username']);
     header('location:login.php');
 }
