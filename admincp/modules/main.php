@@ -27,6 +27,10 @@
         include('productMNG/list.php');
     }elseif($tam == 'quanlybaiviet' && $query == 'sua'){
         include('productMNG/edit.php');
+    }elseif($tam == 'quanlydonhang' && $query == 'xemdanhsach'){
+        include('category_invoice/invoice.php');
+    }elseif($tam == 'quanlydonhang' && $query == 'xemchitiet'){
+        include('category_invoice/invoice_detail.php');
     }
     else{
         include('dashboard.php');
