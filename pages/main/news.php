@@ -81,7 +81,7 @@
     while($row=mysqli_fetch_array($query_sql)){
     ?>
     <div class="post">
-        <img src="/admincp/modules/blog/image_blog/<?php echo $row['hinhanh'] ?>;" alt="MUA VÀNG RƯỚC VÍA">
+        <img src="admincp/modules/blog/image_blog/<?php echo $row['hinhanh'] ;?>" alt="MUA VÀNG RƯỚC VÍA">
         <div class="post-content">
             <h2><?php echo $row['tieude'];?></h2>
             <p class="date"><?php echo $row['ngaydang'];?></p>

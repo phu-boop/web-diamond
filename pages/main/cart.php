@@ -113,6 +113,21 @@
                 </tr>
             </tfoot>
         </table>
+        <?php
+            $today = date("Y-m-d H:i:s");
+            $sql = "SELECT * FROM tbl_khuyenmai WHERE ngay_bd <= '$today' AND ngay_kt >= '$today'";
+            $query = mysqli_query($mysqli, $sql);
+            ?>
+
+            <label>Chọn khuyến mãi:</label>
+            <select name="promotion_id" id="promotion_id">
+                <option value="">Không áp dụng</option>
+                <?php while ($promo = mysqli_fetch_array($query)) { ?>
+                    <option value="<?= $promo['id_khuyenmai'] ?>" data-type="<?= $promo['loai_khuyenmai'] ?>" data-value="<?= $promo['giatri'] ?>">
+                        <?= $promo['ten_khuyenmai'] ?> (<?= $promo['loai_khuyenmai'] == 'phantram' ? 'Giảm ' . $promo['giatri'] . '%' : ($promo['loai_khuyenmai'] == 'codinh' ? 'Giảm ' . number_format($promo['giatri'], 0) . ' VND' : 'Tặng ' . $promo['giatri'] . ' điểm') ?>)
+                    </option>
+                <?php } ?>
+            </select>
 
         <div class="btn-container">
             <a href="index.php" class="btn btn-primary">🔙 Tiếp tục mua hàng</a>
@@ -132,6 +147,7 @@
     <?php else: ?>
         <p style="text-align:center; font-size:18px; color:red;">Giỏ hàng của bạn đang trống!</p>
     <?php endif; ?>
+
 </div>
 
 

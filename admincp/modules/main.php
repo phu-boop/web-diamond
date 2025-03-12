@@ -22,6 +22,11 @@
         include('blog/list.php');
     }elseif($tam == 'quanlybaiviet' && $query == 'sua'){
         include('blog/edit.php');
+    }elseif($tam == 'quanlykhuyenmai' && $query == 'them'){
+        include('promotionMNG/create.php');
+        include('promotionMNG/list.php');
+    }elseif($tam == 'quanlykhuyenmai' && $query == 'sua'){
+        include('promotionMNG/edit.php');
     }elseif($tam == 'quanlydonhang' && $query == 'xemdanhsach'){
         include('category_invoice/invoice.php');
     }elseif($tam == 'quanlydonhang' && $query == 'xemchitiet'){
