@@ -17,16 +17,11 @@
         include('productMNG/list.php');
     }elseif($tam == 'quanlysanpham' && $query == 'sua'){
         include('productMNG/edit.php');
-    }elseif($tam == 'quanlydanhmucbaiviet' && $query == 'them'){
-        include('productMNG/create.php');
-        include('productMNG/list.php');
-    }elseif($tam == 'quanlydanhmucbaiviet' && $query == 'sua'){
-        include('productMNG/edit.php');
     }elseif($tam == 'quanlybaiviet' && $query == 'them'){
-        include('productMNG/create.php');
-        include('productMNG/list.php');
+        include('blog/create.php');
+        include('blog/list.php');
     }elseif($tam == 'quanlybaiviet' && $query == 'sua'){
-        include('productMNG/edit.php');
+        include('blog/edit.php');
     }elseif($tam == 'quanlydonhang' && $query == 'xemdanhsach'){
         include('category_invoice/invoice.php');
     }elseif($tam == 'quanlydonhang' && $query == 'xemchitiet'){

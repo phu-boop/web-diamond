@@ -19,6 +19,9 @@
     }elseif($tam == 'dangnhap')
     {
         include('pages/main/login.php');
+    }elseif($tam=='tintuc')
+    {
+        include('pages/main/news.php');
     }elseif($tam=='timkiem')
     {
         include('pages/main/search.php');
