@@ -2,6 +2,7 @@
     <div class="logo">
         <div class="logo-1">
                 <a href="index.php">
+                    <button class="menu-toggle">&#9776;</button>
                     <i class="fa-solid fa-store"></i>
                 </a>
                 <form action="" method="GET">
@@ -38,33 +39,34 @@
             </a>
         </div>
     </div>
+    <div class="screen">
+        <nav class="nav" id="navbar">
+            <ul class="nav__list">
+                <li><a href="index.php">Trang chủ</a></li>
+                <li class="has-dropdown">
+                    <a href="index.php?quanly=sanpham">Sản Phẩm</a>
+                    <div class="dropdown">
+                        <?php
+                        $sql_lietke_danhmucsp = "SELECT * FROM tbl_danhmuc ORDER BY id_danhmuc DESC";
+                        $query_lietke_danhmucsp = mysqli_query($mysqli, $sql_lietke_danhmucsp);
+                        while ($row = mysqli_fetch_array($query_lietke_danhmucsp)) : ?>
+                            <a href="index.php?quanly=sanpham&id=<?= $row['id_danhmuc'] ?>">
+                                <?= htmlspecialchars($row['tendanhmuc']) ?>
+                            </a>
+                        <?php endwhile; ?>
+                    </div>
+                </li>
+                <li><a href="index.php?quanly=xemgiavang">Giá vàng</a></li>
+                <li><a href="index.php?quanly=tintuc">Tin tức</a></li>
+                <li><a href="index.php?quanly=lienhe">Liên hệ</a></li>
 
-    <nav class="nav" id="navbar">
-        <ul class="nav__list">
-            <li><a href="index.php">Trang chủ</a></li>
-            <li class="has-dropdown">
-                <a href="index.php?quanly=sanpham">Sản Phẩm</a>
-                <div class="dropdown">
-                    <?php
-                    $sql_lietke_danhmucsp = "SELECT * FROM tbl_danhmuc ORDER BY id_danhmuc DESC";
-                    $query_lietke_danhmucsp = mysqli_query($mysqli, $sql_lietke_danhmucsp);
-                    while ($row = mysqli_fetch_array($query_lietke_danhmucsp)) : ?>
-                        <a href="index.php?quanly=sanpham&id=<?= $row['id_danhmuc'] ?>">
-                            <?= htmlspecialchars($row['tendanhmuc']) ?>
-                        </a>
-                    <?php endwhile; ?>
-                </div>
-            </li>
-            <li><a href="index.php?quanly=xemgiavang">Giá vàng</a></li>
-            <li><a href="index.php?quanly=tintuc">Tin tức</a></li>
-            <li><a href="index.php?quanly=lienhe">Liên hệ</a></li>
-
-            <?php if(isset($_SESSION['dangky'])): ?>
-                <li><a href="index.php?dangxuat=1">Đăng xuất</a></li>
-                <li><a href="index.php?quanly=doimatkhau">Đổi mật khẩu</a></li>
-            <?php else: ?>
-                <li><a href="index.php?quanly=dangnhap">Đăng nhập</a></li>
-            <?php endif; ?>
-        </ul>
-    </nav>
+                <?php if(isset($_SESSION['dangky'])): ?>
+                    <li><a href="index.php?dangxuat=1">Đăng xuất</a></li>
+                    <li><a href="index.php?quanly=doimatkhau">Đổi mật khẩu</a></li>
+                <?php else: ?>
+                    <li><a href="index.php?quanly=dangnhap">Đăng nhập</a></li>
+                <?php endif; ?>
+            </ul>
+        </nav>
+    </div>
 </header>

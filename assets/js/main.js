@@ -10,7 +10,7 @@ document.addEventListener("DOMContentLoaded", function () {
             input.focus(); 
         });
     }
-    //menu
+    //menu top
     let navbar = document.getElementById("navbar");
     let stickyOffset = navbar.offsetTop;
     window.addEventListener("scroll", function () {
@@ -20,4 +20,13 @@ document.addEventListener("DOMContentLoaded", function () {
             navbar.classList.remove("sticky");
         }
     });
+    //menu screen
+    let menu = document.querySelector(".menu-toggle");
+    let block = document.querySelector(".screen");
+    if (menu && block) {
+        menu.addEventListener("click",function (even){
+            event.preventDefault();
+            block.classList.toggle("active");
+        });
+    }
 });
