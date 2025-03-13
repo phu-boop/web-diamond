@@ -1,6 +1,4 @@
-<?php
-session_start();
-?>
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,8 +21,10 @@ session_start();
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
     <meta name="theme-color" content="#ffffff">
-    <title>Luxury</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Luxury Store</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/header.css">
+    <link rel="stylesheet" href="assets/css/footer.css">
 </head>
 <body>
     <wrapper class="wrapper">
@@ -36,7 +36,7 @@ session_start();
         ?>
     </wrapper>
     <script src="https://kit.fontawesome.com/c6a9a4ea28.js" crossorigin="anonymous"></script>
-    <script src="/web_trang_suc/js/main.js"></script>
+    <script src="/web_trang_suc/assets/js/main.js"></script>
 </body>
 </html>
 

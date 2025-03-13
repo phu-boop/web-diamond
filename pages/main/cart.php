@@ -104,6 +104,60 @@
                     </td>
                 </tr>
                 <?php endforeach; ?>
+                <?php
+                    $original_price = $tongTien; // Giá gốc, giả sử 1,000,000 VND
+                    $today = date("Y-m-d H:i:s");
+                    $sql = "SELECT * FROM tbl_khuyenmai WHERE ngay_bd <= '$today' AND ngay_kt >= '$today'";
+                    $query = mysqli_query($mysqli, $sql);
+                    ?>
+
+                    <label>Chọn khuyến mãi:</label>
+                    <form method="post">
+                        <select name="promotion_id" id="promotion_id" onchange="updatePrice()">
+                            <option value="khongco" data-type="none" data-value="0">Không áp dụng</option>
+                            <?php while ($promo = mysqli_fetch_array($query)) { ?>
+                                <option value="<?= $promo['id_khuyenmai'] ?>"
+                                        data-type="<?= $promo['loai_khuyenmai'] ?>"
+                                        data-value="<?= $promo['giatri'] ?>"
+                                    <?= isset($_POST['promotion_id']) && $_POST['promotion_id'] == $promo['id_khuyenmai'] ? "selected" : "" ?>
+                                >
+                                    <?= $promo['ten_khuyenmai'] ?>
+                                    (<?= $promo['loai_khuyenmai'] == 'phantram' ? 'Giảm ' . $promo['giatri'] . '%' :
+                                    ($promo['loai_khuyenmai'] == 'codinh' ? 'Giảm ' . number_format($promo['giatri'], 0) . ' VND' :
+                                    'Tặng ' . $promo['giatri'] . ' điểm') ?>)
+                                </option>
+                            <?php } ?>
+                        </select>
+                    </form>
+
+                    <!-- Hiển thị giá -->
+                    <p>Giá gốc: <span id="original_price"><?= number_format($original_price, 0) ?> VND</span></p>
+                    <p>Giá sau khuyến mãi: <span id="discounted_price"><?= number_format($original_price, 0) ?> VND</span></p>
+
+                    <script>
+                        function updatePrice() {
+                            let select = document.getElementById("promotion_id");
+                            let selectedOption = select.options[select.selectedIndex];
+
+                            let type = selectedOption.getAttribute("data-type");
+                            let value = parseFloat(selectedOption.getAttribute("data-value")) || 0;
+                            let originalPrice = <?= $original_price ?>;
+                            let discountedPrice = originalPrice;
+
+                            if (type === "phantram") {
+                                discountedPrice = originalPrice * (1 - value / 100);
+                            } else if (type === "codinh") {
+                                discountedPrice = originalPrice - value;
+                            } 
+                            // 'diem' không ảnh hưởng giá, chỉ tặng điểm
+
+                            document.getElementById("discounted_price").textContent = discountedPrice.toLocaleString() + " VND";
+                        }
+
+                        // Gọi lại khi trang load để giữ giá trị khuyến mãi đã chọn
+                        updatePrice();
+                    </script>
+
             </tbody>
             <tfoot>
                 <tr>
@@ -111,23 +165,17 @@
                     <th><?= number_format($tongTien, 0, ',', '.'); ?> VND</th>
                     <th></th>
                 </tr>
+                <tr>
+                    <th colspan="5" style="text-align:right">Giảm giá</th>
+                    <?php if($_POST['promotion_id']=='khongco') { ?>
+                        <th>không có</th>
+                    <?php } ?>
+
+                    <th><?= number_format($tongTien, 0, ',', '.'); ?> VND</th>
+                    <th></th>
+                </tr>
             </tfoot>
         </table>
-        <?php
-            $today = date("Y-m-d H:i:s");
-            $sql = "SELECT * FROM tbl_khuyenmai WHERE ngay_bd <= '$today' AND ngay_kt >= '$today'";
-            $query = mysqli_query($mysqli, $sql);
-            ?>
-
-            <label>Chọn khuyến mãi:</label>
-            <select name="promotion_id" id="promotion_id">
-                <option value="">Không áp dụng</option>
-                <?php while ($promo = mysqli_fetch_array($query)) { ?>
-                    <option value="<?= $promo['id_khuyenmai'] ?>" data-type="<?= $promo['loai_khuyenmai'] ?>" data-value="<?= $promo['giatri'] ?>">
-                        <?= $promo['ten_khuyenmai'] ?> (<?= $promo['loai_khuyenmai'] == 'phantram' ? 'Giảm ' . $promo['giatri'] . '%' : ($promo['loai_khuyenmai'] == 'codinh' ? 'Giảm ' . number_format($promo['giatri'], 0) . ' VND' : 'Tặng ' . $promo['giatri'] . ' điểm') ?>)
-                    </option>
-                <?php } ?>
-            </select>
 
         <div class="btn-container">
             <a href="index.php" class="btn btn-primary">🔙 Tiếp tục mua hàng</a>
@@ -139,7 +187,7 @@
             }else
             {
             ?>
-                <a href="?quanly=Dangky" class="btn btn-success">🛍 Đăng ký mua hàng </a>
+                <a href="?quanly=dangky" class="btn btn-success">🛍 Đăng ký mua hàng </a>
             <?php } ?>
             <a href="pages/main/add_cart.php?xoatatca" class="btn btn-success">🛍 Xóa tất cả</a>
         </div>
@@ -149,5 +197,17 @@
     <?php endif; ?>
 
 </div>
+<script>
+document.getElementById("promotion_id").addEventListener("change", function() {
+    let selectedValue = this.value;
+    let message = document.getElementById("promotion_message");
+
+    if (selectedValue) {
+        message.textContent = "Bạn đã chọn khuyến mãi: " + this.options[this.selectedIndex].text;
+    } else {
+        message.textContent = "Vui lòng chọn khuyến mãi.";
+    }
+});
+</script>
 
 

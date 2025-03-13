@@ -113,7 +113,7 @@ input:focus {
                 <input type="password" id="password" name="password" required>
             </div>
             <button type="submit" class="btn" name="login">Đăng nhập</button>
-            <p class="register-link">Chưa có tài khoản? <a href="index.php?quanly=Dangky">Đăng ký ngay</a></p>
+            <p class="register-link">Chưa có tài khoản? <a href="index.php?quanly=dangky">Đăng ký ngay</a></p>
         </form>
     </div>
 </body>

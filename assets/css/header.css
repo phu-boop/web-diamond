@@ -1,0 +1,141 @@
+.header {
+    background: #f8f8f8;
+    padding:15px 0px;
+}
+
+.header .logo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.header .logo img {
+    width: 80px;
+    height: 80px;
+    color: #ed8383;
+}
+
+.title-logo {
+    font-family: 'Arial', sans-serif;
+    font-size: 20px;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #ed8383;
+    margin-top: 10px;
+}
+
+.subtitle-logo {
+    font-size: 8px;
+    font-weight: 500;
+    font-family: 'Arial', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #ed8383;
+    margin-top: 5px;
+}
+
+.header .logo-1,
+.header .logo-3 {
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+}
+
+.header .logo-2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header .fa-solid {
+    font-size: 20px;
+    color: #000;
+}
+
+.nav {
+    transition: top 0.3s;
+}
+
+.nav__list {
+    list-style: none;
+    margin: 0;
+    padding: 8px 15px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.nav__list li a {
+    text-decoration: none;
+    color: #000;
+    font-family: "Arial", sans-serif;
+    font-size: 17px;
+    font-weight: 500;
+    padding: 10px 15px;
+    transition: 0.5s;
+}
+
+.nav__list li a:hover {
+    color: #ed8383;
+    border-radius: 5px;
+}
+
+.search_container {
+    display: flex;
+    align-items: center;
+    border: 1px solid #C0C0C0;
+    border-radius: 5px;
+    padding: 3px;
+    background-color: white;
+}
+
+.search_container input,
+.search_container button {
+    border: none;
+    background-color: transparent;
+    outline: none;
+}
+
+.search_container button:hover {
+    cursor: pointer;
+}
+
+.has-dropdown{
+    position: relative;
+}
+.has-dropdown::after {
+    position: absolute;
+    content: "▼"; 
+    font-size: 9px;
+    margin-left: 5px;
+    top: 14px;
+    right: -4px;
+}
+
+@media screen and (max-width: 768px) {
+    .header {
+        padding: 10px 20px;
+    }
+
+    .logo img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .nav__list {
+        flex-direction: column; /* Menu dọc thay vì ngang */
+        padding: 10px 0;
+    }
+
+    .nav__list li {
+        margin: 5px 0;
+    }
+
+    .search_container {
+        width: 100%;
+    }
+}
