@@ -22,7 +22,7 @@ $query_lietke_danhmucsp = mysqli_query($mysqli, $sql_lietke_danhmucsp);
         <tr>
             <td><?php echo $i; ?></td>
             <td><?php echo htmlspecialchars($row['tendanhmuc']); ?></td>
-            <td><img src="modules/productMNG/image_product/<?php echo $row['hinhanh']; ?>" alt="Hình ảnh sản phẩm"></td>
+            <td><img src="modules/category_productMNG/image_categor/<?php echo $row['hinhanh']; ?>" alt="Hình ảnh sản phẩm"></td>
             <td>
                 <a href="modules/category_productMNG/handle.php?id_danhmuc=<?php echo $row['id_danhmuc']; ?>">Xóa</a> | 
                 <a href="?action=quanlydanhmucsanpham&query=sua&id_danhmuc=<?php echo $row['id_danhmuc']; ?>">Sửa</a>

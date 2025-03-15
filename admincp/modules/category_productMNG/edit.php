@@ -53,7 +53,7 @@ $query_lietke_danhmucsp = mysqli_query($mysqli, $sql_lietke_danhmucsp);
                 </tr>
                 <tr>
                     <td><label for="hinhanh">Hình ảnh</label></td>
-                    <input type="file" id="hinhanh" name="image" value="<?php echo $row['hinhanh']; ?>">
+                    <td><input type="file" id="hinhanh" name="image" value="<?php echo $row['hinhanh']; ?>"></td>
                 </tr>
                 <tr>
                     <td><label for="order">Thứ tự</label></td>

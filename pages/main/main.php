@@ -48,4 +48,16 @@ $query_lietke_danhmucsp = mysqli_query($mysqli, $sql_lietke_danhmucsp);
             <?php } ?>
         </div>
     </div>
+    <div class="content-3"> 
+        <div class="gallery">
+            <div class="gallery-container">
+                <img src="https://cdn.pnj.io/images/promo/238/BST_Sakura__1200x1200.jpg" alt="" class="gallery-item gallery-item-1" data-index="1">
+                <img src="https://cdn.pnj.io/images/promo/238/BST_Sakura__1200x1200.jpg" alt="" class="gallery-item gallery-item-2" data-index="2">
+                <img src="https://cdn.pnj.io/images/promo/238/BST_Sakura__1200x1200.jpg" alt="" class="gallery-item gallery-item-3" data-index="3">
+                <img src="https://cdn.pnj.io/images/promo/238/BST_Sakura__1200x1200.jpg" alt="" class="gallery-item gallery-item-4" data-index="4">
+                <img src="https://cdn.pnj.io/images/promo/238/BST_Sakura__1200x1200.jpg" alt="" class="gallery-item gallery-item-5" data-index="5">
+            </div>
+            <div class="gallery-controls"></div>
+        </div>
+    </div>
 </div>
