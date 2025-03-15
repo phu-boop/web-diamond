@@ -1,6 +1,6 @@
 <?php
-$sql_lietke_sanpham = "SELECT * FROM tbl_sanpham ORDER BY giasp DESC LIMIT 4";
-$query_lietke_sanpham = mysqli_query($mysqli, $sql_lietke_sanpham);
+$sql_lietke_sanpham_dangcap = "SELECT * FROM tbl_sanpham ORDER BY giasp DESC LIMIT 4";
+$query_lietke_sanpham_dangcap = mysqli_query($mysqli, $sql_lietke_sanpham_dangcap);
 
 $sql_lietke_danhmucsp = "SELECT * FROM tbl_danhmuc ORDER BY id_danhmuc DESC LIMIT 20";
 $query_lietke_danhmucsp = mysqli_query($mysqli, $sql_lietke_danhmucsp);
@@ -19,13 +19,14 @@ $query_lietke_danhmucsp = mysqli_query($mysqli, $sql_lietke_danhmucsp);
     <div class="content-1">
         <h2>Bộ sưu tập trang sức đẳng cấp</h2>
         <div class="container collection">
-            <?php while ($row = mysqli_fetch_array($query_lietke_sanpham)) { ?>
+            <?php while ($row = mysqli_fetch_array($query_lietke_sanpham_dangcap)) { ?>
                 <div class="product">
                     <a href="index.php?quanly=chitietsanpham&id=<?php echo $row['id_sanpham']; ?>">
                         <img src="admincp/modules/productMNG/image_product/<?php echo $row['hinhanh']; ?>" alt="ảnh sản phẩm">
-                        <h3><?php echo $row['tensanpham']; ?></h3>
-                        <p class="price"><?php echo number_format($row['giasp'], 0, ',', '.'); ?> đ</p>
-                        <p class="promo">Tặng trang sức đến 2 triệu</p>
+                        <h4><?php echo $row['tensanpham']; ?></h4>
+                        <p class="price"><?php echo number_format($row['giasp'], 0, ',', '.'); ?>đ</p>
+                        <p class="promo">bộ sưu tập trang sức đẳng cấp</p>
+                        <p class="quantity">chỉ còn <?php echo $row['soluong'] ;?></p>
                     </a>
                 </div>
             <?php } ?>

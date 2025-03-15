@@ -45,11 +45,15 @@ $query_lietke_danhmucsp = mysqli_query($mysqli, $sql_lietke_danhmucsp);
     <?php
     while ($row = mysqli_fetch_array($query_lietke_danhmucsp)) {
         ?>
-        <form method="POST" action="modules/category_productMNG/handle.php?id_danhmuc=<?php echo $row['id_danhmuc']; ?>">
+        <form method="POST" action="modules/category_productMNG/handle.php?id_danhmuc=<?php echo $row['id_danhmuc']; ?>"  enctype="multipart/form-data">
             <table>
                 <tr>
                     <td><label for="namecategory">Tên danh mục</label></td>
                     <td><input type="text"  name="namecategory" value="<?php echo $row['tendanhmuc']; ?>" required></td>
+                </tr>
+                <tr>
+                    <td><label for="hinhanh">Hình ảnh</label></td>
+                    <input type="file" id="hinhanh" name="image" value="<?php echo $row['hinhanh']; ?>">
                 </tr>
                 <tr>
                     <td><label for="order">Thứ tự</label></td>

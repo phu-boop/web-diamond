@@ -56,22 +56,38 @@ body{
   height: 8px;
   margin: 0 5px;
   border-radius: 50%;
-  background-color: #A9A9A9;
+  background-color: #DCDCDC;
   cursor: pointer;
 }
 
 .dot.active {
-  background-color: #333;
+  background-color: #A9A9A9;
 }
-/* BST */
+/* phần dùng chung */
 .container {
   max-width: 1200px;
   margin: auto;
   text-align: center;
   padding: 40px 0;
 }
+
+.btn {
+  background: #ed8383;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn:hover {
+  background: #ec6c61;
+}
+/* BST */
 .container .content-1 h2,.content-2 h2{
-  font-size: 25px;
+  font-size: 30px;
   color: #ed8383;
 }
 .content-1 .container.collection {
@@ -82,18 +98,19 @@ body{
 }
 
 .content-1 .product {
+  position: relative;
   cursor: pointer;
   background: #fff;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  padding: 20px;
+  padding:0px 20px;
   text-align: center;
   width: 250px;
   transition: transform 0.3s ease;
 }
 
 .content-1 .product:hover {
-  transform: scale(1.05);
+  transform: scale(1.04);
 }
 
 .content-1 .product img {
@@ -101,38 +118,34 @@ body{
   border-radius: 10px;
 }
 
-.content-1 .product h3 {
-  font-size: 18px;
-  color: #333;
+.content-1 .product h4 {
+  font-size: 15px;
+  color: #808080;
   margin: 10px 0;
 }
 
 .content-1 .price {
+  margin:0px;
   font-size: 20px;
   font-weight: bold;
   color: #d19c00;
 }
 
 .content-1 .promo {
-  font-size: 14px;
+  font-size: 13px;
   color: #888;
+  margin-bottom: 50px;
 }
 
-.content-1 .btn {
-  background: #FFE4E1;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  font-size: 16px;
-  cursor: pointer;
-  margin-top: 20px;
-  transition: background 0.3s;
+.quantity{
+  bottom:0;
+  right: 0;
+  margin: 10px;
+  position: absolute;
+  font-size: 11px;
+  color: #C0C0C0;
 }
 
-.content-1 .btn:hover {
-  background: #ed8383;
-}
 /* content-2 */
 .directory_list{
   display: flex;
