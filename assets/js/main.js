@@ -102,11 +102,13 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         this.updateGallery();
       }
-    setControls(){
-        this.carouselControls.forEach(control =>{
-            galleryControlsContainer.appendChild(document.createElement('button')).className=`gallery-controls-${control}`;
-            document.querySelector(`.gallery-controls-${control}`.innerText=control)
-        })
+    setControls() {
+        this.carouselControls.forEach(control => {
+            let btn = document.createElement('button'); // Tạo button
+            btn.className = `gallery-controls-${control}`; // Gán class
+            btn.innerText = control; // Gán text
+            galleryControlsContainer.appendChild(btn); // Thêm vào container
+        });
     }
     useControls() {
         const triggers = [...galleryControlsContainer.childNodes];
