@@ -7,25 +7,11 @@ $query_lietke_danhmucsp = mysqli_query($mysqli, $sql_lietke_danhmucsp);
 
 $sql_lietke_tintuc = "SELECT * FROM tbl_baiviet ORDER BY id_baiviet DESC LIMIT 2";
 $query_lietke_tintuc = mysqli_query($mysqli, $sql_lietke_tintuc);
-$sql_lietke_danhmucsp_gallery = "
-    SELECT tbl_sanpham.*, tbl_danhmuc.tendanhmuc 
-    FROM tbl_danhmuc 
-    JOIN tbl_sanpham ON tbl_danhmuc.id_danhmuc = tbl_sanpham.id_danhmuc 
-    ORDER BY tbl_danhmuc.id_danhmuc DESC 
-    LIMIT 5
-";
 
-$query_lietke_danhmucsp_gallery = mysqli_query($mysqli, $sql_lietke_danhmucsp_gallery);
+$sql_lietke_danhmucsp_5 = "SELECT * FROM tbl_danhmuc ORDER BY id_danhmuc ASC LIMIT 5";
+$query_lietke_danhmucsp_5 = mysqli_query($mysqli, $sql_lietke_danhmucsp_5);
 
-// Kiểm tra lỗi truy vấn
-if (!$query_lietke_danhmucsp_gallery) {
-    die("Lỗi truy vấn: " . mysqli_error($mysqli));
-}
 
-// Lấy dữ liệu
-while ($row = mysqli_fetch_array($query_lietke_danhmucsp_gallery)) {
-    echo "Tên sản phẩm: " . $row['tensanpham'] . "<br>";
-}
 
 
 ?>
@@ -75,26 +61,39 @@ while ($row = mysqli_fetch_array($query_lietke_danhmucsp_gallery)) {
     <div class="content-3"> 
         <div class="gallery">
             <div class="gallery-container">
-                <img src="https://cdn.pnj.io/images/promo/238/BST_Sakura__1200x1200.jpg" alt="" class="gallery-item gallery-item-1" data-index="1">
-                <img src="https://cdn.pnj.io/images/promo/238/BANNER_BST_Audax_1200x1200.png" alt="" class="gallery-item gallery-item-2" data-index="2">
-                <img src="https://cdn.pnj.io/images/promo/238/BST_BISOUS_BANNER_1200x1200.png" alt="" class="gallery-item gallery-item-3" data-index="3">
-                <img src="https://cdn.pnj.io/images/promo/238/BST_Sakura__1200x1200.jpg" alt="" class="gallery-item gallery-item-4" data-index="4">
-                <img src="https://cdn.pnj.io/images/promo/238/BST_Sakura__1200x1200.jpg" alt="" class="gallery-item gallery-item-5" data-index="5">
+                <img src="assets/images/list_product_4.png" alt="" class="gallery-item gallery-item-1" data-index="1">
+                <img src="assets/images/list_product_5.jpg" alt="" class="gallery-item gallery-item-2" data-index="2">
+                <img src="assets/images/list_product_1.png" alt="" class="gallery-item gallery-item-3" data-index="3">
+                <img src="assets/images/list_product_2.png" alt="" class="gallery-item gallery-item-4" data-index="4">
+                <img src="assets/images/list_product_3.jpg" alt="" class="gallery-item gallery-item-5" data-index="5">
             </div>
             <div class="gallery-controls"></div>
         </div>
         <div class="product-container">
-            <?php while ($row = mysqli_fetch_array($query_lietke_sanpham_dangcap)) { ?>
-                    <div class="product">
-                        <a href="index.php?quanly=chitietsanpham&id=<?php echo $row['id_sanpham']; ?>">
-                            <img src="admincp/modules/productMNG/image_product/<?php echo $row['hinhanh']; ?>" alt="ảnh sản phẩm">
-                            <h4><?php echo $row['tensanpham']; ?></h4>
-                            <p class="price"><?php echo number_format($row['giasp'], 0, ',', '.'); ?>đ</p>
-                            <p class="promo">bộ sưu tập trang sức đẳng cấp</p>
-                            <p class="quantity">chỉ còn <?php echo $row['soluong'] ;?></p>
-                        </a>
-                    </div>
-            <?php } ?>
+        <div class="content-1">
+            <div class="container collection">
+                <?php 
+                    $i=1;
+                    while ($danhmuc = mysqli_fetch_array($query_lietke_danhmucsp_5)) {?>
+                        <div class="list_product <?php if($i==3){echo 'active_1';} ?>" index="<?php echo $i++;?>">
+                            <?php $sql_sanpham = "SELECT * FROM tbl_sanpham WHERE id_danhmuc={$danhmuc['id_danhmuc']} ORDER BY id_sanpham LIMIT 4";
+                            $sql_sanpham_query = mysqli_query($mysqli, $sql_sanpham); 
+                            while ($row = mysqli_fetch_array($sql_sanpham_query)) { ?>
+                                <div class="product" >
+                                    <a href="index.php?quanly=chitietsanpham&id=<?php echo $row['id_sanpham']; ?>">
+                                        <img src="admincp/modules/productMNG/image_product/<?php echo $row['hinhanh']; ?>" alt="ảnh sản phẩm">
+                                        <h4><?php echo $row['tensanpham']; ?></h4>
+                                        <p class="price"><?php echo number_format($row['giasp'], 0, ',', '.'); ?>đ</p>
+                                        <p class="promo">bộ sưu tập trang sức đẳng cấp</p>
+                                        <p class="quantity">chỉ còn <?php echo $row['soluong']; ?></p>
+                                    </a>
+                                </div>
+                            <?php } ?>
+                        </div>
+                 <?php   } 
+                    ?>
+                </div>
+            </div>
         </div>
     </div>
     <div class="content-4">

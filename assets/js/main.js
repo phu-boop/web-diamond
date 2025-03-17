@@ -92,8 +92,28 @@ document.addEventListener("DOMContentLoaded", function () {
         this.carouselArray.slice(0, 5).forEach((el, i) => {
         el.classList.add(`gallery-item-${i + 1}`);
         });
-    }
+        this.addActive_1();
 
+    }
+    setListProduct() {
+        for (let el of this.carouselArray) {
+            if (el.classList.contains('gallery-item-3')) {
+                var dataIndex = el.dataset.index;
+                return dataIndex;
+            }
+        }
+    }  
+    addActive_1(){
+        var valueToCompare = this.setListProduct();
+        var previousActive = document.querySelector('.active_1');
+        if (previousActive) {
+            previousActive.classList.remove('active_1');
+        }
+        var listProduct = document.querySelector('[index="' + valueToCompare + '"]');
+        if (listProduct) {
+            listProduct.classList.add('active_1');
+        }
+    }  
     setCurrentState(direction) {
         if (direction.className == 'gallery-controls-previous') {
           this.carouselArray.unshift(this.carouselArray.pop());
@@ -118,8 +138,8 @@ document.addEventListener("DOMContentLoaded", function () {
             this.setCurrentState(control);
           });
         });
-      }
-            
+        console.log(this.setListProduct());
+      }     
     }
 
     const exampleCarousel = new Carousel(galleryContainer, galleryItems, galleryControls);

@@ -198,7 +198,6 @@ body{
 
 /*content-3 gallery */
 .content-3{
-  display: flex;
   align-items: center;
 }
 .gallery{
@@ -497,3 +496,13 @@ body{
   background-color: #f0f0f0;
 }
 
+
+
+
+/* slider product */
+.list_product {
+  display: none;
+}
+.list_product.active_1{
+  display: flex;
+}
