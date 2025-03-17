@@ -134,16 +134,59 @@ $row = mysqli_fetch_assoc($result);
                 <p class="Installment">chỉ cần trả <?php echo number_format($row['giasp']/12, 0, ',', '.') . ' VNĐ'; ?>/tháng <img src="assets/images/pngegg.png" alt=""></p>
             </div>
             <div class="product-size">
-            <label for="size">Chọn kích cỡ:</label>
-            <select id="size">
-                <option value="10">10</option>
-                <option value="11">11</option>
-                <option value="12">12</option>
-            </select>
+                <div>
+                    <p>Giá sản phẩm thay đổi tùy trọng lượng vàng và đá</p>
+                    <label for="size">Chọn kích cỡ:</label>
+                    <select id="size">
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                    </select>
+                    <p>Còn hàng - cell-phone Nhấn <img src="assets/images/zalo.svg" alt=""> để được tư vấn và nhận ưu đãi</p>
+                </div>
+                <div>
+                    Cách do size lắc
+                </div>
+            </div>
+            <div class="offer-box">
+                <div class="offer-title">Ưu đãi:</div>
+                <div class="offer-content">
+                    <span class="icon">✔</span>
+                    <span>Ưu đãi thêm 200K cho hóa đơn từ 2.5 triệu bằng thẻ tín dụng Muadee by HDBank 
+                        <a href="#">Xem chi tiết</a>
+                    </span>
+                </div>
+            </div>
+            <div class="policy-container">
+                <div class="policy-item">
+                    <img src="assets/images/shopping_1.svg" alt="Giao hàng">
+                    <span>Miễn phí giao hàng</span>
+                </div>
+                <div class="policy-item">
+                    <img src="assets/images/shopping_2.svg" alt="Dịch vụ">
+                    <span>Phục vụ 24/7</span>
+                </div>
+                <div class="policy-item">
+                    <img src="assets/images/shopping_3.svg" alt="Thu đổi">
+                    <span>Thu đổi 48h</span>
+                </div>
+            </div>
+            <div>
+                <a href="#" class="btn btn-main">
+                    Mua ngay <br>
+                    <small>Giao hàng miễn phí tận nhà hoặc nhận tại cửa hàng</small>
+                </a>
+            </div>
+                        <div class="btn-secondary-container">
+                <a href="#" class="btn btn-secondary">
+                    Thêm vào giỏ hàng
+                </a>
+                <a href="#" class="btn btn-secondary">
+                    Gọi ngay (miễn phí) <br>
+                    <small>Nhận ngay ưu đãi</small>
+                </a>
             </div>
             <div class="product-buttons">
-            <button class="buy-button">Mua ngay</button>
-            <button class="cart-button">Thêm vào giỏ hàng</button>
             </div>
         </div>
     </div>

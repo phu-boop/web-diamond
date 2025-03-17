@@ -469,6 +469,7 @@ body{
   margin-bottom: 15px;
 }
 .describe .product-size {
+  display: flex;
   margin-bottom: 20px;
 }
 .describe .product-size label {
