@@ -7,6 +7,27 @@ $query_lietke_danhmucsp = mysqli_query($mysqli, $sql_lietke_danhmucsp);
 
 $sql_lietke_tintuc = "SELECT * FROM tbl_baiviet ORDER BY id_baiviet DESC LIMIT 2";
 $query_lietke_tintuc = mysqli_query($mysqli, $sql_lietke_tintuc);
+$sql_lietke_danhmucsp_gallery = "
+    SELECT tbl_sanpham.*, tbl_danhmuc.tendanhmuc 
+    FROM tbl_danhmuc 
+    JOIN tbl_sanpham ON tbl_danhmuc.id_danhmuc = tbl_sanpham.id_danhmuc 
+    ORDER BY tbl_danhmuc.id_danhmuc DESC 
+    LIMIT 5
+";
+
+$query_lietke_danhmucsp_gallery = mysqli_query($mysqli, $sql_lietke_danhmucsp_gallery);
+
+// Kiểm tra lỗi truy vấn
+if (!$query_lietke_danhmucsp_gallery) {
+    die("Lỗi truy vấn: " . mysqli_error($mysqli));
+}
+
+// Lấy dữ liệu
+while ($row = mysqli_fetch_array($query_lietke_danhmucsp_gallery)) {
+    echo "Tên sản phẩm: " . $row['tensanpham'] . "<br>";
+}
+
+
 ?>
 <div class="slider">
         <div class="slides">
@@ -62,6 +83,19 @@ $query_lietke_tintuc = mysqli_query($mysqli, $sql_lietke_tintuc);
             </div>
             <div class="gallery-controls"></div>
         </div>
+        <div class="product-container">
+            <?php while ($row = mysqli_fetch_array($query_lietke_sanpham_dangcap)) { ?>
+                    <div class="product">
+                        <a href="index.php?quanly=chitietsanpham&id=<?php echo $row['id_sanpham']; ?>">
+                            <img src="admincp/modules/productMNG/image_product/<?php echo $row['hinhanh']; ?>" alt="ảnh sản phẩm">
+                            <h4><?php echo $row['tensanpham']; ?></h4>
+                            <p class="price"><?php echo number_format($row['giasp'], 0, ',', '.'); ?>đ</p>
+                            <p class="promo">bộ sưu tập trang sức đẳng cấp</p>
+                            <p class="quantity">chỉ còn <?php echo $row['soluong'] ;?></p>
+                        </a>
+                    </div>
+            <?php } ?>
+        </div>
     </div>
     <div class="content-4">
         <h2>Tin tức</h2>
@@ -87,3 +121,6 @@ $query_lietke_tintuc = mysqli_query($mysqli, $sql_lietke_tintuc);
         </div>
     </div>
 </div>
+
+
+

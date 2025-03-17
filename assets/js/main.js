@@ -106,7 +106,6 @@ document.addEventListener("DOMContentLoaded", function () {
         this.carouselControls.forEach(control => {
             let btn = document.createElement('button'); // Tạo button
             btn.className = `gallery-controls-${control}`; // Gán class
-            btn.innerText = control; // Gán text
             galleryControlsContainer.appendChild(btn); // Thêm vào container
         });
     }

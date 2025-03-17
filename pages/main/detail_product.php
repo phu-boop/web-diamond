@@ -1,17 +1,12 @@
 <?php
-
-
-// Lấy ID sản phẩm từ URL
 if (!isset($_GET['id']) || empty($_GET['id'])) {
     die("Không tìm thấy sản phẩm!");
 }
 $id = (int)$_GET['id'];
 
-// Truy vấn sản phẩm theo ID
 $sql = "SELECT * FROM tbl_sanpham WHERE id_sanpham = $id";
 $result = mysqli_query($mysqli, $sql);
 
-// Kiểm tra sản phẩm có tồn tại không
 if (mysqli_num_rows($result) == 0) {
     die("Sản phẩm không tồn tại!");
 }
@@ -19,52 +14,141 @@ if (mysqli_num_rows($result) == 0) {
 $row = mysqli_fetch_assoc($result);
 ?>
 
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo htmlspecialchars($row['tensanpham']); ?></title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css"> <!-- File CSS tùy chỉnh -->
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .cart-container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        .cart-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            border-bottom: 1px solid #ddd;
+        }
+        .cart-item img {
+            width: 120px;
+            height: auto;
+            border-radius: 5px;
+            margin-right: 15px;
+        }
+        .cart-item .info {
+            flex-grow: 1;
+        }
+        .cart-item h5 {
+            margin-bottom: 5px;
+        }
+        .cart-item p {
+            margin-bottom: 3px;
+            font-size: 14px;
+            color: #777;
+        }
+        .cart-total {
+            font-size: 18px;
+            font-weight: bold;
+            text-align: right;
+            padding-top: 10px;
+        }
+        .btn-buy {
+            background-color: #c62828;
+            color: white;
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .btn-buy:hover {
+            background-color: #a82727;
+        }
+        .quantity-input {
+            width: 60px;
+            text-align: center;
+            font-size: 16px;
+        }
+    </style>
 </head>
 <body>
 
 <div class="container mt-5">
-    <div class="row">
-        <!-- Hình ảnh sản phẩm -->
-        <div class="col-md-5">
+    <div class="cart-container">
+        <h3 class="text-center">Giỏ hàng của bạn</h3>
+
+        <div class="cart-item">
             <img src="admincp/modules/productMNG/image_product/<?php echo htmlspecialchars($row['hinhanh']); ?>" 
-                 class="img-fluid rounded shadow" 
                  alt="<?php echo htmlspecialchars($row['tensanpham']); ?>">
+            <div class="info">
+                <h5><?php echo htmlspecialchars($row['tensanpham']); ?></h5>
+                <p>Mã sản phẩm: <?php echo htmlspecialchars($row['masp']); ?></p>
+                <h4 class="text-danger"><?php echo number_format($row['giasp'], 0, ',', '.'); ?> đ</h4>
+            </div>
+            <div>
+                <input type="number" class="form-control quantity-input" value="1" min="1" max="<?php echo $row['soluong']; ?>">
+            </div>
         </div>
 
-        <!-- Thông tin sản phẩm -->
-        <div class="col-md-7">
-            <h2 class="fw-bold"><?php echo htmlspecialchars($row['tensanpham']); ?></h2>
-            <p class="text-muted">Mã sản phẩm: <?php echo htmlspecialchars($row['masp']); ?></p>
-            <h3 class="text-danger"><?php echo number_format($row['giasp'], 0, ',', '.'); ?> đ</h3>
-
-            <p><strong>Tình trạng:</strong> 
-                <?php echo ($row['trangthai'] == 1) ? "<span class='text-success'>Còn hàng</span>" : "<span class='text-danger'>Hết hàng</span>"; ?>
-            </p>
-
-            <p><strong>Mô tả ngắn:</strong> <?php echo nl2br(htmlspecialchars($row['tomtat'])); ?></p>
-
-            <form method="POST" action="pages/main/add_cart.php?id=<?php echo $id; ?>">
-                <label for="soluong">Số lượng:</label>
-                <input type="number" name="soluong" value="1" min="1" max="<?php echo $row['soluong']; ?>" class="form-control w-25">
-                <button type="submit" name="themgiohang" class="btn btn-primary mt-3">Thêm vào giỏ hàng</button>
-            </form>
+     
+        <div class="cart-total">
+            Tổng tiền: <span class="text-danger"><?php echo number_format($row['giasp'], 0, ',', '.'); ?> đ</span>
         </div>
-    </div>
 
-    <!-- Nội dung chi tiết sản phẩm -->
-    <div class="mt-5">
-        <h4>Mô tả chi tiết</h4>
-        <p><?php echo nl2br(htmlspecialchars($row['noidung'])); ?></p>
+    
+        <form method="POST" action="pages/main/add_cart.php?id=<?php echo $id; ?>">
+            <button type="submit" name="themgiohang" class="btn btn-buy mt-3">Mua ngay</button>
+        </form>
     </div>
 </div>
 
 </body>
-</html>
+</html> -->
+
+
+
+
+<div class="product-container">
+    <div class="describe">
+        <div class="product-image">
+            <img src="admincp/modules/productMNG/image_product/<?php echo $row['hinhanh'] ; ?>" alt="Product Image"> 
+        </div>
+        <div class="product-details">
+            <h1 class="product-title">Nhẫn Vàng trắng 10K đính đá ECZ PNJ XMXMW062087</h1>
+            <div class="product-title-detail">
+                <p class="product-code">Mã: GNXMXMW062087</p>
+                <p class="rating"><i class="fa-solid fa-star"></i>(0)  còn hàng <?php echo $row['soluong'] ?></p>
+            </div>
+            <div class="price">
+                <p class="product-price"><?php echo number_format($row['giasp'], 0, ',', '.') . ' VNĐ'; ?></p>
+                <p class="Installment">chỉ cần trả <?php echo number_format($row['giasp']/12, 0, ',', '.') . ' VNĐ'; ?>/tháng <img src="assets/images/pngegg.png" alt=""></p>
+            </div>
+            <div class="product-size">
+            <label for="size">Chọn kích cỡ:</label>
+            <select id="size">
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
+            </select>
+            </div>
+            <div class="product-buttons">
+            <button class="buy-button">Mua ngay</button>
+            <button class="cart-button">Thêm vào giỏ hàng</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
