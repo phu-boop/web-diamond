@@ -201,8 +201,10 @@ body{
   align-items: center;
 }
 .gallery{
+  margin-top: 100px;
   position: relative;
   width: 100%;
+  margin-bottom: 15px;
 }
 .gallery-container{
   align-items: center;
@@ -420,8 +422,11 @@ body{
 }
 .describe {
   display: flex;
-  max-width: 800px;
+  max-width: 1000px;
   margin: 0 auto;
+}
+.describe_left{
+  width: 49%;
 }
 .describe .product-image {
   flex: 1;
@@ -506,4 +511,13 @@ body{
 }
 .list_product.active_1{
   display: flex;
+}
+.content-3 .container.collection{
+  padding-top: 0;
+}
+.content-3 .price{
+  padding-bottom: 20px;
+}
+.content-3 .list_product {
+  gap: 20px;
 }

@@ -41,7 +41,7 @@ $query_lietke_danhmucsp_5 = mysqli_query($mysqli, $sql_lietke_danhmucsp_5);
                 </div>
             <?php } ?>
         </div>
-        <button class="btn">Xem thêm</button>
+        <a href="index.php?quanly=sanpham" class="btn">Xem thêm</a>
     </div>
     <div class="content-2">
         <h2>Bạn đang tìm gì hôm nay?</h2>
@@ -60,6 +60,7 @@ $query_lietke_danhmucsp_5 = mysqli_query($mysqli, $sql_lietke_danhmucsp_5);
     </div>
     <div class="content-3"> 
         <div class="gallery">
+            <div class="gallery-controls"></div>
             <div class="gallery-container">
                 <img src="assets/images/list_product_4.png" alt="" class="gallery-item gallery-item-1" data-index="1">
                 <img src="assets/images/list_product_5.jpg" alt="" class="gallery-item gallery-item-2" data-index="2">
@@ -67,7 +68,6 @@ $query_lietke_danhmucsp_5 = mysqli_query($mysqli, $sql_lietke_danhmucsp_5);
                 <img src="assets/images/list_product_2.png" alt="" class="gallery-item gallery-item-4" data-index="4">
                 <img src="assets/images/list_product_3.jpg" alt="" class="gallery-item gallery-item-5" data-index="5">
             </div>
-            <div class="gallery-controls"></div>
         </div>
         <div class="product-container">
         <div class="content-1">
@@ -84,7 +84,6 @@ $query_lietke_danhmucsp_5 = mysqli_query($mysqli, $sql_lietke_danhmucsp_5);
                                         <img src="admincp/modules/productMNG/image_product/<?php echo $row['hinhanh']; ?>" alt="ảnh sản phẩm">
                                         <h4><?php echo $row['tensanpham']; ?></h4>
                                         <p class="price"><?php echo number_format($row['giasp'], 0, ',', '.'); ?>đ</p>
-                                        <p class="promo">bộ sưu tập trang sức đẳng cấp</p>
                                         <p class="quantity">chỉ còn <?php echo $row['soluong']; ?></p>
                                     </a>
                                 </div>
@@ -116,7 +115,7 @@ $query_lietke_danhmucsp_5 = mysqli_query($mysqli, $sql_lietke_danhmucsp_5);
                 </div>
         </div>
         <div class="view-all">
-            <button class="btn btn_content-4">Xem tất cả</button>
+            <a href="index.php?quanly=tintuc" class="btn btn_content-4">Xem tất cả</a>
         </div>
     </div>
 </div>

@@ -13,115 +13,70 @@ if (mysqli_num_rows($result) == 0) {
 
 $row = mysqli_fetch_assoc($result);
 ?>
-
-<!-- <!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo htmlspecialchars($row['tensanpham']); ?></title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <style>
-        body {
-            background-color: #f8f9fa;
-        }
-        .cart-container {
-            max-width: 800px;
-            margin: auto;
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-        }
-        .cart-item {
-            display: flex;
-            align-items: center;
-            padding: 15px;
-            border-bottom: 1px solid #ddd;
-        }
-        .cart-item img {
-            width: 120px;
-            height: auto;
-            border-radius: 5px;
-            margin-right: 15px;
-        }
-        .cart-item .info {
-            flex-grow: 1;
-        }
-        .cart-item h5 {
-            margin-bottom: 5px;
-        }
-        .cart-item p {
-            margin-bottom: 3px;
-            font-size: 14px;
-            color: #777;
-        }
-        .cart-total {
-            font-size: 18px;
-            font-weight: bold;
-            text-align: right;
-            padding-top: 10px;
-        }
-        .btn-buy {
-            background-color: #c62828;
-            color: white;
-            width: 100%;
-            padding: 10px;
-            border-radius: 5px;
-            font-size: 18px;
-            font-weight: bold;
-        }
-        .btn-buy:hover {
-            background-color: #a82727;
-        }
-        .quantity-input {
-            width: 60px;
-            text-align: center;
-            font-size: 16px;
-        }
-    </style>
-</head>
-<body>
-
-<div class="container mt-5">
-    <div class="cart-container">
-        <h3 class="text-center">Giỏ hàng của bạn</h3>
-
-        <div class="cart-item">
-            <img src="admincp/modules/productMNG/image_product/<?php echo htmlspecialchars($row['hinhanh']); ?>" 
-                 alt="<?php echo htmlspecialchars($row['tensanpham']); ?>">
-            <div class="info">
-                <h5><?php echo htmlspecialchars($row['tensanpham']); ?></h5>
-                <p>Mã sản phẩm: <?php echo htmlspecialchars($row['masp']); ?></p>
-                <h4 class="text-danger"><?php echo number_format($row['giasp'], 0, ',', '.'); ?> đ</h4>
-            </div>
-            <div>
-                <input type="number" class="form-control quantity-input" value="1" min="1" max="<?php echo $row['soluong']; ?>">
-            </div>
-        </div>
-
-     
-        <div class="cart-total">
-            Tổng tiền: <span class="text-danger"><?php echo number_format($row['giasp'], 0, ',', '.'); ?> đ</span>
-        </div>
-
-    
-        <form method="POST" action="pages/main/add_cart.php?id=<?php echo $id; ?>">
-            <button type="submit" name="themgiohang" class="btn btn-buy mt-3">Mua ngay</button>
-        </form>
-    </div>
-</div>
-
-</body>
-</html> -->
-
-
-
-
 <div class="product-container">
     <div class="describe">
-        <div class="product-image">
-            <img src="admincp/modules/productMNG/image_product/<?php echo $row['hinhanh'] ; ?>" alt="Product Image"> 
+        <div class="describe_left">
+            <div class="product-image">
+                <img src="admincp/modules/productMNG/image_product/<?php echo $row['hinhanh'] ; ?>" alt="Product Image"> 
+            </div>
+            <div class="describe_left_details">
+                <div class="details_top">
+                    <div class="menu">
+                            <strong>Chính sách hậu mãi</strong></p>
+                            <p><strong>Mô tả sản phẩm</strong></p>
+                            <p><strong>Câu hỏi thường gặp</strong></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="details_bottom">
+                    <div class="content_1">
+                        <div class="details">
+                            <p><strong>Miễn phí bảo hành 6 tháng:</strong></p>
+                            <ul>
+                                <li>Bảo hành 6 tháng lỗi kỹ thuật, nước xi.</li>
+                            </ul>
+                            <p><strong>Miễn phí siêu âm và đánh bóng bằng máy chuyên dụng trọn đời:</strong></p>
+                            <ul>
+                                <li>Đối với sản phẩm bị oxy hóa, xỉn màu, PNJ sẽ hỗ trợ siêu âm và đánh bóng miễn phí trọn đời.</li>
+                            </ul>
+                            <p><strong>Miễn phí thay đá ECZ, CZ và đá tổng hợp:</strong></p>
+                            <ul>
+                                <li>Miễn phí thay đá ECZ, CZ và đá tổng hợp trong suốt thời gian sử dụng.</li>
+                            </ul>
+                            <p><strong>Không áp dụng bảo hành cho các trường hợp sau:</strong></p>
+                            <ul>
+                                <li>Dây chuyền, lắc tay bị đứt.</li>
+                                <li>Sản phẩm bị biến dạng do ngoại lực tác động hoặc do người dùng tự ý sửa chữa.</li>
+                                <li>Khách hàng yêu cầu thay đổi mẫu mã sản phẩm.</li>
+                                <li>Sản phẩm có gắn kim cương nhân tạo 22K, 24K; đá quý thiên nhiên; ngọc trai; vàng trắng; vàng hồng không được bảo hành nước xi.</li>
+                                <li>Các sản phẩm trang sức bạc không được bảo hành nước xi.</li>
+                            </ul>
+                            <p><strong>Lưu ý về chính sách bảo hành:</strong></p>
+                            <ol>
+                                <li>PNJ chỉ áp dụng chính sách này cho các sản phẩm thuộc hệ thống cửa hàng kênh lẻ và online của PNJ.</li>
+                                <li>Khách hàng vui lòng xuất trình hóa đơn mua hàng hoặc thẻ khách hàng của PNJ để đối chiếu khi cần thiết.</li>
+                                <li>Chính sách này có thể thay đổi mà không cần báo trước.</li>
+                                <li>Quý khách vui lòng tham khảo chi tiết chính sách bảo hành vui lòng truy cập tại đây.</li>
+                            </ol>
+                        </div>
+                    </div>
+                    <div class="content_2">
+                        <h1 class="title">Trang Sức Vàng 14K</h1>
+                            <p><strong>Trọng lượng tham khảo:</strong> 11.92562 phân</p>
+                            <p><strong>Loại đá chính:</strong> Synthetic</p>
+                            <p><strong>Loại đá phụ:</strong> Xoàn mỹ</p>
+                            <p><strong>Số viên đá chính:</strong> 1</p>
+                            <p><strong>Giới tính:</strong> Nữ</p>
+                            <p><strong>Bộ sưu tập:</strong> It's Sakura Time</p>
+                            <p><strong>Thương hiệu:</strong> SANRIO</p>
+                            <p>Không phải ngẫu nhiên mà trang sức vàng 14K được nhiều người ưa chuộng. Chiếc dây cổ vàng được chế tác từ vàng 14K và ghi điểm với sự kết hợp hoàn hảo giữa đá Synthetic, PNJ ❤️ HELLO KITTY sẽ mang lại hành trình đeo sáng tạo và thú vị. Với thiết kế đơn giản nhưng, nhấn mạnh vào sự tinh tế, BST It's Sakura Time nhắc nhở người luôn cảm nhận vẻ đẹp của thiên nhiên trong từng khoảnh khắc. Chiếc dây cổ này không chỉ là một món trang sức mà còn là một tác phẩm nghệ thuật, thể hiện cá tính và phong cách riêng của bạn. Hãy để chiếc dây cổ này trở thành biểu tượng cho những khoảnh khắc đáng nhớ trong cuộc sống của bạn, mang đến cho bạn sự tự tin và niềm vui mỗi khi đeo nó.</p>
+                        </div>
+                    </div>
+                    <div class="content_3">
+                        
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="product-details">
             <h1 class="product-title">Nhẫn Vàng trắng 10K đính đá ECZ PNJ XMXMW062087</h1>
