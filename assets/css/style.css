@@ -415,9 +415,9 @@ body{
 
 
 /* detail product */
-.container_product {
+.product-container {
   font-family: sans-serif;
-  margin: 0;
+  margin-top: 100px;
   padding: 20px;
 }
 .describe {
@@ -426,11 +426,14 @@ body{
   margin: 0 auto;
 }
 .describe_left{
-  width: 49%;
+  width: 52%;
 }
 .describe .product-image {
+  background-color: #f9f8f8;
+  border-radius: 5px;
   flex: 1;
-  margin-right: 20px;
+  margin-right: 40px;
+  cursor: pointer;
 }
 .describe .product-image img {
   max-width: 100%;
@@ -441,6 +444,7 @@ body{
   justify-content: space-between;
   font-size: 13px;
   color: #888;
+  height: 35px;
 }
 .rating i{
   color: rgb(255 193 7 );
@@ -451,56 +455,132 @@ body{
   color:#333;
 }
 .price .Installment img{
-  width: 15px;
-  height: 15px;
+  width: 17px;
+  height: 17px;
   margin-left: 5px;
 }
 .describe .product-details {
   flex: 1;
 }
 .describe .product-title {
-  font-size: 1.5em;
+  color: rgb(0 52 104);
+  font-size: 18px;
   margin-bottom: 5px;
 }
 .describe .product-code {
   font-size: 0.9em;
-  color: #666;
+  color:  #888888;
   margin-bottom: 10px;
 }
 .describe .product-price {
   font-size: 20px;
   font-weight: bold;
-  color: #d00;
-  margin-bottom: 15px;
+  color: rgb(0 52 104);
+  margin: 0;
 }
 .describe .product-size {
   display: flex;
-  margin-bottom: 20px;
+  align-items: center;
+  justify-content: space-between;
+  
+}
+.describe .product-size p,.describe .product-size .right{
+  font-size: 14px;
+  color: #888888;
+  margin:7px 0px;
+}
+.describe .product-size .right{
+  cursor: pointer;
+  width: 20%;
+  text-decoration: underline;
+}
+.describe .product-size .left{
+  width: 70%;
+}
+.describe .product-size .left .zalo{
+  display: flex;
+  align-items: center;
+  color: rgb(0 52 104);
+}
+.product-size .left .zalo img{
+  width: 25px;
+  height: 25px;
 }
 .describe .product-size label {
   display: block;
   margin-bottom: 5px;
+  color: rgb(0 52 104);
+  font-weight: 600;
 }
 .describe .product-size select {
   padding: 8px;
   width: 100px;
+  border-radius: 5px;
 }
-.describe .product-buttons {
+.describe .offer-box{
+  border: solid 2px #f1f1f1;
+  overflow: hidden;
+  border-radius: 5px;
+  box-shadow: 0px 8px 10px rgba(0, 0, 0, 0.15);
+}
+.offer-box .offer-title{
+  background-color: #f1f1f1;
+  padding: 10px;
+  color: #555;
+}
+.offer-box .offer-content{
+  color: #555;
+  padding: 10px;
+}
+.offer-box .offer-content i{
+  color: rgb(0 52 104);
+}
+.offer-box .offer-content a{
+  text-decoration: underline;
+}
+.policy-container{
+  display: flex;
+  margin-top: 10px;
+  justify-content: space-between;
+  background-color: #f1f1f1;
+  overflow: hidden;
+  border-radius: 5px;
+}
+.policy-item{
+  display: flex;
+  align-items: center;
+  padding: 9px;
+}
+.policy-item img{
+  margin-right: 5px;
+}
+.describe .btn-main{
+  display: block;
+  margin-top: 10px;
+  background-color: rgb(173 42 54 );
+  border-radius: 10px;
+}
+.describe .btn-main div{
+  text-align: center;
+  font-size: 13px;
+}
+.describe .btn-main .small{
+  font-size: 11px;
+}
+.btn-secondary-container{
+  margin-top: 10px;
   display: flex;
   justify-content: space-between;
 }
-.describe .product-buttons button {
-  padding: 10px 20px;
-  border: none;
-  cursor: pointer;
+.btn-secondary-container .left{
+  width: 49%;
 }
-.describe .buy-button {
-  background-color: #d00;
-  color: white;
+.btn.btn-secondary{
+ 
 }
-.describe .cart-button {
-  background-color: #f0f0f0;
-}
+
+
+
 
 
 

@@ -1,3 +1,29 @@
+document.addEventListener("DOMContentLoaded", function() {
+    console.log("ok");
+
+    // Kiểm tra sự tồn tại của phần tử .product-image
+    let product_image = document.querySelector(".product-image");
+
+    if (product_image) {
+        product_image.addEventListener("click", function() {
+            toggle_active("product-image");
+        });
+    } else {
+        console.error("Không tìm thấy phần tử với class 'product-image'.");
+    }
+
+    function toggle_active(className) {
+        let class_element = document.querySelector(`.${className}`);
+        if (class_element) {
+            class_element.classList.toggle("active");
+        } else {
+            console.error("Không tìm thấy phần tử với class:", className);
+        }
+    }
+});
+
+
+
 document.addEventListener("DOMContentLoaded", function () {
     //search
     let button = document.querySelector(".search"); 
@@ -148,3 +174,7 @@ document.addEventListener("DOMContentLoaded", function () {
     exampleCarousel.useControls();
 
 });
+
+
+
+

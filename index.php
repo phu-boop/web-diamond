@@ -36,7 +36,7 @@
         ?>
     </wrapper>
     <script src="https://kit.fontawesome.com/c6a9a4ea28.js" crossorigin="anonymous"></script>
-    <script src="assets/js/main.js"></script>
+    <script src="assets/js/main.js" defer></script>
 </body>
 </html>
 
