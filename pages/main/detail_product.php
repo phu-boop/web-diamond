@@ -142,8 +142,12 @@ $row = mysqli_fetch_assoc($result);
                     </select>
                     <p class="zalo">Còn hàng -<img src="assets/images/zalo.svg" alt="">- để được tư vấn và nhận ưu đãi</p>
                 </div>
-                <div class="right">
+                <div class="right" id="size">
                     Cách đo size
+                </div>
+                <div class="img_size">
+                    <img src="assets/images/img_size.png" alt="">
+                    <div class="remove"></div>
                 </div>
             </div>
             <div class="offer-box">
@@ -182,8 +186,8 @@ $row = mysqli_fetch_assoc($result);
                 </div>
                 <div class="right">
                     <a href="#" class="btn btn-secondary">
-                        <div>Gọi ngay (miễn phí) </div>
-                        <div class="samll">Nhận ngay ưu đãi</div>
+                        <div>Gọi ngay <small>(miễn phí)</samll> </div>
+                        <small class="samll">Nhận ngay ưu đãi</small>
                     </a>
                 </div>
             </div>

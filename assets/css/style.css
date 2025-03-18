@@ -424,6 +424,7 @@ body{
   display: flex;
   max-width: 1000px;
   margin: 0 auto;
+  position: relative;
 }
 .describe_left{
   width: 52%;
@@ -554,11 +555,13 @@ body{
 .policy-item img{
   margin-right: 5px;
 }
-.describe .btn-main{
+.describe .btn-main,.btn-secondary{
   display: block;
   margin-top: 10px;
   background-color: rgb(173 42 54 );
   border-radius: 10px;
+  font-weight: 700;
+  padding:6px;
 }
 .describe .btn-main div{
   text-align: center;
@@ -574,14 +577,53 @@ body{
 }
 .btn-secondary-container .left{
   width: 49%;
+  height: 39.6px;
+  background-color: rgb(0 52 104);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
 }
-.btn.btn-secondary{
- 
+.btn-secondary-container .right{
+  flex: 1;
+  display: flex;
+  margin-left: 2px;
+}
+.btn-secondary{
+  width: 100%;
+  font-weight: 700;
+  font-size: 14px;
+  text-align: center;
+  padding: 3px;
+  margin: 0;
+  background-color: rgb(0 52 104);
+}
+.btn-secondary:hover{
+  background-color: rgb(0 52 104);
 }
 
+.img_size{
+  display: none;
+}
 
-
-
+.img_size.active{
+  display: flex;
+  z-index: 2;
+  position: absolute;
+  top: 214px;
+  right: 18px;
+}
+.img_size.active img{
+  width: 430px;
+  border-radius: 10px;
+}
+.img_size.active .remove{
+  padding: 10px;
+  background-color: #000;
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  opacity: 0;
+}
 
 
 

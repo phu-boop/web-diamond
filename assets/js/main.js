@@ -1,7 +1,4 @@
 document.addEventListener("DOMContentLoaded", function() {
-    console.log("ok");
-
-    // Kiểm tra sự tồn tại của phần tử .product-image
     let product_image = document.querySelector(".product-image");
 
     if (product_image) {
@@ -20,6 +17,22 @@ document.addEventListener("DOMContentLoaded", function() {
             console.error("Không tìm thấy phần tử với class:", className);
         }
     }
+    // size
+    let add=document.querySelector(".right");
+    let element=document.querySelector(".img_size");
+    let remove=document.querySelector(".remove");
+    if(size){
+        add.addEventListener("click",function (){
+            console.log("ko");
+            element.classList.add("active");
+        });
+    }
+    if(remove){
+        remove.addEventListener("click",function (){
+            element.classList.remove("active")
+        });
+    }
+
 });
 
 
