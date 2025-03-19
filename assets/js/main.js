@@ -23,16 +23,54 @@ document.addEventListener("DOMContentLoaded", function() {
     let remove=document.querySelector(".remove");
     if(size){
         add.addEventListener("click",function (){
-            console.log("ko");
             element.classList.add("active");
         });
     }
     if(remove){
         remove.addEventListener("click",function (){
-            element.classList.remove("active")
+            element.classList.remove("active");
         });
     }
+    //img
+    let image_detail=document.querySelector(".image_detail");
+    let wrapper=document.querySelector(".wrapper");
+    if(image_detail){
+        image_detail.addEventListener("click",function (){
+            wrapper.classList.add("active");
+        });
+    }
+    let remove_img=document.querySelector(".container_fullscreen");
+    if(remove_img){
+        remove_img.addEventListener("click",function(){
+            wrapper.classList.remove("active");
+        });
+    }
+    //detail
+    let menu_detail = document.getElementsByClassName("menu_detail");
+    let menu_detail_bottom=document.getElementsByClassName("menu_detail_bottom");
+    let index;
+    for (let element of menu_detail) {
+        element.addEventListener("click", function () {
+            Array.from(menu_detail).forEach(el => el.classList.remove('active'));
+            element.classList.add("active");
+            index=element.getAttribute("index");
+            for(let element of menu_detail_bottom){
+                if(element.getAttribute("index")==index){ 
+                    Array.from(menu_detail_bottom).forEach(el => el.classList.remove('active'));
+                    element.classList.add("active");
+                }
+            }
+        });
+    }
+    //câu hỏi thường gặp
+    document.querySelectorAll(".faq-question").forEach(question => {
+        question.addEventListener("click", function () {
+            this.classList.toggle("active");
+        });
+    });
+    
 
+    
 });
 
 

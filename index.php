@@ -28,6 +28,9 @@
 </head>
 <body>
     <wrapper class="wrapper">
+        <div class="container_fullscreen">
+            <div class="remove_img"><i class="fa-solid fa-xmark"></i></div>
+        </div>
         <?php
             include("admincp/config/config.php");
             include("pages/header.php");
