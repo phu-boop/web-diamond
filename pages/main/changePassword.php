@@ -9,28 +9,16 @@ if(isset($_POST['changePassword']))
         $sql = "UPDATE tbl_dangky SET matkhau = '$new_password' WHERE matkhau='$current_password' AND id_dangky = '".$_SESSION['id_khachhang']."'";
         $query=mysqli_query($mysqli,$sql);
         if (mysqli_affected_rows($mysqli) > 0) {
-            echo "Đổi mật khẩu thành công";
+            echo "<script>alert('Đổi mật khẩu thành công!');window.location.href='index.php';</script>";
         } else {
-            echo "Sai mật khẩu hiện tại hoặc không có thay đổi!";
+            echo "<script>alert('mật khẩu không đúng!');</script>";
         }
     }else{
-        echo "xac nhận mk không đúng";
+        echo "<script>alert('xác nhận mật khẩu không đúng!');</script>";
     }
-
-
 }
 ?>
-
-
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Đổi Mật Khẩu</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+<div class="page_changePassword">
     <div class="container">
         <h2>Đổi Mật Khẩu</h2>
         <form action="" method="POST">
@@ -49,63 +37,5 @@ if(isset($_POST['changePassword']))
             <button type="submit" name="changePassword">Đổi Mật Khẩu</button>
         </form>
     </div>
-</body>
-</html>
-<style>
-/* Reset mặc định */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-}
+</div>
 
-body {
-    background: #f4f4f4;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-}
-
-
-h2 {
-    margin-bottom: 15px;
-    color: #333;
-}
-
-.input-group {
-    margin-bottom: 15px;
-    text-align: left;
-}
-
-.input-group label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
-}
-
-.input-group input {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-button {
-    width: 100%;
-    padding: 10px;
-    background: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-}
-
-button:hover {
-    background: #0056b3;
-}
-
-
-</style>

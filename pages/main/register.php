@@ -13,44 +13,12 @@ if(isset($_POST['submit'])) {
     {
         $_SESSION['id_khachhang']=mysqli_insert_id($mysqli);
         $_SESSION['dangky']=$tenkhachhang;
+        echo "<script>window.location.href='index.php?quanly=dangnhap';</script>";
 
     }
 }
 ?>
-    <style>
-
-        .container {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            width: 300px;
-            text-align: center;
-        }
-        h2 {
-            margin-bottom: 20px;
-        }
-        input {
-            width: 100%;
-            padding: 10px;
-            margin: 10px 0;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        button {
-            width: 100%;
-            padding: 10px;
-            background: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        button:hover {
-            background: #0056b3;
-        }
-    </style>
-
+<div class="page-register">
     <div class="container">
         <h2>Đăng Ký</h2>
         <form method="POST" action="">
@@ -60,5 +28,7 @@ if(isset($_POST['submit'])) {
             <input type="password" name="matkhau" placeholder="Mật khẩu" required>
             <input type="text" name="dienthoai" placeholder="Điện thoại" required>
             <button type="submit" name="submit">Đăng ký</button>
+            <p class="register-link">Bạn đã có tài khoản? <a href="index.php?quanly=dangnhap">Đăng nhập ngay</a></p>
         </form>
     </div>
+</div>

@@ -4,6 +4,7 @@
     if(isset($_GET['dangxuat'])&&$_GET['dangxuat']==1){
         unset($_SESSION['dangky']);
         unset($_SESSION['id_khachhang']);
+        echo "<script>window.location.href='index.php?quanly=dangnhap';</script>";
     }
     //MENU-narbar
     if(isset($_GET['quanly'])){

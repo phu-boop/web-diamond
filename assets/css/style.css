@@ -825,6 +825,11 @@ body{
   color: white;
 }
 
+.index_page.active{
+  background-color: #000;
+  color: white;
+}
+
 .filter-container {
   align-items: center;
   gap: 10px;
@@ -859,11 +864,156 @@ body{
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+/* Login */
+.page-login,.page-register,.page_changePassword {
+  max-width: 500px;
+  margin: 100px auto;
+  display: flex;
+  justify-content: center;
+}
+.page-login .login-container,.page_changePassword {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  width: 320px;
+  text-align: center;
+}
 
+.page-login h2,.page_changePassword h2  {
+  margin-bottom: 20px;
+  color: #333;
+}
 
+.page-login .input-group {
+  text-align: left;
+  margin-bottom: 15px;
+}
 
+.page-login label {
+  font-size: 14px;
+  color: #555;
+}
 
+.page-login input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
 
+.page-login input:focus {
+  border-color: #ff5e62;
+  outline: none;
+}
+
+.page-login .btn {
+  background: #ff5e62;
+  color: white;
+  border: none;
+  padding: 10px;
+  width: 100%;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.page-login .btn:hover {
+  background: #e04e55;
+}
+
+.register-link {
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.register-link a {
+  color: #ff5e62;
+  text-decoration: none;
+}
+
+.register-link a:hover {
+  text-decoration: underline;
+}
+/* register */
+.page-register .container {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  text-align: center;
+}
+.page-register h2,.page_changePassword h2  {
+  margin-bottom: 20px;
+}
+.page-register input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.page-register button {
+  width: 100%;
+  padding: 10px;
+  background: #e04e55;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 20px 0;
+}
+.page-register button:hover {
+  background: #ff5e62;
+}
+/* changePassword */
+
+.page_changePassword .container {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  text-align: center;
+}
+
+.page_changePassword .input-group {
+  margin-bottom: 15px;
+  text-align: left;
+}
+
+.page_changePassword .input-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.page_changePassword .input-group input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.page_changePassword button {
+  width: 100%;
+  padding: 10px;
+  background: #e04e55;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.page_changePassword button:hover {
+  background: #ff5e62;
+}
 
 
 

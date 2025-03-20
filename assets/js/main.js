@@ -65,14 +65,9 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
     
-    document.querySelectorAll(".index_page").forEach((element) => {
-        element.addEventListener("click", function () {
-                
-        });
-    });
-    
     
 });
+
 
 document.addEventListener("DOMContentLoaded", function () {
     //search
@@ -214,7 +209,6 @@ document.addEventListener("DOMContentLoaded", function () {
             this.setCurrentState(control);
           });
         });
-        console.log(this.setListProduct());
       }     
     }
 
@@ -225,6 +219,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
 });
 
-
-
-
+document.addEventListener("DOMContentLoaded", function () {
+    const params = new URLSearchParams(window.location.search);
+    let currentPage = parseInt(params.get("trang")) || 0;
+    const indexPages = document.querySelectorAll(".index_page");
+    if (indexPages[currentPage]) {
+        indexPages.forEach(el => el.classList.remove("active")); 
+        indexPages[currentPage].classList.add("active"); 
+    }
+});

@@ -58,7 +58,7 @@
                 </li>
                 <li><a href="index.php?quanly=xemgiavang">Giá vàng</a></li>
                 <li><a href="index.php?quanly=tintuc">Tin tức</a></li>
-                <li><a href="index.php?quanly=lienhe">Liên hệ</a></li>
+                <li><a href="#footer">Liên hệ</a></li>
 
                 <?php if(isset($_SESSION['dangky'])): ?>
                     <li><a href="index.php?dangxuat=1">Đăng xuất</a></li>

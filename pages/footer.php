@@ -1,4 +1,4 @@
-<footer>
+<footer id="footer">
     <div class="footer-top">
         <div class="hotline">
             <i class="icon-phone"><img src="assets/images/footer_top_1.webp" alt=""></i>
