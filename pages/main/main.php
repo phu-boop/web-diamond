@@ -94,6 +94,7 @@ $query_lietke_danhmucsp_5 = mysqli_query($mysqli, $sql_lietke_danhmucsp_5);
                 </div>
             </div>
         </div>
+        <a href="index.php?quanly=sanpham" class="btn">Xem thêm</a>
     </div>
     <div class="content-4">
         <h2>Tin tức</h2>

@@ -5,17 +5,13 @@ document.addEventListener("DOMContentLoaded", function() {
         product_image.addEventListener("click", function() {
             toggle_active("product-image");
         });
-    } else {
-        console.error("Không tìm thấy phần tử với class 'product-image'.");
     }
 
     function toggle_active(className) {
         let class_element = document.querySelector(`.${className}`);
         if (class_element) {
             class_element.classList.toggle("active");
-        } else {
-            console.error("Không tìm thấy phần tử với class:", className);
-        }
+        } 
     }
     // size
     let add=document.querySelector(".right");
@@ -69,11 +65,14 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
     
-
+    document.querySelectorAll(".index_page").forEach((element) => {
+        element.addEventListener("click", function () {
+                
+        });
+    });
+    
     
 });
-
-
 
 document.addEventListener("DOMContentLoaded", function () {
     //search
