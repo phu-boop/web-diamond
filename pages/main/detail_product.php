@@ -181,8 +181,8 @@ $sql_query_similar = mysqli_query($mysqli, $sql_similar);
             <div >
                 <form action="pages/main/add_cart.php?id=<?php echo $row['id_sanpham']; ?>" method="POST">
                         <input type="hidden" name="id" value="<?php echo $row['id_sanpham']; ?>">
-                        <button type="submit" name="themgiohang" class="btn btn-main">
-                            Thêm vào giỏ hàng
+                        <button type="submit" name="muangay" class="btn btn-main">
+                            Mua ngay
                             <div class="small">(Giao hàng miễn phí tận nhà hoặc nhận tại cửa hàng)</div>
                         </button>
                 </form>

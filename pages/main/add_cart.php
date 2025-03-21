@@ -2,7 +2,7 @@
 include_once "../../admincp/config/config.php"; 
 session_start();
 //thêm vào giỏ hàng
-if (isset($_POST['themgiohang'])) {
+if (isset($_POST['themgiohang']) || isset($_POST['muangay'])) {
     $id = $_GET['id'];
     // Lấy thông tin sản phẩm từ database
     $san_pham = "SELECT * FROM tbl_sanpham WHERE id_sanpham = '$id' LIMIT 1";
@@ -42,7 +42,7 @@ if (isset($_POST['themgiohang'])) {
             $_SESSION['cart'] = $new_product;
         }
     }
-    header("Location:../../?quanly=chitietsanpham&id=" . $id);
+    isset($_POST['muangay']) ? header('location:../../?quanly=giohang') : header("Location:../../?quanly=chitietsanpham&id=" . $id);
 }
 // Xóa sản phẩm khỏi giỏ hàng
 if (isset($_GET['xoa'])) {

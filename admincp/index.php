@@ -9,6 +9,7 @@ if(!isset($_SESSION['username'])){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
     <title>admin</title>
 </head>
 <body>
@@ -21,6 +22,6 @@ if(!isset($_SESSION['username'])){
             include("modules/footer.php");
         ?>
     </div>
-    
+<script src="https://kit.fontawesome.com/c6a9a4ea28.js" crossorigin="anonymous"></script>
 </body>
 </html>
