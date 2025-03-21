@@ -9,7 +9,10 @@ if (isset($_POST['login'])) {
 
     // Đếm số dòng trả về
     $row_count = mysqli_num_rows($sql_query);
-
+    if(isset($_SESSION['id_khachhang']))
+    {
+        unset($_SESSION['id_khachhang']);
+    }
     if ($row_count > 0) {
         // Lấy dữ liệu từ kết quả truy vấn
         $row = mysqli_fetch_assoc($sql_query);

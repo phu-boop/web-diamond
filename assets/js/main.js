@@ -228,3 +228,13 @@ document.addEventListener("DOMContentLoaded", function () {
         indexPages[currentPage].classList.add("active"); 
     }
 });
+
+
+
+document.addEventListener("DOMContentLoaded", function () {
+    let menu=document.querySelector(".account_menu");
+    let fa_user = document.querySelector(".fa-user");
+    fa_user.addEventListener("click", function () {
+        menu.classList.toggle("active");
+    });
+});

@@ -57,7 +57,9 @@ a{
     align-items: center;
     gap: 30px;
 }
-
+.header .logo-3 {
+    position: relative;
+}
 .header .logo-2 {
     display: flex;
     justify-content: center;
@@ -185,6 +187,39 @@ a{
   .has-dropdown:hover i {
     transform: rotate(180deg);
   }
+.fa-solid.fa-user{
+    cursor: pointer;
+}
+.account_menu{
+    display: none;
+}
+.account_menu.active{
+    display: block;
+    font-size: 14px;
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 400;
+    position: absolute;
+    top: 30px;
+    right: 125px;
+    z-index: 9998;
+    background-color: rgb(241, 241, 241);
+    padding: 20px 20px 20px 50px;
+    border-radius: 5px;
+    width: 150px;
+}
+.account_menu ul{
+    padding: 0;
+}
+.account_menu li{
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+.account_menu li a:hover{
+    color: #ed8383;
+}
+.account_menu li a{
+    color: #000;
+}
 @media screen and (max-width: 850px) {
 .screen.active{
     display: none;

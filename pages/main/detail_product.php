@@ -178,17 +178,23 @@ $sql_query_similar = mysqli_query($mysqli, $sql_similar);
                     <span>Thu đổi 48h</span>
                 </div>
             </div>
-            <div>
-                <a href="#" class="btn btn-main">
-                    <div>Mua ngay </div>
-                    <div class="small">(Giao hàng miễn phí tận nhà hoặc nhận tại cửa hàng)</div>
-                </a>
+            <div >
+                <form action="pages/main/add_cart.php?id=<?php echo $row['id_sanpham']; ?>" method="POST">
+                        <input type="hidden" name="id" value="<?php echo $row['id_sanpham']; ?>">
+                        <button type="submit" name="themgiohang" class="btn btn-main">
+                            Thêm vào giỏ hàng
+                            <div class="small">(Giao hàng miễn phí tận nhà hoặc nhận tại cửa hàng)</div>
+                        </button>
+                </form>
             </div>
             <div class="btn-secondary-container">
                 <div class="left">
-                    <a href="#" class="btn btn-secondary">
-                        Thêm vào giỏ hàng
-                    </a>
+                    <form action="pages/main/add_cart.php?id=<?php echo $row['id_sanpham']; ?>" method="POST">
+                        <input type="hidden" name="id" value="<?php echo $row['id_sanpham']; ?>">
+                        <button type="submit" name="themgiohang" class="btn btn-secondary">
+                            Thêm vào giỏ hàng
+                        </button>
+                    </form>
                 </div>
                 <div class="right">
                     <a href="#" class="btn btn-secondary">

@@ -33,7 +33,15 @@
         </a>
 
         <div class="logo-3">
-            <i class="fa-solid fa-user"></i>
+            <i class="fa-solid fa-user">
+                <div class="account_menu">
+                    <ul>
+                        <li><a href="index.php?quanly=dangnhap">Đăng nhập</a></li>
+                        <li><a href="index.php?quanly=dangxuat&&dangxuat=1">Đăng xuất</a></li>
+                        <li><a href="index.php?quanly=doimatkhau">Đổi mật khẩu</a></li>
+                    </ul>
+                </div>
+            </i>
             <a href="index.php?quanly=giohang">
                 <i class="fa-solid fa-lock"></i>
             </a>

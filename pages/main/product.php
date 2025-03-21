@@ -55,7 +55,7 @@
     <div class="content-1">
         <div class="container collection">
          <?php while ($row = mysqli_fetch_array($query_lietke_sp)) {?>
-            <a href="index.php?xem=chitietsanpham&id=<?php echo $row['id_sanpham'] ?>">
+            <a href="index.php?quanly=chitietsanpham&id=<?php echo $row['id_sanpham']; ?>>
                 <div class="product">
                     <img src="admincp/modules/productMNG/image_product/<?php echo $row['hinhanh'] ?>" alt="ảnh sản phẩm">
                     <h3><?php echo $row['tensanpham'] ?></h3>
