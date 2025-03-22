@@ -2,7 +2,7 @@
     <div class="logo">
         <a href="index.php" class="logo-2">
             <svg width="50" height="50" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"
-                 fill="#ffffff" stroke="#ed8383" stroke-width="3">
+                 fill="#ffffff" stroke="#696cff" stroke-width="3">
                 <polygon points="10,40 30,10 50,10 70,10 90,40"/>
                 <polygon points="30,10 50,40 70,10"/>
                 <polygon points="10,40 50,90 30,40"/>
