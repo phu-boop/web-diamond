@@ -23,5 +23,6 @@ if(!isset($_SESSION['username'])){
         ?>
     </div>
 <script src="https://kit.fontawesome.com/c6a9a4ea28.js" crossorigin="anonymous"></script>
+<script src="js/main.js"></script>
 </body>
 </html>

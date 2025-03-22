@@ -1,4 +1,4 @@
-<div class="main">
+<div class="main" id="content">
     <?php
     if(isset($_GET['action'])&&$_GET['query']){
         $tam = $_GET['action'];

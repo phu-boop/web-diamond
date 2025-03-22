@@ -17,14 +17,37 @@
         </a>
     </div>
     <ul>
-        <li><a href="" class="active"><i class="fa-solid fa-house"></i>Dashboard</a></li>
-        <li><a href="index.php?action=quanlydanhmucsanpham&&query=them"><i class="fa-solid fa-table-list"></i>Danh mục</a></li>
-        <li><a href="index.php?action=quanlysanpham&&query=them"><i class="fa-regular fa-gem"></i>Sản phẩm</a></li>
-        <li><a href="index.php?action=quanlybaiviet&&query=them"><i class="fa-solid fa-newspaper"></i>Bài viết</a></li>
-        <li><a href="index.php?action=quanlydonhang&&query=xemdanhsach"><i class="fa-solid fa-file-invoice-dollar"></i>Đơn hàng</a></li>
-        <li><a href="index.php?action=quanlykhuyenmai&&query=them"><i class="fa-solid fa-dumpster-fire"></i>Khuyến mãi</a></li>
-        <li><a href="index.php?action=logout&logout=1"><i class="fa-solid fa-rocket"></i>đăng xuất</a></li>
-    </ul>
+        <li><a href="#" class="item_menu "><i class="fa-solid fa-house"></i>Dashboard</a></li>
+        <li>
+            <a href="index.php?action=quanlydanhmucsanpham&query=them" 
+            class="item_menu <?= (isset($_GET['action']) && $_GET['action'] == 'quanlydanhmucsanpham') ? 'active' : '' ?>">
+            <i class="fa-solid fa-table-list"></i>Danh mục
+            </a>
+        </li>
+        <li>
+            <a href="index.php?action=quanlysanpham&query=them" 
+            class="item_menu <?= (isset($_GET['action']) && $_GET['action'] == 'quanlysanpham') ? 'active' : '' ?>">
+                <i class="fa-regular fa-gem"></i>Sản phẩm
+            </a>
+        </li>
+        <li>
+            <a href="index.php?action=quanlybaiviet&query=them" 
+            class="item_menu <?= (isset($_GET['action']) && $_GET['action'] == 'quanlybaiviet') ? 'active' : '' ?>">
+                <i class="fa-solid fa-newspaper"></i>Bài viết
+            </a>
+        </li>
+        <li>
+            <a href="index.php?action=quanlydonhang&query=xemdanhsach" 
+            class="item_menu <?= (isset($_GET['action']) && $_GET['action'] == 'quanlydonhang') ? 'active' : '' ?>">
+                <i class="fa-solid fa-file-invoice-dollar"></i>Đơn hàng
+            </a>
+        </li>
+        <li>
+            <a href="index.php?action=quanlykhuyenmai&query=them" 
+            class="item_menu <?= (isset($_GET['action']) && $_GET['action'] == 'quanlykhuyenmai') ? 'active' : '' ?>">
+                <i class="fa-solid fa-dumpster-fire"></i>Khuyến mãi
+            </a>
+        </li>
 </nav>
 
 
