@@ -50,6 +50,6 @@ $query_lietke_danhmucsp = mysqli_query($mysqli, $sql_lietke_danhmucsp);
         <?php
         }
         ?>
-        <button class="page-item">❯</button>
+        <button class="page-item disabled">❯</button>
     </div>
 </div>

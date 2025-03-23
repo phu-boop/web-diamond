@@ -19,7 +19,7 @@
     <ul>
         <li><a href="#" class="item_menu "><i class="fa-solid fa-house"></i>Dashboard</a></li>
         <li>
-            <a href="index.php?action=quanlydanhmucsanpham&query=them" 
+            <a href="index.php?action=quanlydanhmucsanpham&query=them&trang=0" 
             class="item_menu <?= (isset($_GET['action']) && $_GET['action'] == 'quanlydanhmucsanpham') ? 'active' : '' ?>">
             <i class="fa-solid fa-table-list"></i>Danh mục
             </a>

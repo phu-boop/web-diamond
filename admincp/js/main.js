@@ -1,15 +1,15 @@
-document.addEventListener('DOMContentLoaded', function() {
-    let add_category = document.querySelector('.add_category');
-    let overlay = document.querySelector('.overlay');
-    let body = document.body;
 
-    add_category.addEventListener("click", function() {
-        overlay.style.display = 'block';
-        body.classList.add('active');
+document.addEventListener("DOMContentLoaded", function () {
+    let form_container = document.querySelector(".form_container");
+    let remove_create= document.querySelector(".remove_create");
+    document.querySelectorAll(".add_category").forEach(function (element) {
+        element.addEventListener("click", function () {
+            form_container.classList.add("active");
+        });
     });
-
-    overlay.addEventListener("click", function() {
-        overlay.style.display = 'none';
-        body.classList.remove('active');
+    document.querySelectorAll(".remove_create").forEach(function (element) {
+        element.addEventListener("click", function () {
+            form_container.classList.remove("active");
+        });
     });
 });

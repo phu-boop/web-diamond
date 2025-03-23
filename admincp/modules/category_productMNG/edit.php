@@ -3,45 +3,11 @@
 $sql_lietke_danhmucsp = "SELECT * FROM tbl_danhmuc WHERE id_danhmuc='$_GET[id_danhmuc]' LIMIT 1";
 $query_lietke_danhmucsp = mysqli_query($mysqli, $sql_lietke_danhmucsp);
 
-?>
-<style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-        table {
-            width: 50%;
-            border-collapse: collapse;
-            margin: 20px 0;
-            font-size: 18px;
-            text-align: left;
-        }
-        th, td {
-            padding: 10px;
-            border: 1px solid #ddd;
-        }
-        th {
-            background-color: #f4f4f4;
-        }
-        input[type="text"] {
-            width: 100%;
-            padding: 8px;
-            box-sizing: border-box;
-        }
-        input[type="submit"] {
-            width: 100%;
-            padding: 10px;
-            background-color: #28a745;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-        input[type="submit"]:hover {
-            background-color: #218838;
-        }
-    </style>
-
-
-    <h2>Sửa Danh Mục Sản Phẩm</h2>
+?>  
+<div class="edit_container">
+    <div class="top">
+        <h3>Sửa Danh Mục Sản Phẩm</h3>
+    </div>
     <?php
     while ($row = mysqli_fetch_array($query_lietke_danhmucsp)) {
         ?>
@@ -53,7 +19,7 @@ $query_lietke_danhmucsp = mysqli_query($mysqli, $sql_lietke_danhmucsp);
                 </tr>
                 <tr>
                     <td><label for="hinhanh">Hình ảnh</label></td>
-                    <td><input type="file" id="hinhanh" name="image" value="<?php echo $row['hinhanh']; ?>"></td>
+                    <td><input type="file" id="hinhanh" name="image" value=""></td>
                 </tr>
                 <tr>
                     <td><label for="order">Thứ tự</label></td>
@@ -61,10 +27,12 @@ $query_lietke_danhmucsp = mysqli_query($mysqli, $sql_lietke_danhmucsp);
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <input type="submit" name="editcategory" value="ok">
+                        <input type="submit" name="editcategory" value="xác nhận">
                     </td>
                 </tr>
             </table>
         </form>
         <?php
     }
+    ?>
+</div>

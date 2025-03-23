@@ -13,25 +13,31 @@
             </div>
         </div>
     </div>
-    <form class="form_add_category" method="POST" action="modules/category_productMNG/handle.php" enctype="multipart/form-data">
-        <table>
-            <tr>
-                <td><label for="namecategory">Tên danh mục</label></td>
-                <td><input type="text"  name="namecategory" required></td>
-            </tr>
-            <tr>
-                <td><label for="order">Thứ tự</label></td>
-                <td><input type="text"  name="order" required></td>
-            </tr>
-            <tr>
-                <td><label for="hinhanh">Hình ảnh</label></td>
-                <td><input type="file" id="hinhanh" name="image"></td>
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <input type="submit" name="addcategory" value="Thêm danh mục sản phẩm">
-                </td>
-            </tr>
-        </table>
-    </form>
+    <div class="form_container">
+        <div class="form_add_category">
+            <div class="top">
+                <h2>Thêm danh mục</h2>
+                <i class="fa-solid fa-xmark remove_create"></i>
+            </div>
+            <form class="" method="POST" action="modules/category_productMNG/handle.php" enctype="multipart/form-data">
+                <table>
+                    <tr>
+                        <td><label for="namecategory">Tên danh mục</label></td>
+                        <td><input type="text"  name="namecategory" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="order">Thứ tự</label></td>
+                        <td><input type="text"  name="order" required></td>
+                    </tr>
+                    <tr>
+                        <td><label for="hinhanh">Hình ảnh</label></td>
+                        <td><input type="file" id="hinhanh" name="image"></td>
+                    </tr>
+                </table>
+                
+                <input type="submit" name="addcategory" value="Add">
+                <button class="btn remove_create">Discard</button>
+            </form>
+        </div>
+    </div>
 </div>
