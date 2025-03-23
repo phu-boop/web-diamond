@@ -1,10 +1,19 @@
 <?php
 (isset($_GET['trang']))? $begin = $_GET['trang']*8 : $begin = 0;
-$sql_lietke_danhmucsp = "SELECT * FROM tbl_danhmuc ORDER BY id_danhmuc DESC LIMIT ".$begin.",8";
-$query_lietke_danhmucsp = mysqli_query($mysqli, $sql_lietke_danhmucsp);
+if(isset($_GET['search'])){
+    $sql_lietke_danhmucsp = "SELECT * FROM tbl_danhmuc WHERE tendanhmuc LIKE '%".$_GET['search']."%' ORDER BY id_danhmuc DESC LIMIT ".$begin.",8";
+    $query_lietke_danhmucsp = mysqli_query($mysqli, $sql_lietke_danhmucsp);
+    if(mysqli_num_rows($query_lietke_danhmucsp) == 0){
+        echo "<script>alert('Không tìm thấy kết quả phù hợp!')</script>";
+    }
+}
+else{
+    $sql_lietke_danhmucsp = "SELECT * FROM tbl_danhmuc ORDER BY id_danhmuc DESC LIMIT ".$begin.",8";
+    $query_lietke_danhmucsp = mysqli_query($mysqli, $sql_lietke_danhmucsp);
+}
 ?>
 <div class="list_container">
-    <table style="width: 100%;" border="1" style="border-collapse: collapse;">
+    <table >
         <tr>
             <th>Hinh ảnh</th>
             <th>Tên danh mục</th>

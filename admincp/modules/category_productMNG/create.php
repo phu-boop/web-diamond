@@ -8,9 +8,16 @@
                 <i class="fa-solid fa-plus"></i>
                 Thêm Danh Mục
             </button>
-            <div class="search-bar">
-                <input type="text" placeholder="Search here">
-            </div>
+            <form method="GET" action="index.php">
+                <input type="hidden" name="action" value="quanlydanhmucsanpham">
+                <input type="hidden" name="query" value="them">
+                <input type="hidden" name="trang" value="0">
+                
+                <div class="search-bar">
+                    <input type="text" name="search" placeholder="Search here" 
+                        value="<?php echo isset($_GET['search']) ? htmlspecialchars($_GET['search']) : ''; ?>">
+                </div>
+            </form>
         </div>
     </div>
     <div class="form_container">

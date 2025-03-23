@@ -25,7 +25,7 @@
             </a>
         </li>
         <li>
-            <a href="index.php?action=quanlysanpham&query=them" 
+            <a href="index.php?action=quanlysanpham&query=xem&trang=0" 
             class="item_menu <?= (isset($_GET['action']) && $_GET['action'] == 'quanlysanpham') ? 'active' : '' ?>">
                 <i class="fa-regular fa-gem"></i>Sản phẩm
             </a>

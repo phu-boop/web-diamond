@@ -200,9 +200,6 @@ input[type="text"]:focus,input[type="file"]:focus {
     display: block;
     align-items: center;
 }
-.create_container th {
-    background-color: #f4f4f4;
-}
 .create_container input[type="submit"],.edit_container input[type="submit"] {
     border-radius: 5px;
     padding: 10px 20px;
@@ -239,7 +236,13 @@ input[type="text"]:focus,input[type="file"]:focus {
 }
 
 .list_container th, td {
-    text-align: left;
+    text-align: center;
+}
+
+.list_container tr td:nth-child(2),
+.list_container tr th:nth-child(2) {
+    text-align: start;
+    padding: 15px;
 }
 
 .list_container th {
@@ -270,7 +273,7 @@ input[type="text"]:focus,input[type="file"]:focus {
     background: #f9f9f9;
 }
 
-.list_container tbody tr:first-child th{
+.list_container tr:first-child th{
     padding: 10px 15px;
 }
 
@@ -392,3 +395,80 @@ input[type="text"]:focus,input[type="file"]:focus {
         white-space: nowrap;
     }
 }
+/* Sản phẩm */
+.page_sanpham .create_container th ,.page_sanpham .create_container td{
+    display: table-cell;
+}
+.page_sanpham input[type="text"],.page_sanpham input[type="file"] {
+    margin: 0;
+}
+.page_sanpham .top{
+    padding: 0 20px;
+}
+.page_sanpham .edit,.page_sanpham .delete{
+    font-size: 18px;
+    padding: 2px;
+}
+.page_sanpham .edit{
+    color: #6f95ec;
+}
+.page_sanpham .delete{
+    color: #ff5d5d;
+}
+.page_sanpham .edit:hover{
+    color: #5440ad;
+}
+.page_sanpham .delete:hover{
+    color: #ff0000;
+}
+.page_sanpham .list_container tr td:nth-child(3),
+.page_sanpham .list_container tr th:nth-child(3),
+.page_sanpham .list_container tr td:nth-child(6),
+.page_sanpham .list_container tr th:nth-child(6) {
+    text-align: start;
+    padding: 15px;
+}
+.button_product {
+    margin: 0 auto;
+    max-width: 40px; /* Giảm chiều rộng */
+    height: 20px; /* Giảm chiều cao */
+    background-color: #ccc;
+    border-radius: 20px;
+    position: relative;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.button_product .toggle-circle {
+    width: 15px; /* Giảm kích thước nút */
+    height: 15px;
+    background-color: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 3px;
+    transform: translateY(-50%);
+    transition: left 0.3s;
+}
+
+.button_product.active {
+    background-color: #989bff; /* Màu xanh khi bật */
+}
+
+.button_product.active .toggle-circle {
+    left: 22px; /* Điều chỉnh vị trí */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

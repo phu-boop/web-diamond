@@ -7,6 +7,7 @@
         $tam = '';
         $query = '';
     }
+    
     if($tam == 'quanlydanhmucsanpham' && $query == 'them'){
         include('category_productMNG/create.php');
         include('category_productMNG/list.php');
@@ -14,6 +15,7 @@
         include('category_productMNG/edit.php');
     }elseif($tam == 'quanlysanpham' && $query == 'them'){
         include('productMNG/create.php');
+    }elseif($tam == 'quanlysanpham' && $query == 'xem'){
         include('productMNG/list.php');
     }elseif($tam == 'quanlysanpham' && $query == 'sua'){
         include('productMNG/edit.php');

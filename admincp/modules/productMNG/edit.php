@@ -88,12 +88,17 @@ $query_lietke_sp = mysqli_query($mysqli, $sql_lietke_sp);
                 }
                 ?>
             </select>
-
             <label for="tomtat">Tóm tắt</label>
-            <textarea id="tomtat" name="summary" rows="3"><?php echo $row['tomtat']; ?></textarea>
+            <textarea id="tomtat" name="summary" rows="3">
+                <?php echo (!empty($row) && isset($row['tomtat'])) ? $row['tomtat'] : ""; ?>
+            </textarea>
+
 
             <label for="noidung">Nội dung</label>
-            <textarea id="noidung" name="content" rows="5" ><?php echo $row['noidung']; ?></textarea>
+            <textarea id="noidung" name="content" rows="5">
+                <?php echo (!empty($row) && isset($row['noidung'])) ? $row['noidung'] : ""; ?>
+            </textarea>
+
 
 
             <button type="submit" name="editproduct">sua sp</button>
