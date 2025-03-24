@@ -92,17 +92,17 @@
                     $thanhTien = $item['soluong'] * $item['giasp'];
                     $tongTien += $thanhTien;
                 ?>
-                <tr>
-                    <td><img src="<?= $item['hinhanh']; ?>" alt="<?= $item['tensanpham']; ?>"></td>
-                    <td><?= $item['tensanpham']; ?></td>
-                    <td><?= $item['masp']; ?></td>
-                    <td><a href="pages/main/add_cart.php?cong=<?php echo $item['id']?>">cong</a><?= $item['soluong']; ?><a href="pages/main/add_cart.php?giam=<?php echo $item['id']?>">giam</a></td>
-                    <td><?= number_format($item['giasp'], 0, ',', '.'); ?> VND</td>
-                    <td><?= number_format($thanhTien, 0, ',', '.'); ?> VND</td>
-                    <td>
-                        <a href="pages/main/add_cart.php?xoa=<?php echo $item['id'] ?>"><button class="btn btn-danger">🗑 Xóa</button> </a>
-                    </td>
-                </tr>
+                    <tr>
+                        <td><img src="<?= $item['hinhanh']; ?>" alt="<?= $item['tensanpham']; ?>"></td>
+                        <td><?= $item['tensanpham']; ?></td>
+                        <td><?= $item['masp']; ?></td>
+                        <td><a href="pages/main/add_cart.php?cong=<?php echo $item['id']?>">cong</a><?= $item['soluong']; ?><a href="pages/main/add_cart.php?giam=<?php echo $item['id']?>">giam</a></td>
+                        <td><?= number_format($item['giasp'], 0, ',', '.'); ?> VND</td>
+                        <td><?= number_format($thanhTien, 0, ',', '.'); ?> VND</td>
+                        <td>
+                            <a href="pages/main/add_cart.php?xoa=<?php echo $item['id'] ?>"><button class="btn btn-danger">🗑 Xóa</button> </a>
+                        </td>
+                    </tr>
                 <?php endforeach; ?>
                 <?php
                     $original_price = $tongTien; // Giá gốc, giả sử 1,000,000 VND
@@ -180,7 +180,7 @@
         <div class="btn-container">
             <a href="index.php" class="btn btn-primary">🔙 Tiếp tục mua hàng</a>
                 <?php
-            if(isset(($_SESSION['dangky'])))
+            if(isset($_SESSION['dangky']))
             {   ?>
                 <a href="pages/main/payment.php" class="btn btn-success">🛍 Thanh toán</a>
                 <?php

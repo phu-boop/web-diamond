@@ -157,7 +157,7 @@ a{
     padding: 20px;
 }
 
-input[type="text"],input[type="file"] {
+input[type="text"],input[type="file"],input[type="number"],input[type=""] {
     border-radius: 5px;
     border: solid 1px #a0a0a0;
     width: 100%;
@@ -398,6 +398,7 @@ input[type="text"]:focus,input[type="file"]:focus {
 /* Sản phẩm */
 .page_sanpham .create_container th ,.page_sanpham .create_container td{
     display: table-cell;
+    padding: 0 !important;
 }
 .page_sanpham input[type="text"],.page_sanpham input[type="file"] {
     margin: 0;
@@ -426,7 +427,7 @@ input[type="text"]:focus,input[type="file"]:focus {
 .page_sanpham .list_container tr td:nth-child(6),
 .page_sanpham .list_container tr th:nth-child(6) {
     text-align: start;
-    padding: 15px;
+    padding:0 15px ;
 }
 .button_product {
     margin: 0 auto;
@@ -458,12 +459,27 @@ input[type="text"]:focus,input[type="file"]:focus {
 .button_product.active .toggle-circle {
     left: 22px; /* Điều chỉnh vị trí */
 }
+.page_product .create_container .form{
+    margin-top: 30px;
+}
 
 
-
-
-
-
+.page_product .create_container .form-group{
+    display: flex;
+    gap: 30px;
+}
+.page_product .create_container .form-group div{
+    flex: 1;
+}
+.page_product .create_container .form-group input{
+    width: 100%;
+}
+.page_product .create_container .form-group label{
+    display: block;
+}
+.page_product input[type="number"]{
+    height: 42px;
+}
 
 
 

@@ -1,5 +1,4 @@
 <?php
-  include("../../config/config.php");
 $sql_lietke_sp = "SELECT * FROM tbl_sanpham WHERE id_sanpham='$_GET[id_sanpham]' LIMIT 1";
 $query_lietke_sp = mysqli_query($mysqli, $sql_lietke_sp);
 
