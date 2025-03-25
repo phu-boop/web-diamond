@@ -20,6 +20,7 @@ if (isset($_POST['login'])) {
         // Lưu thông tin vào session
         $_SESSION['dangky'] = $username;
         $_SESSION['id_khachhang'] = $row['id_dangky']; 
+        $_SESSION['mail'] = $username; 
         echo "<script>window.location.href='index.php';</script>";
         
     } else {

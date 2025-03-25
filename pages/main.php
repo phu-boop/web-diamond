@@ -39,6 +39,9 @@
     }elseif($tam == 'doimatkhau')
     {
         include('pages/main/changePassword.php');
+    }elseif($tam == 'hoangthanh')
+    {
+        include('pages/main/complete.php');
     }else{
         include('pages/main/main.php');
     }

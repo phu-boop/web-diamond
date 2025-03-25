@@ -13,7 +13,7 @@ if (isset($_POST['themgiohang']) || isset($_POST['muangay'])) {
             array(
                 'tensanpham' => $row_sp['tensanpham'],
                 'id' => $id,
-                'soluong' => $_POST['soluong'],
+                'soluong' => 1,
                 'giasp' => $row_sp['giasp'],
                 'hinhanh' => $row_sp['hinhanh'],
                 'masp' => $row_sp['masp'],

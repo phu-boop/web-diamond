@@ -13,6 +13,7 @@ if(isset($_POST['submit'])) {
     {
         $_SESSION['id_khachhang']=mysqli_insert_id($mysqli);
         $_SESSION['dangky']=$tenkhachhang;
+        $_SESSION['mail']=$email;
         echo "<script>window.location.href='index.php?quanly=dangnhap';</script>";
 
     }
