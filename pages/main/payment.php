@@ -1,99 +1,132 @@
 <?php
-include "../../admincp/config/config.php"; 
-require("../../mail/sendmail.php");
-session_start();
+    include "../../admincp/config/config.php"; 
+    require("../../mail/sendmail.php");
+    session_start();
 
-if(isset($_SESSION['id_khachhang'])) {
+    if (!isset($_SESSION['id_khachhang'])) {
+        die("Lỗi: Bạn cần đăng nhập để đặt hàng.");
+    }
+
     $id_customer = $_SESSION['id_khachhang'];
     $code_cart = rand(10000, 99999);
-    $id_khuyenmai = isset($_GET['promotion_id']) ? mysqli_real_escape_string($mysqli, $_GET['promotion_id']) : null;
+    $id_khuyenmai = isset($_GET['promotion_id']) ? (int) $_GET['promotion_id'] : 0;
+
+    if (!isset($_SESSION['cart']) || empty($_SESSION['cart'])) {
+        die("Lỗi: Giỏ hàng của bạn đang trống!");
+    }
+
+    // Tạo giỏ hàng mới
     $sql = "INSERT INTO tbl_giohang(id_khachhang, ma_giohang, trangthai_giohang, id_khuyenmai) 
             VALUES ('$id_customer', '$code_cart', '1', '$id_khuyenmai')";
     $sql_query = mysqli_query($mysqli, $sql);
 
-    if ($sql_query) {
-        $tong_tien = 0;  // Khởi tạo tổng tiền
-        $chi_tiet_don_hang = "";  // Khởi tạo chi tiết đơn hàng
+    if (!$sql_query) {
+        die("Lỗi SQL khi tạo giỏ hàng: " . mysqli_error($mysqli));
+    }
 
-        foreach ($_SESSION['cart'] as $key => $value) {
-            $id_sp = $value['id'];
-            $quantity = $value['soluong'];
-            $price = $value['giasp']; 
-            $total = $quantity * $price;
-            $tong_tien += $total;
+    $tong_tien = 0;
+    $chi_tiet_don_hang = "";
 
-            // Chèn chi tiết giỏ hàng vào DB
-            $sql_detail = "INSERT INTO tbl_giohang_chitiet(ma_giohang, id_sanpham, soluong) 
-                           VALUES ('$code_cart', '$id_sp', '$quantity')";
-            mysqli_query($mysqli, $sql_detail);
+    foreach ($_SESSION['cart'] as $key => $value) {
+        $tensanpham = $value['tensanpham'];
+        $id_sp = $value['id'];
+        $quantity = $value['soluong'];
+        $price = $value['giasp']; 
+        $total = $quantity * $price;
+        $tong_tien += $total;
 
-            // Tạo danh sách sản phẩm trong email
-            $chi_tiet_don_hang .= "
-                <tr>
-                    <td style='padding:10px;border:1px solid #ddd;text-align:center;'>...</td>
-                    <td style='padding:10px;border:1px solid #ddd;text-align:center;'>$quantity</td>
-                    <td style='padding:10px;border:1px solid #ddd;text-align:center;'>".number_format($price, 0, ',', '.')." VND</td>
-                    <td style='padding:10px;border:1px solid #ddd;text-align:center;color:#d9534f;font-weight:bold;'>
-                        ".number_format($total, 0, ',', '.')." VND
-                    </td>
-                </tr>";
+        $sql_detail = "INSERT INTO tbl_giohang_chitiet(ma_giohang, id_sanpham, soluong) 
+                    VALUES ('$code_cart', '$id_sp', '$quantity')";
+        if (!mysqli_query($mysqli, $sql_detail)) {
+            die("Lỗi khi thêm sản phẩm vào giỏ hàng: " . mysqli_error($mysqli));
         }
 
-        // Gửi email xác nhận đơn hàng
-        $tieude = "LuxuryStore_Bạn đã đặt hàng thành công";
-        $noidung = "
-        <!DOCTYPE html>
-        <html lang='vi'>
-        <head>
-            <meta charset='UTF-8'>
-            <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-            <title>Mail đơn hàng</title>
-        </head>
-        <body style='font-family:Arial,sans-serif;margin:0;padding:0;background-color:#f4f4f4;'>
-            <div style='max-width:600px;margin:20px auto;background:#fff;padding:20px;border-radius:10px;
-                        box-shadow:0 0 10px rgba(0,0,0,0.1);'>
-                
-                <div style='text-align:center;background:#007bff;color:#fff;padding:15px;border-radius:10px 10px 0 0;'>
-                    <h2 style='margin:0;'>Đơn hàng của bạn</h2>
-                </div>
-
-                <div style='padding:20px;color:#333;'>
-                    <p>Xin chào <b>" . $_SESSION['dangky'] . "</b>,</p>
-                    <p>Cảm ơn bạn đã đặt hàng tại <b>Shop Luxury Store</b>. Dưới đây là thông tin đơn hàng của bạn:</p>
-
-                    <table style='width:100%;border-collapse:collapse;margin-top:20px;'>
-                        <tr>
-                            <th style='background:#007bff;color:#fff;padding:10px;border:1px solid #ddd;'>Sản phẩm</th>
-                            <th style='background:#007bff;color:#fff;padding:10px;border:1px solid #ddd;'>Số lượng</th>
-                            <th style='background:#007bff;color:#fff;padding:10px;border:1px solid #ddd;'>Giá</th>
-                            <th style='background:#007bff;color:#fff;padding:10px;border:1px solid #ddd;'>Tổng</th>
-                        </tr>
-                        $chi_tiet_don_hang
-                        <tr>
-                            <td colspan='3' style='padding:10px;border:1px solid #ddd;text-align:right;'><b>Tổng cộng:</b></td>
-                            <td style='padding:10px;border:1px solid #ddd;text-align:center;color:#d9534f;font-weight:bold;'>
-                                ".number_format($tong_tien, 0, ',', '.')." VNĐ
-                            </td>
-                        </tr>
-                    </table>
-
-                    <p>Chúng tôi sẽ sớm xử lý đơn hàng và giao hàng trong thời gian nhanh nhất.</p>
-                    <p>Nếu bạn có bất kỳ câu hỏi nào, vui lòng liên hệ với chúng tôi qua email <b>phunla2784@gmail.com</b>.</p>
-                </div>
-
-                <div style='text-align:center;margin-top:20px;font-size:14px;color:#777;'>
-                    <p>&copy; 2025 Shop Luxury Store. Mọi quyền được bảo lưu.</p>
-                </div>
-            </div>
-        </body>
-        </html>";
-
-        $maildathang = $_SESSION['mail'];
-        $mail = new Mailer();
-        $mail->dathangmail($tieude, $noidung, $maildathang);
+        $chi_tiet_don_hang .= "
+            <tr>
+                <td style='padding:10px;border:1px solid #ddd;text-align:center;'>$tensanpham</td>
+                <td style='padding:10px;border:1px solid #ddd;text-align:center;'>$quantity</td>
+                <td style='padding:10px;border:1px solid #ddd;text-align:center;'>".number_format($price, 0, ',', '.')." VND</td>
+                <td style='padding:10px;border:1px solid #ddd;text-align:center;color:#d9534f;font-weight:bold;'>
+                    ".number_format($total, 0, ',', '.')." VND
+                </td>
+            </tr>";
     }
+
+    // Áp dụng khuyến mãi nếu có
+    $giam_gia = 0;
+    if ($id_khuyenmai > 0) {
+        $sql_km = "SELECT * FROM tbl_khuyenmai WHERE id_khuyenmai = '$id_khuyenmai'";
+        $query_km = mysqli_query($mysqli, $sql_km);
+        if ($row_km = mysqli_fetch_assoc($query_km)) {
+            $loai_km = $row_km['loai_khuyenmai']; // 'phantram' hoặc 'codinh'
+            $giatri_km = $row_km['giatri'];
+            $toithieu_km = $row_km['toithieu_khuyenmai'];
+
+            // Kiểm tra nếu tổng tiền đủ điều kiện giảm giá
+            if ($tong_tien >= $toithieu_km) {
+                if ($loai_km == 'phantram') {
+                    $giam_gia = ($tong_tien * $giatri_km) / 100;
+                } else if ($loai_km == 'codinh') {
+                    $giam_gia = $giatri_km;
+                }
+            }
+        }
+    }
+
+    // Tính tổng tiền sau khi giảm giá
+    $tong_sau_giam = max(0, $tong_tien - $giam_gia);
+
+    // Cập nhật tổng tiền vào giỏ hàng
+    $sql_update = "UPDATE tbl_giohang SET tong_tien = '$tong_sau_giam' WHERE ma_giohang = '$code_cart'";
+    mysqli_query($mysqli, $sql_update);
+
+    if (!isset($_SESSION['mail']) || empty($_SESSION['mail'])) {
+        die("Lỗi: Không tìm thấy email để gửi xác nhận đơn hàng.");
+    }
+    $maildathang = $_SESSION['mail'];
+
+    // Nội dung email
+    $tieude = "LuxuryStore_Bạn đã đặt hàng thành công";
+    $noidung = "
+    <!DOCTYPE html>
+    <html lang='vi'>
+    <head>
+        <meta charset='UTF-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+        <title>Mail đơn hàng</title>
+    </head>
+    <body>
+        <p>Xin chào <b>" . $_SESSION['dangky'] . "</b>,</p>
+        <p>Bạn đã đặt hàng thành công tại Luxury Store.</p>
+        <table border='1' cellspacing='0' cellpadding='10'>
+            <tr>
+                <th>Sản phẩm</th>
+                <th>Số lượng</th>
+                <th>Giá</th>
+                <th>Tổng</th>
+            </tr>
+            $chi_tiet_don_hang
+            <tr>
+                <td colspan='3'><b>Tổng cộng:</b></td>
+                <td>".number_format($tong_tien, 0, ',', '.')." VNĐ</td>
+            </tr>
+            <tr>
+                <td colspan='3'><b>Giảm giá:</b></td>
+                <td style='color:red;'>- ".number_format($giam_gia, 0, ',', '.')." VNĐ</td>
+            </tr>
+            <tr>
+                <td colspan='3'><b>Tổng sau giảm:</b></td>
+                <td style='color:#d9534f;font-weight:bold;'>".number_format($tong_sau_giam, 0, ',', '.')." VNĐ</td>
+            </tr>
+        </table>
+        <p>Chúng tôi sẽ giao hàng sớm nhất!</p>
+    </body>
+    </html>";
+
+    $mail = new Mailer();
+    $mail->dathangmail($tieude, $noidung, $maildathang);
 
     // Xóa giỏ hàng sau khi đặt hàng thành công
     unset($_SESSION['cart']);
-}
+    header("location:../../index.php?quanly=hoangthanh")
 ?>

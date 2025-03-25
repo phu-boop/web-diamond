@@ -1,15 +1,4 @@
 <div class="container">
-    
-
-            <div class="btn-container">
-                    <a href="index.php" class="btn btn-primary">🔙 Tiếp tục mua hàng</a>
-                    <?php if(isset($_SESSION['dangky'])): ?>
-                        <a href="pages/main/payment.php" class="btn btn-success">🛍 Thanh toán</a>
-                    <?php else: ?>
-                        <a href="?quanly=dangky" class="btn btn-success">🛍 Đăng ký mua hàng</a>
-                    <?php endif; ?>
-                    <a href="pages/main/add_cart.php?xoatatca" class="btn btn-danger">🛍 Xóa tất cả</a>
-            </div>
     <h2>🛒 Giỏ hàng của bạn</h2>
     <?php if (!empty($_SESSION['cart'])){ ?>
         <table>
@@ -76,7 +65,8 @@
             <form method="post">
                 <select name="promotion_id" id="promotion_id" onchange="updatePrice()">
                     <option value="khongco" data-type="none" data-value="0">Không áp dụng</option>
-                    <?php while ($promo = mysqli_fetch_assoc($query)) { ?>
+                    <?php
+                        while ($promo = mysqli_fetch_assoc($query)) { ?>
                         <option value="<?= $promo['id_khuyenmai'] ?>"
                                 data-type="<?= $promo['loai_khuyenmai'] ?>"
                                 data-value="<?= $promo['giatri'] ?>"
@@ -99,6 +89,18 @@
     <?php } else{ ?>
         <p style="text-align:center; font-size:18px; color:red;">Giỏ hàng của bạn đang trống!</p>
     <?php } ?>
+    
+    
+
+    <div class="btn-container">
+                    <a href="index.php" class="btn btn-primary">🔙 Tiếp tục mua hàng</a>
+                    <?php if(isset($_SESSION['dangky'])): ?>
+                        <a href="pages/main/payment.php" id="payButton" class="btn btn-success">🛍 Thanh toán</a>
+                    <?php else: ?>
+                        <a href="?quanly=dangky" class="btn btn-success">🛍 Đăng ký mua hàng</a>
+                    <?php endif; ?>
+                    <a href="pages/main/add_cart.php?xoatatca" class="btn btn-danger">🛍 Xóa tất cả</a>
+            </div>
 </div>
 <!-- Các nút điều hướng -->
 
@@ -120,24 +122,13 @@
         }
 
         document.getElementById("discounted_price").textContent = discountedPrice.toLocaleString() + " VND";
-
-        // Cập nhật link thanh toán
-        updatePaymentLink();
     }
-
-    function updatePaymentLink() {
-        let select = document.getElementById("promotion_id");
-        let selectedPromotionId = select.value;
-        let paymentLink = document.getElementById("paymentLink");
-
-        // Cập nhật href của nút thanh toán
-        paymentLink.href = "pages/main/payment.php?promotion_id=" + selectedPromotionId;
-    }
-
-    // Gọi lại khi trang load để giữ giá trị khuyến mãi đã chọn
-    document.addEventListener("DOMContentLoaded", () => {
-        updatePrice();
-        updatePaymentLink();
+    document.getElementById("promotion_id").addEventListener("change", function () {
+        let idKhuyenMai = this.value; 
+        let payButton = document.getElementById("payButton");
+        payButton.href = "pages/main/payment.php?promotion_id=" + idKhuyenMai;
     });
+
+
 </script>
 
