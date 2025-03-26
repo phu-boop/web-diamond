@@ -16,8 +16,8 @@
     }
 
     // Tạo giỏ hàng mới
-    $sql = "INSERT INTO tbl_giohang(id_khachhang, ma_giohang, trangthai_giohang, id_khuyenmai) 
-            VALUES ('$id_customer', '$code_cart', '1', '$id_khuyenmai')";
+    $sql = "INSERT INTO tbl_giohang(id_khachhang, ma_giohang, trangthai_giohang, id_khuyenmai, ngay_mua) 
+            VALUES ('$id_customer', '$code_cart', '1', '$id_khuyenmai',NOW())";
     $sql_query = mysqli_query($mysqli, $sql);
 
     if (!$sql_query) {
@@ -77,7 +77,7 @@
     $tong_sau_giam = max(0, $tong_tien - $giam_gia);
 
     // Cập nhật tổng tiền vào giỏ hàng
-    $sql_update = "UPDATE tbl_giohang SET tong_tien = '$tong_sau_giam' WHERE ma_giohang = '$code_cart'";
+    $sql_update = "UPDATE tbl_giohang SET tongtien = '$tong_sau_giam' WHERE ma_giohang = '$code_cart'";
     mysqli_query($mysqli, $sql_update);
 
     if (!isset($_SESSION['mail']) || empty($_SESSION['mail'])) {

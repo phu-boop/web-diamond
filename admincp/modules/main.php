@@ -33,6 +33,8 @@
         include('category_invoice/invoice.php');
     }elseif($tam == 'quanlydonhang' && $query == 'xemchitiet'){
         include('category_invoice/invoice_detail.php');
+    }elseif($tam == 'quanlythongke' && $query == 'xem'){
+        include('dashboard.php');
     }
     else{
         include('dashboard.php');
