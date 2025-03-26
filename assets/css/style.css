@@ -1102,3 +1102,147 @@ body{
     }
     
   }
+
+  /* ============================== page cart */
+ /* menu_top */
+ .arrow-steps {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-bottom: 20px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.arrow-steps .step {
+  background-color: #f2f2f2;
+  color: #666;
+  padding: 10px 20px;
+  font-size: 14px;
+  text-align: center;
+  position: relative;
+  flex-grow: 1;
+  z-index: 1;
+}
+
+.arrow-steps .step a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.arrow-steps .step:first-child {
+  border-radius: 5px 0 0 5px;
+}
+
+.arrow-steps .step:last-child {
+  border-radius: 0 5px 5px 0;
+}
+
+.arrow-steps .step::after,
+.arrow-steps .step::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+  z-index: 0;
+}
+
+.arrow-steps .step::before {
+  left: 0;
+  border-right: 20px solid #fff;
+}
+
+.arrow-steps .step::after {
+  border-left: 20px solid #f2f2f2;
+}
+
+/* Style for the 'current' menu item */
+.arrow-steps .step.current {
+  background-color: #2c3e50; /* Example: Dark blue background */
+  color: #fff; /* Example: White text */
+}
+
+.arrow-steps .step.current::after {
+  border-left-color: #2c3e50; /* Match the arrow notch color */
+}
+
+/* Adjust arrow color leading to the 'current' step */
+.arrow-steps .step.current::before {
+  border-right-color: #2c3e50; /* Match the arrow color pointing to current */
+}
+
+/* Adjust arrow color coming from the 'current' step */
+.arrow-steps .step.current + .step::before {
+  border-right-color: #2c3e50; /* Match the arrow color pointing away from current */
+}
+
+/* Style for non-'current' menu items */
+.arrow-steps .step:not(.current) {
+  background-color: #f2f2f2; /* Default background */
+  color: #666; /* Default text color */
+}
+
+.arrow-steps .step:not(.current)::after {
+  border-left-color: #f2f2f2; /* Default notch color */
+}
+
+/* Adjust arrow colors for non-'current' steps */
+.arrow-steps .step:not(.current) + .step::before {
+  border-right-color: #f2f2f2; /* Default arrow color */
+}
+
+.arrow-steps .step:not(.current)::before {
+  border-right-color: #fff; /* Separator color */
+}
+
+/* Remove the arrow before the first step */
+.arrow-steps .step:first-child::before {
+  border: none;
+}
+
+/* Add a bit of spacing between steps */
+.arrow-steps .step + .step {
+  margin-left: -10px;
+}
+
+/* Style the inner content (span) */
+.arrow-steps .step span {
+  position: relative;
+  z-index: 1;
+}
+
+/* Responsive adjustments if needed */
+@media (max-width: 768px) {
+  .arrow-steps {
+      font-size: 12px;
+  }
+  .arrow-steps .step {
+      padding: 8px 15px;
+  }
+  .arrow-steps .step::after,
+  .arrow-steps .step::before {
+      border-top-width: 15px;
+      border-bottom-width: 15px;
+      border-left-width: 15px;
+      border-right-width: 15px;
+  }
+  .arrow-steps .step + .step {
+      margin-left: -8px;
+  }
+}
+ /*  */
+  .content_page_cart_bottom{
+    display: flex;
+    justify-content: space-around;
+  }
+  .content_page_cart_bottom .cart_left{
+    width: 68%;
+  }
+  .content_page_cart_bottom .cart_right{
+    width: 30%;
+  }
+  .promotion-container.active{
+    position: absolute;
+  }

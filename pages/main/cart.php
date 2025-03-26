@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container_page_cart">
     <h2>🛒 Giỏ hàng của bạn</h2>
     <?php if (!empty($_SESSION['cart'])){ ?>
         <table>
@@ -60,7 +60,7 @@
                 echo "Không có khuyến mãi nào khả dụng.";
             }
         ?>
-        <div class="promotion-container">
+        <div class="promotion-container <?php echo (isset($_GET['buoc']) && $_GET['buoc'] == 'giamgia') ? 'active' : ''; ?>">
             <label>Chọn khuyến mãi:</label>
             <form method="post">
                 <select name="promotion_id" id="promotion_id" onchange="updatePrice()">

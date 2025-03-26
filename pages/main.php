@@ -14,7 +14,17 @@
     }
     if($tam == 'giohang')
     {
-        include('pages/main/cart.php');
+        include('pages/main/menu_cart.php');
+        ?>
+            <div class="container content_page_cart_bottom">
+                <div class="cart_left">
+                    <?php include('pages/main/cart.php'); ?>
+                </div>
+                <div class="cart_right">
+                    <?php include('pages/main/cart_right.php');?>
+                </div>
+            </div>
+        <?php
     }elseif($tam == 'dangnhap')
     {
         include('pages/main/login.php');
