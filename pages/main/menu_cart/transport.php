@@ -93,7 +93,7 @@ if (isset($_SESSION['id_khachhang'])) {
             <button name="themvanchuyen" type="submit">Gửi</button>
         <?php } else { ?>
             <button name="capnhatvanchuyen" type="submit">Cập nhật</button>
-            <button><a href="index.php?quanly=giohang&buoc=thanhtoan">Tiếp theo</a></button>
+            <a href="index.php?quanly=giohang&buoc=thanhtoan">Tiếp theo</a>
         <?php } ?>
     </form>
 </div>
