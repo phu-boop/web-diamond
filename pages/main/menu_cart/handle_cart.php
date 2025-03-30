@@ -30,7 +30,7 @@
     if (!isset($_SESSION['cart']) || empty($_SESSION['cart'])) {
         die("Lỗi: Giỏ hàng của bạn đang trống!");
     }
-    // Tạo giỏ hàng mới
+    // Tính tổng tiền
     $tong_tien = 0;
     $chi_tiet_don_hang = "";
     foreach ($_SESSION['cart'] as $key => $value) {

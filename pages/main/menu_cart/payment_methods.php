@@ -10,19 +10,15 @@
             <label for="chuyenkhoan">Chuyển khoản</label>
         </div>
         <div class="payment-option">
-            <input type="radio" id="momo" name="payment" value="momo">
-            <label for="momo">Momo</label>
-        </div>
-        <div class="payment-option">
             <input type="radio" id="vnpay" name="payment" value="vnpay">
             <label for="vnpay">Vnpay</label>
         </div>
-        <div class="payment-option">
-            <input type="radio" id="paypal" name="payment" value="paypal">
-            <label for="paypal">Paypal</label>
-        </div>
         <button type="submit" class="payment-btn">Thanh toán ngay</button>
-    </form>
+        </form>
+        <form class="" method="POST" target="_blank" enctype="application/x-www-form-urlencoded" action="pages/main/menu_cart/handle_momo.php?promotion_id=<?php echo $_SESSION['selected_promotion'] ?>;">
+            <input type="submit" name="momo" value="Thanh toán MOMO QRcode" class="btn btn-danger">
+        </form>
+
 </div>
 <style>
 .payment-method {

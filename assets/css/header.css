@@ -139,8 +139,6 @@ a{
   
   .has-dropdown a {
     display: flex;
-    align-items: center;
-    gap: 5px;
   }
   
   .has-dropdown .dropdown {
@@ -148,20 +146,22 @@ a{
     top: 100%;
     left: 0;
     background: white;
-    min-width: 200px;
+    min-width: 800%;
     border-radius: 10px;
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
-    display: none;
-    flex-direction: column;
+    display: none; 
     z-index: 1000;
     overflow: hidden;
     transform: translateY(15px);
     transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+    padding: 20px;
   }
-  
+  .dropdown-column{
+    display: inline;
+  }
   .has-dropdown .dropdown a {
     color: #333;
-    padding: 12px 15px;
+    padding: 5px;
     text-decoration: none;
     display: block;
     transition: background 0.3s, color 0.3s;
@@ -175,10 +175,13 @@ a{
 
   .has-dropdown:hover .dropdown {
     display: flex;
+    justify-content: space-around;
     opacity: 1;
     transform: translateY(0);
   }
-  
+  .dropdown  ul{
+    padding-left:10px;
+  }
   .has-dropdown i {
     font-size: 12px;
     transition: transform 0.3s;

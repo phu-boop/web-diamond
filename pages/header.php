@@ -53,17 +53,54 @@
                 <li><a href="index.php">Trang chủ</a></li>
                 <li class="has-dropdown">
                     <a href="index.php?quanly=sanpham">Sản Phẩm</a>
-                    <div class="dropdown">
-                        <?php
-                        $sql_lietke_danhmucsp = "SELECT * FROM tbl_danhmuc ORDER BY id_danhmuc DESC";
-                        $query_lietke_danhmucsp = mysqli_query($mysqli, $sql_lietke_danhmucsp);
-                        while ($row = mysqli_fetch_array($query_lietke_danhmucsp)) : ?>
-                            <a href="index.php?quanly=sanpham&id=<?= $row['id_danhmuc'] ?>">
-                                <?= htmlspecialchars($row['tendanhmuc']) ?>
-                            </a>
-                        <?php endwhile; ?>
-                    </div>
+                        <div class="dropdown">
+                            <div class="dropdown-column">
+                                <h4>Danh Mục</h4>
+                                <ul>
+                                    <?php
+                                    $sql_lietke_danhmucsp = "SELECT * FROM tbl_danhmuc ORDER BY id_danhmuc DESC";
+                                    $query_lietke_danhmucsp = mysqli_query($mysqli, $sql_lietke_danhmucsp);
+                                    
+                                    // Duyệt qua các danh mục và hiển thị
+                                    while ($row = mysqli_fetch_array($query_lietke_danhmucsp)) :
+                                    ?>
+                                        <li>
+                                            <a href="index.php?quanly=sanpham&id=<?= $row['id_danhmuc'] ?>">
+                                                <?= htmlspecialchars($row['tendanhmuc']) ?>
+                                            </a>
+                                        </li>
+                                    <?php endwhile; ?>
+                                </ul>
+                            </div>
+
+                            <div class="dropdown-column">
+                                <h4>Chủng Loại</h4>
+                                <ul>
+                                    <li><a href="index.php?quanly=timkiem&key=Nhẫn">Nhẫn</a></li>
+                                    <li><a href="index.php?quanly=timkiem&key=Dây Chuyền">Dây Chuyền</a></li>
+                                    <li><a href="index.php?quanly=timkiem&key=Mặt Dây Chuyền">Mặt Dây Chuyền</a></li>
+                                    <li><a href="index.php?quanly=timkiem&key=Bông Tai">Bông Tai</a></li>
+                                    <li><a href="index.php?quanly=timkiem&key=Lắc">Lắc</a></li>
+                                    <li><a href="index.php?quanly=timkiem&key=Vòng">Vòng</a></li>
+                                    <li><a href="index.php?quanly=timkiem&key=Charm">Charm</a></li>
+                                    <li><a href="index.php?quanly=timkiem&key=Dây Cổ">Dây Cổ</a></li>
+                                    <li><a href="index.php?quanly=timkiem&key=Kiềng">Kiềng</a></li>
+                                    <li><a href="index.php?quanly=timkiem&key=Vàng Tài Lộc">Vàng Tài Lộc</a></li>
+                                </ul>
+                            </div>
+
+                            <div class="dropdown-column">
+                                <h4>Chất Liệu</h4>
+                                <ul>
+                                    <li><a href="index.php?quanly=timkiem&key=Vàng">Vàng</a></li>
+                                    <li><a href="index.php?quanly=timkiem&key=Bạc">Bạc</a></li>
+                                    <li><a href="index.php?quanly=timkiem&key=Platinum">Platinum</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
                 </li>
+
                 <li><a href="index.php?quanly=xemgiavang">Giá vàng</a></li>
                 <li><a href="index.php?quanly=tintuc">Tin tức</a></li>
                 <li><a href="#footer">Liên hệ</a></li>

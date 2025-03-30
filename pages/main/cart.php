@@ -72,7 +72,6 @@ if (!empty($_SESSION['cart'])) {
                 </tr>
             </tfoot>
         </table>
-
         <!-- Chọn khuyến mãi -->
         <div class="promotion-container">
             <label>Chọn khuyến mãi:</label>
