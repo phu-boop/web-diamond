@@ -58,7 +58,7 @@
                                 <h4>Danh Mục</h4>
                                 <ul>
                                     <?php
-                                    $sql_lietke_danhmucsp = "SELECT * FROM tbl_danhmuc ORDER BY id_danhmuc DESC";
+                                    $sql_lietke_danhmucsp = "SELECT * FROM tbl_danhmuc ORDER BY id_danhmuc DESC LIMIT 8";
                                     $query_lietke_danhmucsp = mysqli_query($mysqli, $sql_lietke_danhmucsp);
                                     
                                     // Duyệt qua các danh mục và hiển thị
@@ -96,6 +96,18 @@
                                     <li><a href="index.php?quanly=timkiem&key=Bạc">Bạc</a></li>
                                     <li><a href="index.php?quanly=timkiem&key=Platinum">Platinum</a></li>
                                 </ul>
+                            </div>
+                            <div class="dropdown-column">
+                                <h4>Loại Vàng</h4>
+                                <ul>
+                                    <li><a href="index.php?quanly=timkiem&key=Vàng 24k">Vàng 24k</a></li>
+                                    <li><a href="index.php?quanly=timkiem&key=Vàng 18k">Vàng 18k</a></li>
+                                    <li><a href="index.php?quanly=timkiem&key=Vàng 14k">Vàng 14k</a></li>
+                                    <li><a href="index.php?quanly=timkiem&key=Vàng 10k">Vàng 10k</a></li>
+                                </ul>
+                            </div>
+                            <div class="dropdown-column img">
+                                <img src="assets/images/dropdown.webp" alt="">
                             </div>
                         </div>
 

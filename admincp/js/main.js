@@ -12,4 +12,10 @@ document.addEventListener("DOMContentLoaded", function () {
             form_container.classList.remove("active");
         });
     });
+    tinymce.init({
+        selector: '.mytextarea',  // Chọn ô textarea bạn muốn sử dụng
+        plugins: 'bold italic underline | link image',  // Các plugin để hỗ trợ tính năng in đậm, in nghiêng, v.v.
+        toolbar: 'bold italic underline | link image',  // Thanh công cụ với các tính năng
+        apiKey: 'your-api-key'  // Thêm API key ở đây
+    });
 });

@@ -51,5 +51,4 @@ if(isset($_POST['addcategory'])){
     mysqli_query($mysqli, $sql_xoa);
     header('Location:../../index.php?action=quanlydanhmucsanpham&&query=them&trang=0');
 }
-
 ?>

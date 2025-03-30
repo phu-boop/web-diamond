@@ -24,6 +24,7 @@ if(!isset($_SESSION['username'])){
         ?>
     </div>
 <script src="https://kit.fontawesome.com/c6a9a4ea28.js" crossorigin="anonymous"></script>
+<script src="https://cdn.tiny.cloud/1/g8u8hlqpuvnjvc1jc3ibl9gjunrgpo8c7yxkatb1kba070ho/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
 <script src="js/main.js"></script>
 </body>
 </html>

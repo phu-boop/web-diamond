@@ -464,7 +464,7 @@ input[type="text"]:focus,input[type="file"]:focus {
 }
 
 
-.page_product .create_container .form-group{
+.page_product .create_container .form-group,.select_block{
     display: flex;
     gap: 30px;
 }
@@ -474,17 +474,30 @@ input[type="text"]:focus,input[type="file"]:focus {
 .page_product .create_container .form-group input{
     width: 100%;
 }
-.page_product .create_container .form-group label{
+.page_product .create_container .form-group label,.select_block div label{
     display: block;
 }
-.page_product input[type="number"]{
+.page_product input[type="number"],.select_block select{
     height: 42px;
-
 }
-
-
-
-
+#noidung,.select_block{
+    margin-top: 25px;
+}
+.btn.add_product{
+    padding: 0;
+    height: 42px;
+}
+.select_block{
+    justify-content: space-between;
+    align-items: flex-end;
+}
+.select_block select{
+    border-radius: 5px;
+    width: 263px;
+}
+.btn.add_product{
+    flex: 2;
+}
 
 
 

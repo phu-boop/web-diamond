@@ -143,13 +143,13 @@ a{
   
   .has-dropdown .dropdown {
     position: absolute;
-    top: 100%;
-    left: 0;
+    top: 100%;;
+    left: -43px;
     background: white;
-    min-width: 800%;
+    min-width: 1400%;
     border-radius: 10px;
     box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
-    display: none; 
+    display: none;  
     z-index: 1000;
     overflow: hidden;
     transform: translateY(15px);
@@ -158,6 +158,10 @@ a{
   }
   .dropdown-column{
     display: inline;
+  }
+  .dropdown-column img{
+    padding-top: 50px;
+    width: 400px;
   }
   .has-dropdown .dropdown a {
     color: #333;
@@ -202,10 +206,10 @@ a{
     font-family: 'Times New Roman', Times, serif;
     font-weight: 400;
     position: absolute;
-    top: 30px;
-    right: 125px;
+    top: -2px;
+    right: 143px;
     z-index: 9998;
-    background-color: rgb(241, 241, 241);
+    background-color: rgb(255, 164, 164);
     padding: 20px 20px 20px 50px;
     border-radius: 5px;
     width: 150px;

@@ -22,34 +22,38 @@
                         <input type="file" id="hinhanh" name="image">
                     </div>
                 </div>
-
-                <label for="tinhtrang">Tình trạng</label>
-                <select id="tinhtrang" name="status">
-                    <option value="1">Kích hoạt</option>
-                    <option value="0">Ẩn</option>
-                </select>
-
-                <label for="danhmuc">Danh mục</label>
-                <select id="danhmuc" name="category">
-                    <?php
-                    $sql_lietke_danhmuc = "SELECT * FROM tbl_danhmuc ORDER BY id_danhmuc DESC";
-                    $query_lietke_danhmuc = mysqli_query($mysqli, $sql_lietke_danhmuc);
-                        while ($row = mysqli_fetch_array($query_lietke_danhmuc)) {
-                    ?>
-                    <option value="<?php echo $row['id_danhmuc'] ?>" ><?php echo $row['tendanhmuc'] ?></option>
-                    <?php
-                    }
-                    ?>
-                </select>
-
-                <label for="tomtat">Tóm tắt</label>
-                <textarea id="tomtat" name="summary" rows="3"></textarea>
-
-                <label for="noidung">Nội dung</label>
-                <textarea id="noidung" name="content" rows="5"></textarea>
-
-
-                <button type="submit" name="addproduct">Thêm sản phẩm</button>
+                <div id="tomtat">
+                    <label for="tomtat">Tóm tắt</label>
+                    <textarea id="tomtat" name="summary"  class="mytextarea" rows="3"></textarea>
+                </div>
+                <div id="noidung">
+                    <label  for="noidung">Nội dung</label>
+                    <textarea id="noidung" name="content" class="mytextarea"></textarea>
+                </div>
+                <div class="select_block">
+                    <div>
+                        <label for="tinhtrang">Tình trạng</label>
+                        <select id="tinhtrang" name="status">
+                            <option value="1">Kích hoạt</option>
+                            <option value="0">Ẩn</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="danhmuc">Danh mục</label>
+                        <select id="danhmuc" name="category">
+                            <?php
+                            $sql_lietke_danhmuc = "SELECT * FROM tbl_danhmuc ORDER BY id_danhmuc DESC";
+                            $query_lietke_danhmuc = mysqli_query($mysqli, $sql_lietke_danhmuc);
+                                while ($row = mysqli_fetch_array($query_lietke_danhmuc)) {
+                            ?>
+                            <option value="<?php echo $row['id_danhmuc'] ?>" ><?php echo $row['tendanhmuc'] ?></option>
+                            <?php
+                            }
+                            ?>
+                        </select>
+                    </div>
+                    <button class="btn add_product" type="submit" name="addproduct">Thêm sản phẩm</button>
+                </div>
         </form>
     </div>
 </div>
