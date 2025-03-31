@@ -1,5 +1,4 @@
 <?php
-// Gán giá trị cho biến $begin từ tham số GET 'trang' (nếu có), mặc định là 0
 $begin = isset($_GET['trang']) ? (int)$_GET['trang'] * 20 : 0;
 
 // Lấy giá trị tìm kiếm từ tham số GET 'search' (nếu có), mặc định là chuỗi rỗng
@@ -7,9 +6,9 @@ $search = isset($_GET['search']) ? trim($_GET['search']) : "";
 
 // Cấu trúc câu lệnh SQL cơ bản
 $sql = "
-    SELECT * 
-    FROM tbl_sanpham 
-    INNER JOIN tbl_danhmuc ON tbl_sanpham.id_danhmuc = tbl_danhmuc.id_danhmuc
+    SELECT tbl_sanpham.*, tbl_danhmuc.tendanhmuc
+    FROM tbl_sanpham,tbl_danhmuc 
+    WHERE tbl_sanpham.id_danhmuc=tbl_danhmuc.id_danhmuc 
 ";
 
 // Thêm điều kiện tìm kiếm nếu có từ khóa tìm kiếm
@@ -22,10 +21,10 @@ if (!empty($search)) {
 $sql .= " ORDER BY id_sanpham DESC LIMIT $begin, 20";
 
 // Thực thi câu lệnh SQL
-$query_sp = mysqli_query($mysqli, $sql);
+$query = mysqli_query($mysqli, $sql);
 
 // Kiểm tra lỗi nếu có
-if (!$query_sp) {
+if (!$query) {
     die("Lỗi truy vấn: " . mysqli_error($mysqli));
 }
 ?>
@@ -66,13 +65,12 @@ if (!$query_sp) {
                 <tbody>
                     <?php
                     $i = 0;
-                    while ($row = mysqli_fetch_assoc($query_sp)) {
+                    while ($row = mysqli_fetch_assoc($query)) {
                         $i++;
                     ?>
                     <tr>
                         <td><?php echo $row['id_sanpham']; ?></td>
-                        <td><img src="modules/categrory_productMNG/image_product/<?php echo $row['hinhanh']; ?>" alt="Hình ảnh sản phẩm"></td>
-                        <?php echo $row['hinhanh']; ?>
+                        <td><img src="modules/productMNG/image_product/<?php echo $row['hinhanh']; ?>" alt="Hình ảnh sản phẩm"></td>
                         <td><?php echo $row['tensanpham']; ?></td>  
                         <td><?php echo number_format($row['giasp'], 0, ',', '.'); ?> VND</td>
                         <td><?php echo $row['soluong']; ?></td>
@@ -97,16 +95,16 @@ if (!$query_sp) {
                 </tbody>
             </table>
 
-            <?php if (mysqli_num_rows($query_sp) == 0) { ?>
+            <?php if (mysqli_num_rows($query) == 0) { ?>
                 <p>Không có sản phẩm nào!</p>
             <?php } ?>
             <div class="pagination">
                 <button class="page-item disabled">❮</button>
                 <?php
                 $i = 0;
-                $sql_danhmuc = "SELECT * FROM tbl_sanpham ORDER BY id_sanpham DESC";
-                $query_danhmucsp = mysqli_query($mysqli, $sql_danhmuc);
-                $pages = ceil(mysqli_num_rows($query_danhmucsp)/20); 
+                $sql_sp = "SELECT * FROM tbl_sanpham ORDER BY id_sanpham DESC";
+                $query_sp = mysqli_query($mysqli, $sql_sp);
+                $pages = ceil(mysqli_num_rows($query_sp)/20); 
                 while($i < $pages){
                 ?>  
                 <a href="index.php?action=quanlysanpham&query=them&trang=<?php echo $i++; ?>" class="page-item <?php echo ($_GET['trang'] == $i-1) ? 'active' : ''; ?>"><?php echo $i;?></a>

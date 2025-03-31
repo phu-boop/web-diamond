@@ -31,7 +31,7 @@ if(isset($_POST['addproduct'])){
         $sql = "UPDATE tbl_sanpham SET tensanpham = '$nameproduct', masp = '$codeproduct', giasp = '$priceproduct', soluong = '$quantity', tomtat = '$summary', noidung = '$content', trangthai = '$status', id_danhmuc='$category' WHERE id_sanpham = '$id'";
     }
     mysqli_query($mysqli, $sql);
-    header('Location:../../index.php?action=quanlysanpham&&query=them');
+    header('Location:../../index.php?action=quanlysanpham&&query=xem&trang=0');
 }else{
     $id = $_GET['id_sanpham'];
     $sql = "SELECT * FROM tbl_sanpham WHERE id_sanpham = '$id'";
@@ -41,7 +41,7 @@ if(isset($_POST['addproduct'])){
     }
     $sql_xoa = "DELETE FROM tbl_sanpham WHERE id_sanpham = '$id'";
     mysqli_query($mysqli, $sql_xoa);
-    header('Location:../../index.php?action=quanlysanpham&&query=them');
+    header('Location:../../index.php?action=quanlysanpham&&query=xem&trang=0');
 }
 
 ?>
