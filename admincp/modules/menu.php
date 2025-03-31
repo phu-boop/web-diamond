@@ -31,7 +31,7 @@
             </a>
         </li>
         <li>
-            <a href="index.php?action=quanlybaiviet&query=them" 
+            <a href="index.php?action=quanlybaiviet&query=xem" 
             class="item_menu <?= (isset($_GET['action']) && $_GET['action'] == 'quanlybaiviet') ? 'active' : '' ?>">
                 <i class="fa-solid fa-newspaper"></i>Bài viết
             </a>

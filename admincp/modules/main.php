@@ -19,9 +19,10 @@
         include('productMNG/list.php');
     }elseif($tam == 'quanlysanpham' && $query == 'sua'){
         include('productMNG/edit.php');
+    }elseif($tam == 'quanlybaiviet' && $query == 'xem'){
+        include('blog/list.php');
     }elseif($tam == 'quanlybaiviet' && $query == 'them'){
         include('blog/create.php');
-        include('blog/list.php');
     }elseif($tam == 'quanlybaiviet' && $query == 'sua'){
         include('blog/edit.php');
     }elseif($tam == 'quanlykhuyenmai' && $query == 'them'){

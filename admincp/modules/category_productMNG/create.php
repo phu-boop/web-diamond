@@ -30,7 +30,7 @@
                 <table>
                     <tr>
                         <td><label for="namecategory">Tên danh mục</label></td>
-                        <td><input type="text"  name="namecategory" required></td>
+                        <td><input type="text"  name="namecategory"  required></td>
                     </tr>
                     <tr>
                         <td><label for="order">Thứ tự</label></td>

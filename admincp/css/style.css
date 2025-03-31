@@ -509,6 +509,195 @@ input[type="text"]:focus,input[type="file"]:focus {
 .btn.add_product{
     flex: 2;
 }
+/* page_blog */
+       .create_page_blog h2 {
+            text-align: center;
+            color: #333;
+        }
 
-/* ========= edit */
+        .create_page_blog label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
 
+        .create_page_blog input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .create_page_blog textarea {
+            height: 100px;
+        }
+
+        .create_page_blog button {
+            display: block;
+            width: 100%;
+            background-color: #ff6600;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 15px;
+        }
+
+        .create_page_blog button:hover {
+            background-color: #e65c00;
+        }
+/* edit */
+        .page_edit_blog h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        .page_edit_blog label {
+            font-weight: bold;
+            display: block;
+            margin-top: 10px;
+        }
+
+        .page_edit_blog input, textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .page_edit_blog textarea {
+            height: 100px;
+        }
+
+        .page_edit_blog button {
+            display: block;
+            width: 100%;
+            background-color: #ff6600;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 15px;
+        }
+
+        .page_edit_blog button:hover {
+            background-color: #e65c00;
+        }
+/* list */
+.create_page_blog .container {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 10px;
+}
+
+.create_page_blog .post {
+    display: flex;
+    align-items: center;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    overflow: hidden;
+    padding: 15px;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.create_page_blog .post:hover {
+    transform: scale(1.02);
+    box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+.create_page_blog .post img {
+    width: 180px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-right: 15px;
+}
+
+.create_page_blog .post-content {
+    flex-grow: 1;
+}
+
+.create_page_blog h2 {
+    margin: 0;
+    font-size: 22px;
+    color: #333;
+}
+
+.create_page_blog h4 {
+    margin: 0;
+    font-size: 18px;
+    color: #666;
+}
+
+.create_page_blog .date {
+    color: #ff6600;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 8px 0;
+    display: flex;
+    align-items: center;
+}
+
+.create_page_blog .date::before {
+    content: "📅";
+    margin-right: 5px;
+}
+
+.create_page_blog p {
+    margin: 5px 0 0;
+    font-size: 16px;
+    color: #555;
+    line-height: 1.5;
+}
+
+.create_page_blog a {
+    display: inline-block;
+    margin-right: 10px;
+    padding: 5px 12px;
+    border-radius: 5px;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    transition: background 0.3s, color 0.3s;
+}
+
+.create_page_blog a[href*="sua"] {
+    background: #007bff;
+    color: white;
+}
+
+.create_page_blog a[href*="xoa"] {
+    background: #dc3545;
+    color: white;
+}
+
+.create_page_blog a:hover {
+    opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+    .create_page_blog .post {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .create_page_blog .post img {
+        width: 100%;
+        height: auto;
+        margin-bottom: 10px;
+    }
+
+    .create_page_blog .post-content {
+        padding: 10px;
+    }
+}
