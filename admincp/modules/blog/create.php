@@ -7,11 +7,15 @@
 
             <label for="content">Nội dung:</label>
             <textarea id="content" name="content" class="mytextarea" ></textarea>
-
-            <label for="hinhanh">Hình ảnh:</label>
-            <input type="file" id="hinhanh" name="image">
-
-            <button type="submit" name="submit">Đăng bài</button>
+            <div class="bottom">
+                <div>
+                    <label for="hinhanh">Hình ảnh:</label>
+                    <input type="file" id="hinhanh" name="image">
+                </div>
+                <div>
+                    <button class="btn create_blog" type="submit" name="submit">Đăng bài</button>
+                </div>
+            </div>
         </form>
     </div>
 </div>
