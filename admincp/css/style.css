@@ -30,6 +30,17 @@ a{
     border-radius: 6px;
 }
 
+.admin-header .left{
+    display: flex;
+    gap: 5px;
+    justify-content: center;
+    align-items: center;
+}
+.admin-header .left img{
+    width: 40px;
+    height: 40px;
+    border-radius: 100%;
+}
 .search-bar input {
     margin: 0 !important;
     padding: 8px;

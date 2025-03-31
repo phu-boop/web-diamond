@@ -1,5 +1,8 @@
 <header class="admin-header">
-    <div class="logo">Admin</div>
+    <div class="left">
+        <div class="img"><img src="../assets/images/tienbautroi.jpg" alt="tiến"></div>
+        <div class="logo">Tiến bầu trời</div>
+    </div>
     <div class="search-bar">
         <input type="text" placeholder="Search here">
     </div>

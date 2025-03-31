@@ -12,7 +12,7 @@ $query_lietke_sp = mysqli_query($mysqli, $sql_lietke_sp);
         <?php
             while ($row = mysqli_fetch_array($query_lietke_sp)) {
                 ?>
-                <form method="POST" action="handle.php?id_sanpham=<?php echo $row['id_sanpham'];?>" enctype="multipart/form-data">
+                <form method="POST" action="modules/productMNG/handle.php?id_sanpham=<?php echo $row['id_sanpham'];?>" enctype="multipart/form-data">
                     <label for="tensanpham">Tên sản phẩm</label>
                     <input type="text" id="tensanpham" name="nameproduct" value="<?php echo $row['tensanpham']; ?>">
 
@@ -77,7 +77,7 @@ $query_lietke_sp = mysqli_query($mysqli, $sql_lietke_sp);
                                 ?>
                             </select>
                         </div>
-                        <button class="btn add_product" type="submit" name="addproduct">Sửa sản phẩm</button>
+                        <button class="btn add_product" type="submit" name="editproduct">Sửa sản phẩm</button>
                     </div>
                 </form>
         <?php

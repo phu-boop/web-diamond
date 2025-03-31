@@ -85,7 +85,7 @@ if (!$query) {
                                 </div>'; 
                             ?>
                         </td>
-                        <td><?php echo $row['tomtat']; ?></td>
+                        <td><?php echo ((!empty($row['tomtat'])) ? $row['tomtat'] : 'chưa thêm'); ?> </td>
                         <td class="actions">
                             <a href="index.php?action=quanlysanpham&query=sua&id_sanpham=<?php echo $row['id_sanpham']; ?>" class="edit"><i class="fa-regular fa-pen-to-square"></i></a>
                             <a href="modules/productMNG/handle.php?id_sanpham=<?php echo $row['id_sanpham']; ?>" class="delete"><i class="fa-solid fa-trash"></i></a>
@@ -107,7 +107,7 @@ if (!$query) {
                 $pages = ceil(mysqli_num_rows($query_sp)/20); 
                 while($i < $pages){
                 ?>  
-                <a href="index.php?action=quanlysanpham&query=them&trang=<?php echo $i++; ?>" class="page-item <?php echo ($_GET['trang'] == $i-1) ? 'active' : ''; ?>"><?php echo $i;?></a>
+                <a href="index.php?action=quanlysanpham&query=xem&trang=<?php echo $i++; ?>" class="page-item <?php echo ($_GET['trang'] == $i-1) ? 'active' : ''; ?>"><?php echo $i;?></a>
                 <?php
                 }
                 ?>

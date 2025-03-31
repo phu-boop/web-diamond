@@ -4,9 +4,14 @@ $nameproduct = $_POST['nameproduct'];
 $codeproduct = $_POST['codeproduct'];
 $priceproduct = $_POST['priceproduct'];
 $quantity = $_POST['quantity'];
-$image = $_FILES['image']['name'];
-$image_tmp= $_FILES['image']['tmp_name'];
-$image = time().'_'.$image;
+if(isset($_FILES['image']['name'])){
+    $image = $_FILES['image']['name'];
+    $image_tmp= $_FILES['image']['tmp_name'];
+    $image = time().'_'.$image;
+}else{
+    $image='';
+}
+
 $summary = $_POST['summary'];
 $content = $_POST['content'];
 $status = $_POST['status'];
