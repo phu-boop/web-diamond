@@ -4,7 +4,7 @@ $nameproduct = $_POST['nameproduct'];
 $codeproduct = $_POST['codeproduct'];
 $priceproduct = $_POST['priceproduct'];
 $quantity = $_POST['quantity'];
-if(isset($_FILES['image']['name'])){
+if(isset($_FILES['image']['name']) && $_FILES['image']['name'] != ''){
     $image = $_FILES['image']['name'];
     $image_tmp= $_FILES['image']['tmp_name'];
     $image = time().'_'.$image;
@@ -12,7 +12,7 @@ if(isset($_FILES['image']['name'])){
     $image='';
 }
 
-$summary = $_POST['summary'];
+$summary = isset($_POST['summary']) && $_POST['summary'] != '' ? $_POST['summary'] : 'chưa thêm';
 $content = $_POST['content'];
 $status = $_POST['status'];
 $category = $_POST['category'];

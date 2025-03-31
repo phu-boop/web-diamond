@@ -57,7 +57,7 @@
         <div class="bottom-top">
             <button class="connect-btn">KẾT NỐI VỚI CHÚNG TÔI</button>
             <div class="social-links">
-                <a href=""><span><img src="assets/images/facebook.svg" alt="Facebook"> Facebook</span></a>
+                <a href="https://www.facebook.com/people/Anh-Ph%C3%BA/pfbid0QhBXqVCi2BnNenxJTjg2RecZJGH4d32JjMkRd96USGKBEXB2LEv96dKxjCNFWvnwl/"><span><img src="assets/images/facebook.svg" alt="Facebook"> Facebook</span></a>
                 <a href=""><span><img src="assets/images/instagram.svg" alt="Facebook"> instagram</span></a>
                 <a href=""><span><img src="assets/images/email.svg" alt="Facebook"> Email</span></a>
                 <a href=""><span><img src="assets/images/youtube.svg" alt="Facebook"> Youtube</span></a>

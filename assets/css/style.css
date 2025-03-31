@@ -1246,3 +1246,72 @@ body{
   .promotion-container.active{
     position: absolute;
   }
+
+  /* ======================================== goldprice */
+.page_goldprice h1 {
+      color: #7d79f4;
+      font-size: 28px;
+      margin-bottom: 20px;
+      font-weight: 600;
+  }
+
+.page_goldprice .card {
+      background: white;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      text-align: left;
+  }
+
+  .page_goldprice table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      table-layout: fixed;
+  }
+
+  .page_goldprice th, td {
+      padding: 15px;
+      border: 1px solid #ddd;
+      text-align: center;
+      font-size: 16px;
+  }
+
+  .page_goldprice th {
+      background-color: #7d79f4;
+      color: #fff;
+      font-weight: bold;
+      text-transform: uppercase;
+  }
+
+  .page_goldprice td {
+      background-color: #f9f9f9;
+      color: #393684;
+      font-size: 15px;
+  }
+
+  .page_goldprice td.text-right {
+      text-align: right;
+      font-weight: bold;
+      color: #4c4a9c;
+  }
+
+  .page_goldprice .btn-refresh {
+      display: inline-block;
+      margin-top: 20px;
+      padding: 12px 24px;
+      background-color: #7571e3;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+  }
+
+  .page_goldprice .btn-refresh:hover {
+      background-color: #393684;
+  }
+  .page_goldprice tr:nth-child(even) td{
+    background-color: #efefef;
+}

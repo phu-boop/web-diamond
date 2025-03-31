@@ -2,13 +2,13 @@
 $sql_lietke_sanpham_dangcap = "SELECT * FROM tbl_sanpham ORDER BY giasp DESC LIMIT 4";
 $query_lietke_sanpham_dangcap = mysqli_query($mysqli, $sql_lietke_sanpham_dangcap);
 
-$sql_lietke_danhmucsp = "SELECT * FROM tbl_danhmuc ORDER BY id_danhmuc DESC LIMIT 10";
+$sql_lietke_danhmucsp = "SELECT * FROM tbl_danhmuc ORDER BY id_danhmuc ASC LIMIT 10";
 $query_lietke_danhmucsp = mysqli_query($mysqli, $sql_lietke_danhmucsp);
 
 $sql_lietke_tintuc = "SELECT * FROM tbl_baiviet ORDER BY id_baiviet DESC LIMIT 2";
 $query_lietke_tintuc = mysqli_query($mysqli, $sql_lietke_tintuc);
 
-$sql_lietke_danhmucsp_5 = "SELECT * FROM tbl_danhmuc ORDER BY id_danhmuc ASC LIMIT 5";
+$sql_lietke_danhmucsp_5 = "SELECT * FROM tbl_danhmuc ORDER BY id_danhmuc DESC LIMIT 5";
 $query_lietke_danhmucsp_5 = mysqli_query($mysqli, $sql_lietke_danhmucsp_5);
 
 

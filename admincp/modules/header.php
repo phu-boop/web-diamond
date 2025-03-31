@@ -1,6 +1,6 @@
 <header class="admin-header">
     <div class="left">
-        <div class="img"><img src="../assets/images/tienbautroi.jpg" alt="tiến"></div>
+        <div class="img"></div>
         <div class="logo">Tiến bầu trời</div>
     </div>
     <div class="search-bar">

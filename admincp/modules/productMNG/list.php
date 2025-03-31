@@ -85,7 +85,7 @@ if (!$query) {
                                 </div>'; 
                             ?>
                         </td>
-                        <td><?php echo ((!empty($row['tomtat'])) ? $row['tomtat'] : 'chưa thêm'); ?> </td>
+                        <td><?php echo $row['tomtat'] ?> </td>
                         <td class="actions">
                             <a href="index.php?action=quanlysanpham&query=sua&id_sanpham=<?php echo $row['id_sanpham']; ?>" class="edit"><i class="fa-regular fa-pen-to-square"></i></a>
                             <a href="modules/productMNG/handle.php?id_sanpham=<?php echo $row['id_sanpham']; ?>" class="delete"><i class="fa-solid fa-trash"></i></a>
