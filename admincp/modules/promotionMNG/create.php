@@ -1,71 +1,52 @@
+<div class="page_promotion_create">
+    <div class="create_container">
+        <div class="top">
+            <div>
+                <p><h2>Danh sách khuyến mãi</h2></p>
+            </div>
+            <div class="search">
+                <button class="btn add_category">
+                    <i class="fa-solid fa-plus"></i>
+                    Thêm khuyến mãi
+                </button>
+                <div class="gift">
+                    <img src="../assets/images/gift.png" alt="quà">
+                </div>
+            </div>
+        </div>
+        <div class="form_container">
+            <div class="form_add_category">
+                <div class="top">
+                    <h2>Thêm danh mục</h2>
+                    <i class="fa-solid fa-xmark remove_create"></i>
+                </div>
+                <form method="POST" action="modules/promotionMNG/handle.php">
+                    <label>Tên khuyến mãi:</label>
+                    <input type="text" name="name" required>
 
-    <style>
-        .container {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-            width: 400px;
-        }
-        h2 {
-            text-align: center;
-            color: #333;
-        }
-        label {
-            font-weight: bold;
-            display: block;
-            margin-top: 10px;
-        }
-        input, select {
-            width: 100%;
-            padding: 8px;
-            margin-top: 5px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-        button {
-            width: 100%;
-            background: #28a745;
-            color: white;
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            font-size: 16px;
-            margin-top: 15px;
-            cursor: pointer;
-        }
-        button:hover {
-            background: #218838;
-        }
-    </style>
+                    <label>Loại khuyến mãi:</label>
+                    <select name="promotion_type">
+                        <option value="phantram">Giảm theo %</option>
+                        <option value="codinh">Giảm theo số tiền</option>
+                        <option value="tichdiem">Tặng điểm</option>
+                    </select>
 
+                    <label>Giá trị khuyến mãi:</label>
+                    <input type="number" name="value" required>
 
-<div class="container">
-    <h2>Thêm Khuyến Mãi</h2>
-    <form method="POST" action="modules/promotionMNG/handle.php">
-        <label>Tên khuyến mãi:</label>
-        <input type="text" name="name" required>
+                    <label>Giá trị đơn hàng tối thiểu:</label>
+                    <input type="number" name="min_order_value">
 
-        <label>Loại khuyến mãi:</label>
-        <select name="promotion_type">
-            <option value="phantram">Giảm theo %</option>
-            <option value="codinh">Giảm theo số tiền</option>
-            <option value="tichdiem">Tặng điểm</option>
-        </select>
+                    <label>Ngày bắt đầu:</label>
+                    <input type="datetime-local" name="start_date" required>
 
-        <label>Giá trị khuyến mãi:</label>
-        <input type="number" name="value" required>
-
-        <label>Giá trị đơn hàng tối thiểu:</label>
-        <input type="number" name="min_order_value">
-
-        <label>Ngày bắt đầu:</label>
-        <input type="datetime-local" name="start_date" required>
-
-        <label>Ngày kết thúc:</label>
-        <input type="datetime-local" name="end_date" required>
-
-        <button type="submit" name="submit">Thêm khuyến mãi</button>
-    </form>
+                    <label>Ngày kết thúc:</label>
+                    <input type="datetime-local" name="end_date" required>
+                    <div class="select_block">
+                        <button class="btn add_product" type="submit" name="submit">Thêm khuyến mãi</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </div>

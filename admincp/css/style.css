@@ -246,7 +246,7 @@ input[type="text"]:focus,input[type="file"]:focus {
     overflow: hidden;
 }
 
-.list_container th, td {
+.list_container th,.list_container td {
     text-align: center;
 }
 
@@ -673,7 +673,7 @@ input[type="text"]:focus,input[type="file"]:focus {
     margin: 20px 0;
 }
 
-.page_invoice_list th, td {
+.page_invoice_list th,.page_invoice_list td {
     padding: 20px 12px;
     text-align: left;
     border-bottom: 1px solid #ddd;
@@ -715,86 +715,200 @@ input[type="text"]:focus,input[type="file"]:focus {
     padding: 0 !important;
 }
 /* invoice -------------------------------- deltail */
+.container_detail
+{
+    
+    height: 1000px;
+}
+
+.content_fake{
+    position: absolute;
+    background-color: #f4f4f4;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}
+#product{
+    display: flex;
+    align-items: center;
+}
+#product img{
+    width: 50px;
+    object-fit: cover;
+    margin-right: 10px;
+}
 .page_detail {
     display: flex;
     justify-content: space-between;
     gap: 30px;
   }
   
-  .order-details, .customer-details {
+  .page_detail .order-details,.page_detail .right ,.page_detail .shipping-address {
     color: #3a3a3a;
-    width: 48%;
     background-color: #f8f9fa;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    
     font-size: 15px;
   }
-  
-  h3, h4 {
-    font-size: 1.5rem;
-    margin-bottom: 10px;
+  .page_detail .order-details{
+    width: 67%;
   }
-  
-  .order-table {
+  .page_detail h3,.page_detai h2 {
+    margin-bottom: 10px;
+    color: #4f4e4e;
+  }
+  .page_detail h3{
+    padding: 10px;
+  }
+  .customer-details{
+    width: 33%;
+  }
+  .page_detail .order-table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
   }
   
-  .order-table th, .order-table td {
+  .page_detail .order-table th,.page_detail .order-table td {
     padding: 10px;
     text-align: left;
   }
   
-  .order-table th {
+  .page_detail .order-table th {
     background-color: #e9ecef;
   }
   
-  .order-table tr:nth-child(even) {
+  .page_detail .order-table tr:nth-child(even) {
     background-color: #f1f3f5;
   }
   
-  .order-table img {
-    width: 30px;
-    margin-right: 10px;
-  }
-  
-  .totals {
+  .page_detail .totals {
     margin-top: 20px;
   }
   
-  .totals p {
+  .page_detail .totals p {
     font-weight: bold;
   }
   
-  .totals span {
+  .page_detail .totals span {
     font-weight: normal;
   }
-  
-  .customer-info {
+  .page_detail .customer-info {
     display: flex;
     align-items: center;
     gap: 15px;
+    margin: 0 0 24px 10px;
   }
   
-  .avatar {
+  .page_detail .avatar {
     width: 50px;
     height: 50px;
     border-radius: 50%;
   }
-  
-  .details {
-    font-size: 1rem;
+  .page_detail .contact p{
+    margin-left: 10px;
+    margin-bottom: 5px;
+    color: #676767;
   }
-  
-  .contact a {
+  .page_detail .contact a {
     text-decoration: none;
     color: #007bff;
   }
   
-  .shipping-address {
+  .page_detail .shipping-address {
     margin-top: 20px;
   }
-  
+  .page_detail .title{
+    display: inline-block;
+    width: 100px;
+    color: #525252;
+    font-size: 15px;
+    margin-left: 18px;
+  }
+  .totals > p {
+    margin-top: 5px;
+}
+/* ========================================= promotion */
+.page_promotion_create .gift img{
+    width: 36px;
+}
+    .page_promotion_create h2 {
+        text-align: center;
+        color: #333;
+    }
+    .page_promotion_create label {
+        font-weight: bold;
+        display: block;
+        margin-top: 10px;
+    }
+    .page_promotion_create input, select {
+        width: 100%;
+        padding: 8px;
+        margin-top: 5px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+    .btn.edit::before{
+        display: none !important;
+    }
+/* list */
+.page_promotion_list h2 {
+    text-align: center;
+    color: #333;
+}
+.page_promotion_list table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+.page_promotion_list th, .page_promotion_list td {
+    padding: 15px;
+    text-align: center;
+    border: 1px solid #ddd;
+}
+.fa-solid.fa-check{
+    color: #4ad346;
+    font-size: 20px;
+}
+.page_promotion_list .fa-solid.fa-xmark{
+    color: #d22d2d;
+    font-size: 20px;
+}
+/* edit */
+
+.page_edit_promotion .select {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; 
+    justify-content: space-between; 
+}
+
+.page_edit_promotion .select label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.page_edit_promotion .select input,
+.page_edit_promotion .select select {
+    width: 200px; 
+    padding: 5px;
+    font-size: 16px;
+}
+.page_edit_promotion .select input[type="datetime-local"],.select select {
+    padding: 6px; 
+    border-radius: 5px;
+    border: solid 1px #525252;
+}
+
+.page_edit_promotion .select select{
+    margin: 0;
+    padding: 7px;
+}
+
+.page_edit_promotion .edit_product{
+    margin-top: 20px;
+    padding:15px 20px;
+}
