@@ -603,11 +603,15 @@ input[type="text"]:focus,input[type="file"]:focus {
         padding: 10px;
         border: 1px solid #ddd;
         text-align: left;
+        overflow: hidden;
     }
-
+    .blog-table td p span{
+        font-size: 25px !important; 
+    }
     .page_list_blog .blog-table th {
         background-color: #f4f4f4;
         font-weight: bold;
+        color: #444444;
     }
 
     .page_list_blog .blog-table td img {
@@ -644,11 +648,153 @@ input[type="text"]:focus,input[type="file"]:focus {
     .page_list_blog .blog-table a:nth-child(2):hover {
         background-color: #727eff;
     }
-    .page_list_blog .top{
-        display: flex;
-        justify-content: end;
-    }
     .btn.add_blog{
         padding: 10px;
     }
+    .page_list_blog .top{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 10px 0 20px 0;
+    }
+    .page_list_blog .top form input{
+        margin: 0;
+    }
+/* =================================================== invoice */
+.page_invoice_list h2 {
+    font-size: 24px;
+    margin: 20px;
+    color: #333;
+}
 
+.page_invoice_list table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+.page_invoice_list th, td {
+    padding: 20px 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    color: #525252;
+}
+
+.page_invoice_list th {
+    color: rgb(67, 67, 67);
+    border-top:solid 1px rgb(193, 190, 190) ;
+    padding: 20px 12px;
+}
+
+.page_invoice_list tr:nth-child(even) {
+    background-color: #fbfbfb;
+}
+
+.page_invoice_list .status-pending {
+    color: 727eff;
+    font-weight: bold;
+}
+
+.page_invoice_list .status-viewed {
+    color: 727eff;
+    font-weight: bold;
+}
+.page_invoice_list tr td:nth-child(4){
+    color: #605abb;
+} 
+.btn.new_invoice{
+    color: #71dd37;
+    background-color: #ebffe1;
+}
+.btn.check_invoice{
+    color: #3547a1;
+    background-color: #d8d8ff;
+    font-weight: bold; 
+}
+.page_invoice_list .create_container{
+    padding: 0 !important;
+}
+/* invoice -------------------------------- deltail */
+.page_detail {
+    display: flex;
+    justify-content: space-between;
+    gap: 30px;
+  }
+  
+  .order-details, .customer-details {
+    color: #3a3a3a;
+    width: 48%;
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    
+    font-size: 15px;
+  }
+  
+  h3, h4 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+  
+  .order-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .order-table th, .order-table td {
+    padding: 10px;
+    text-align: left;
+  }
+  
+  .order-table th {
+    background-color: #e9ecef;
+  }
+  
+  .order-table tr:nth-child(even) {
+    background-color: #f1f3f5;
+  }
+  
+  .order-table img {
+    width: 30px;
+    margin-right: 10px;
+  }
+  
+  .totals {
+    margin-top: 20px;
+  }
+  
+  .totals p {
+    font-weight: bold;
+  }
+  
+  .totals span {
+    font-weight: normal;
+  }
+  
+  .customer-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+  }
+  
+  .avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+  
+  .details {
+    font-size: 1rem;
+  }
+  
+  .contact a {
+    text-decoration: none;
+    color: #007bff;
+  }
+  
+  .shipping-address {
+    margin-top: 20px;
+  }
+  

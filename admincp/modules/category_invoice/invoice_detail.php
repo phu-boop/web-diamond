@@ -1,106 +1,92 @@
 <?php
-if(isset($_GET['id']))
-{
-    $id=$_GET['id'];
-    $sql="SELECT * FROM tbl_giohang,tbl_giohang_chitiet,tbl_dangky 
-    WHERE tbl_giohang.id_giohang=$id
-    AND   tbl_giohang.id_khachhang=tbl_dangky.id_dangky
-    AND   tbl_giohang.ma_giohang=tbl_giohang_chitiet.ma_giohang
-    LIMIT 1";
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+
+    // Truy vấn giỏ hàng và thông tin khách hàng
+    $sql = "SELECT * FROM tbl_giohang, tbl_giohang_chitiet, tbl_dangky, tbl_vanchuyen 
+            WHERE tbl_giohang.id_giohang = $id
+            AND tbl_giohang.id_khachhang = tbl_dangky.id_dangky
+            AND tbl_giohang.ma_giohang = tbl_giohang_chitiet.ma_giohang
+            AND tbl_dangky.id_dangky = tbl_vanchuyen.id_dangky
+            LIMIT 1";
 
     $query_sql = mysqli_query($mysqli, $sql);
+    if (!$query_sql) {
+        die("Lỗi truy vấn giỏ hàng: " . mysqli_error($mysqli));
+    }
 
-    $sql_list_sp="SELECT tbl_sanpham.*,tbl_giohang_chitiet.soluong FROM tbl_sanpham,tbl_giohang,tbl_giohang_chitiet
-    WHERE tbl_giohang.id_giohang=$id
-    AND   tbl_giohang.ma_giohang=tbl_giohang_chitiet.ma_giohang
-    AND   tbl_giohang_chitiet.id_sanpham=tbl_sanpham.id_sanpham";
-    
+    // Truy vấn danh sách sản phẩm trong giỏ hàng
+    $sql_list_sp = "SELECT tbl_sanpham.*, tbl_giohang_chitiet.soluong 
+                    FROM tbl_sanpham, tbl_giohang, tbl_giohang_chitiet
+                    WHERE tbl_giohang.id_giohang = $id
+                    AND tbl_giohang.ma_giohang = tbl_giohang_chitiet.ma_giohang
+                    AND tbl_giohang_chitiet.id_sanpham = tbl_sanpham.id_sanpham";
+
     $query_list_sp = mysqli_query($mysqli, $sql_list_sp);
     if (!$query_list_sp) {
         die("Lỗi truy vấn sản phẩm: " . mysqli_error($mysqli));
     }
 
-    $sql_status="UPDATE tbl_giohang SET trangthai_giohang=0 WHERE id_giohang=$id";
+    // Cập nhật trạng thái giỏ hàng
+    $sql_status = "UPDATE tbl_giohang SET trangthai_giohang = 0 WHERE id_giohang = $id";
     mysqli_query($mysqli, $sql_status);
 }
-
-
-
 ?>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background-color: #f8f9fa;
-            margin: 20px;
-            padding: 20px;
-        }
-        .container {
-            max-width: 600px;
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        h2 {
-            color: #333;
-        }
-        .info {
-            margin-bottom: 15px;
-        }
-        .info strong {
-            display: inline-block;
-            width: 150px;
-        }
-        .product {
-            display: flex;
-            align-items: center;
-            border-bottom: 1px solid #ddd;
-            padding: 10px 0;
-        }
-        .product img {
-            width: 80px;
-            height: 80px;
-            margin-right: 10px;
-            border-radius: 5px;
-        }
-        .product .details {
-            flex: 1;
-        }
-        .back-button {
-            display: block;
-            margin-top: 20px;
-            padding: 10px 20px;
-            font-size: 16px;
-            background: #007bff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            text-align: center;
-            text-decoration: none;
-        }
-    </style>
 
-    <div class="container">
-        <?php while ($row = mysqli_fetch_assoc($query_sql)) { ?>
-            <h2>Chi Tiết Đơn Hàng</h2>
-            <div class="info"><strong>Mã Giỏ Hàng:</strong> <?php echo $row['id_giohang']; ?></div>
-            <div class="info"><strong>Tên Khách Hàng:</strong> <?php echo $row['tenkhachhang']; ?></div>
-            <div class="info"><strong>Email:</strong> <?php echo $row['email']; ?></div>
-            <div class="info"><strong>Địa Chỉ:</strong> <?php echo $row['diachi']; ?></div>
-            <div class="info"><strong>Số Điện Thoại:</strong> <?php echo $row['dienthoai']; ?></div>
-            <?php } ?>
-        <h3>Sản Phẩm</h3>
-        <?php while ($row = mysqli_fetch_assoc($query_list_sp)) { ?>
-            <div class="product">
-                <img src="modules/productMNG/image_product/<?php echo $row['hinhanh']; ?>" alt="Sản phẩm">
-                <div class="details">
-                    <strong><?php echo $row['tensanpham']; ?></strong><br>
-                    <span><?php echo $row['giasp']; ?></span><br>
-                    <span><?php echo $row['soluong']; ?></span>
-                </div>
+<div class="page_detail">
+        <div class="order-details">
+            <h3>Chi tiết đơn hàng</h3>
+            <table class="order-table">
+                <thead>
+                    <tr>
+                        <th>SẢN PHẨM</th>
+                        <th>GIÁ</th>
+                        <th>SỐ LƯỢNG</th>
+                        <th>TỔNG CỘNG</th>
+                    </tr>
+                </thead>
+                <tbody>
+                <?php $i = 0; while ($product_row = mysqli_fetch_assoc($query_list_sp)) {  $i++; ?>
+                    <tr>
+                        <td><img src="modules/productMNG/image_product/<?php echo $product_row['hinhanh']; ?>" alt="Oneplus 10"><?php echo $product_row['tensanpham']; ?></td>
+                        <td><?php echo $product_row['giasp']; ?></td>
+                        <td><?php echo $product_row['soluong']; ?></td>
+                        <td><?php echo $product_row['soluong'] * $product_row['giasp']; ?></td>
+                    </tr>
+                <?php } ?>
+                </tbody>
+            </table>
+            <div class="totals">
+                <p>Tổng tiền trước thuế: <span>$2093</span></p>
+                <p>Giảm giá: <span>$2</span></p>
+                <p>Thuế: <span>$28</span></p>
+                <p>Tổng cộng: <span>$2113</span></p>
             </div>
-        <?php } ?>
-        
-        <a href="index.php?action=quanlydonhang&&query=xemdanhsach" class="back-button">Quay lại</a>
-    </div>
+        </div>
+
+        <div class="customer-details">
+            <h4>Chi tiết khách hàng</h4>
+            <?php while ($customer_row = mysqli_fetch_assoc($query_sql)) { ?>
+                <div class="right">
+                    <div class="customer-info">
+                        <img src="https://via.placeholder.com/50" alt="Ảnh đại diện khách hàng" class="avatar">
+                        <div class="details">
+                            <p><strong> <?php echo $customer_row['tenkhachhang']; ?></strong></p>
+                            <p>Mã khách hàng: #<?php echo $customer_row['id_giohang']; ?></p>
+                            <p><?php echo $i; ?> Sản phẩm </p>
+                            <div class="contact">
+                                <p>Email: <a href="mailto:<?php echo $customer_row['email']; ?>"><?php echo $customer_row['email']; ?></a></p>
+                                <p>Điện thoại: <a href="tel:<?php echo $customer_row['dienthoai']; ?>"><?php echo $customer_row['dienthoai']; ?></a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="shipping-address">
+                        <p><?php echo $customer_row['diachi']; ?></p>
+                        <p><?php echo $customer_row['ten']; ?></p>
+                        <p><?php echo $customer_row['sdt']; ?></p>
+                        <p><?php echo $customer_row['ghi_chu']; ?></p>
+                    </div>
+                </div>
+            <?php } ?>
+        </div>
+</div>

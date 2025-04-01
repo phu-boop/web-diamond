@@ -17,7 +17,7 @@ if (isset($_POST['submit'])) {
 
     $sql_blog = "INSERT INTO tbl_baiviet(tieude, noidung, hinhanh, ngaydang) VALUES ('$title', '$content', '$image', '$date')";
     mysqli_query($mysqli, $sql_blog);
-    header('location:../../index.php?action=quanlybaiviet&&query=them');
+    header('location:../../index.php?action=quanlybaiviet&&query=xem&trang=0');
 
 // ===== SỬA BÀI VIẾT =====
 } elseif (isset($_POST['edit'])) {
@@ -32,7 +32,7 @@ if (isset($_POST['submit'])) {
     if (isset($_FILES['image']['name']) && $_FILES['image']['name'] != '') {
         $image = $_FILES['image']['name'];
         $image_tmp = $_FILES['image']['tmp_name'];
-        $allowed_extensions = ['jpg', 'jpeg', 'png', 'gif'];
+        $allowed_extensions = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
         $file_extension = strtolower(pathinfo($image, PATHINFO_EXTENSION));
 
         if (!in_array($file_extension, $allowed_extensions)) {
@@ -50,7 +50,7 @@ if (isset($_POST['submit'])) {
 
     $sql_update = "UPDATE tbl_baiviet SET tieude = '$title', noidung = '$content', hinhanh = '$new_filename', ngaydang = '$date' WHERE id_baiviet = $id";
     mysqli_query($mysqli, $sql_update);
-    header('location:../../index.php?action=quanlybaiviet&&query=them');
+    header('location:../../index.php?action=quanlybaiviet&&query=xem&trang=0');
 
 // ===== XOÁ BÀI VIẾT =====
 } else {
@@ -64,6 +64,6 @@ if (isset($_POST['submit'])) {
     }
     $sql_xoa = "DELETE FROM tbl_baiviet WHERE id_baiviet = $id";
     mysqli_query($mysqli, $sql_xoa);
-    header('location:../../index.php?action=quanlybaiviet&&query=them');
+    header('location:../../index.php?action=quanlybaiviet&&query=xem&trang=0');
 }
 ?>

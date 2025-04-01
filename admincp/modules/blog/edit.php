@@ -19,7 +19,7 @@
                     <input type="file" id="hinhanh" name="image">
                 </div>
                 <div>
-                    <button class="btn create_blog" type="submit" name="submit">Sửa bài</button>
+                    <button class="btn create_blog" type="submit" name="edit">Sửa bài</button>
                 </div>
             </div>
         </form>

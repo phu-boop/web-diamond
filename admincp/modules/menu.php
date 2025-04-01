@@ -31,19 +31,19 @@
             </a>
         </li>
         <li>
-            <a href="index.php?action=quanlybaiviet&query=xem" 
+            <a href="index.php?action=quanlybaiviet&query=xem&trang=0" 
             class="item_menu <?= (isset($_GET['action']) && $_GET['action'] == 'quanlybaiviet') ? 'active' : '' ?>">
                 <i class="fa-solid fa-newspaper"></i>Bài viết
             </a>
         </li>
         <li>
-            <a href="index.php?action=quanlydonhang&query=xemdanhsach" 
+            <a href="index.php?action=quanlydonhang&query=xemdanhsach&trang=0" 
             class="item_menu <?= (isset($_GET['action']) && $_GET['action'] == 'quanlydonhang') ? 'active' : '' ?>">
                 <i class="fa-solid fa-file-invoice-dollar"></i>Đơn hàng
             </a>
         </li>
         <li>
-            <a href="index.php?action=quanlykhuyenmai&query=them" 
+            <a href="index.php?action=quanlykhuyenmai&query=them&trang=0" 
             class="item_menu <?= (isset($_GET['action']) && $_GET['action'] == 'quanlykhuyenmai') ? 'active' : '' ?>">
                 <i class="fa-solid fa-dumpster-fire"></i>Khuyến mãi
             </a>
