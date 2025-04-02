@@ -36,6 +36,8 @@
         include('category_invoice/invoice_detail.php');
     }elseif($tam == 'quanlythongke' && $query == 'xem'){
         include('dashboard.php');
+    }elseif($tam == 'quanlykhachhang' && $query == 'xem'){
+        include('register_MNG/list.php');
     }
     else{
         include('dashboard.php');

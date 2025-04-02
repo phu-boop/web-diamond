@@ -48,6 +48,12 @@
                 <i class="fa-solid fa-dumpster-fire"></i>Khuyến mãi
             </a>
         </li>
+        <li>
+            <a href="index.php?action=quanlykhachhang&query=xem" 
+            class="item_menu <?= (isset($_GET['action']) && $_GET['action'] == 'quanlykhachhang') ? 'active' : '' ?>">
+                <i class="fa-regular fa-id-card"></i>Khách hàng
+            </a>
+        </li>
 </nav>
 
 

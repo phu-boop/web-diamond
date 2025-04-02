@@ -104,16 +104,16 @@ $query_lietke_danhmucsp_5 = mysqli_query($mysqli, $sql_lietke_danhmucsp_5);
                     <img src="assets/images/banner_gia_vang-01-25.png" alt="Giá vàng hôm nay">
                 </a>
             </div>
-                <div class="jewelry-news">
-                    <?php while ($row = mysqli_fetch_array($query_lietke_tintuc)) { ?>
-                        <div class="news-item">
-                            <img src="admincp/modules/blog/image_blog/<?php echo $row['hinhanh'] ;?>" alt="Nhẫn Hello Kitty">
-                            <h3><?php echo $row['tieude'] ;?></h3>
-                            <p><?php echo $row['noidung'] ;?></p>
-                            <a href="?quanly=tintuc">Xem thêm &gt;</a>
-                        </div>
-                    <?php } ?>
-                </div>
+            <div class="jewelry-news">
+                <?php while ($row = mysqli_fetch_array($query_lietke_tintuc)) { ?>
+                    <div class="news-item">
+                        <img src="admincp/modules/blog/image_blog/<?php echo $row['hinhanh']; ?>" alt="Nhẫn Hello Kitty">
+                        <h3><?php echo strip_tags($row['tieude'], '<strong><em><a>'); ?></h3>
+                        <p><?php echo strip_tags($row['noidung'], '<strong><em><a>'); ?></p>
+                        <a href="?quanly=tintuc">Xem thêm ></a>
+                    </div>
+                <?php } ?>
+            </div>
         </div>
         <div class="view-all">
             <a href="index.php?quanly=tintuc" class="btn btn_content-4">Xem tất cả</a>

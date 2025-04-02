@@ -30,7 +30,11 @@
         include('pages/main/login.php');
     }elseif($tam=='tintuc')
     {
-        include('pages/main/news.php');
+        if(isset($_GET['id'])){
+            include('pages/main/new_detail.php');
+        }else{
+            include('pages/main/news.php');
+        }
     }elseif($tam=='timkiem')
     {
         include('pages/main/search.php');

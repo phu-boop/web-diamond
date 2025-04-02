@@ -1,97 +1,62 @@
-<!DOCTYPE html>
-<html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Danh sách bài viết</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
+<div class="page_new">
+    <div class="news-page">
+        <!-- Header Section -->
+        <div class="news-header">
+            <h1>Khẳng định phong cách phái mạnh với 6 thiết kế nhẫn đình đám ECZ từ MANCODE by PNJ</h1>
+            <div class="news-meta">
+                <span class="category">Blog > Mix & Match</span>
+                <span class="date">21/03/2025</span>
+                <span class="read-time">Thời gian đọc: 7 Phút</span>
+            </div>
+            <div class="news-share">
+                <span>Chia sẻ:</span>
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-pinterest"></i></a>
+                <a href="#"><i class="fab fa-telegram"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fas fa-plus"></i></a>
+            </div>
+        </div>
 
-        .container {
-            max-width: 900px;
-            margin: 20px auto;
-            padding: 10px;
-        }
+        <!-- Banner Image -->
+        <div class="news-banner">
+            <img src="https://www.pnj.com.vn/blog/wp-content/uploads/2020/09/1200x450-1.jpg" alt="Banner Image">
+        </div>
 
-        .post {
-            display: flex;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-            margin-bottom: 20px;
-            overflow: hidden;
-            transition: transform 0.2s ease-in-out;
-        }
+        <!-- Intro Text -->
+        <div class="news-intro">
+            <p>Nhẫn nam, món phụ kiện tưởng chừng đơn giản, lại là điểm nhấn tinh tế giúp phái mạnh khẳng định phong cách riêng. MANCODE by PNJ giới thiệu 6 mẫu nhẫn độc đáo, lấy cảm hứng từ linh vật rắn năm Ất Tỵ để quyến rũ, những viên đá quý vững chãi tượng trưng cho niềm tin, sự chân thành và nguồn lực đam mê bất diệt.</p>
+            <p>Phái mạnh có thể cân nhắc lựa chọn cho mình mẫu nhẫn ứng ý nhất, để mỗi khoảnh khắc đều là sự tỏa sáng của bản lĩnh và cá tính riêng biệt. Hoặc phái đẹp nếu đang có ý định tặng trang sức cho nam giới thì cũng có thể tham khảo nhé!</p>
+        </div>
 
-        .post:hover {
-            transform: scale(1.02);
-        }
-
-        .post img {
-            width: 250px;
-            height: 170px;
-            object-fit: cover;
-            border-right: 5px solid #f8f8f8;
-        }
-
-        .post-content {
-            padding: 15px;
-            flex-grow: 1;
-        }
-
-        .post h2 {
-            margin-bottom: 5px;
-            font-size: 18px;
-            color: #222;
-        }
-
-        .date {
-            color: #ff6600;
-            font-size: 14px;
-            margin: 5px 0;
-            display: flex;
-            align-items: center;
-        }
-
-        .date::before {
-            content: "📅";
-            margin-right: 5px;
-        }
-
-        .post p {
-            font-size: 14px;
-            color: #555;
-            margin-top: 5px;
-            line-height: 1.5;
-        }
-
-    </style>
-</head>
-<body>
-
-<div class="container">
-    <?php
-    $sql="SELECT * FROM tbl_baiviet ORDER BY id_baiviet DESC";
-    $query_sql=mysqli_query($mysqli,$sql);
-    while($row=mysqli_fetch_array($query_sql)){
-    ?>
-    <div class="post">
-        <img src="admincp/modules/blog/image_blog/<?php echo $row['hinhanh'] ;?>" alt="MUA VÀNG RƯỚC VÍA">
-        <div class="post-content">
-            <h2><?php echo $row['tieude'];?></h2>
-            <p class="date"><?php echo $row['ngaydang'];?></p>
-            <p><?php echo $row['noidung'];?></p>
+        <!-- News List -->
+         <div class="container_new_list">
+            <div class="jewelry-news">
+                <?php
+                $sql = "SELECT * FROM tbl_baiviet ORDER BY id_baiviet DESC";
+                $query_sql = mysqli_query($mysqli, $sql);
+                while ($row = mysqli_fetch_array($query_sql)) {
+                ?>
+                        <div class="news-item">
+                            <div class="news-image">
+                                <img src="admincp/modules/blog/image_blog/<?php echo $row['hinhanh']; ?>">
+                            </div>
+                            <div class="news-content">
+                                <h3><?php echo strip_tags($row['tieude'],); ?></h3>
+                                <p class="date"><?php echo $row['ngaydang']; ?></p>
+                                <p><?php echo strip_tags($row['noidung'], '<strong><em>'); ?></p>
+                                <a href="?quanly=tintuc&id=<?php echo $row['id_baiviet']; ?>" class="read-more">xem ngay</a>
+                            </div>
+                        </div>
+                <?php
+                }
+                ?>
+            </div>
+            <div class="img">
+                <img src="assets/images/phong-thuy-april-368x500-1.jpg" alt="">
+            </div>
         </div>
     </div>
-    <?php
-    }
-    ?>
 </div>
-
-</body>
-</html>

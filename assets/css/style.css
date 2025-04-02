@@ -350,8 +350,7 @@ body{
 .gold-price img {
   width: 100%;
 }
-
-.jewelry-news {
+.content-4 .jewelry-news {
   height: 100%;
   display: flex;
   width: 57%;
@@ -388,7 +387,7 @@ body{
   color: #666;
 }
 
-.news-item a {
+.content-4 .news-item a {
   bottom: 85px;
   left: 0;
   position: absolute;
@@ -1314,4 +1313,130 @@ body{
   }
   .page_goldprice tr:nth-child(even) td{
     background-color: #efefef;
+}
+/* page_neww=================================================== */
+   .page_new .news-page {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.page_new .news-header h1 {
+    font-size: 36px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #222;
+}
+
+.page_new .news-meta {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.page_new .news-meta span {
+    margin-right: 15px;
+}
+
+.page_new .news-share {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.page_new .news-share a {
+    margin-left: 10px;
+    color: #666;
+    text-decoration: none;
+}
+
+.page_new .news-share a:hover {
+    color: #000;
+}
+
+.page_new .news-banner img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+.page_new .news-intro p {
+    font-size: 16px;
+    line-height: 1.8;
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.page_new .news-item {
+    display: flex;
+    gap: 15px;
+    width: 100%;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.page_new .news-image {
+    flex: 0 0 200px;
+}
+
+.page_new .news-image img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.page_new .news-content {
+    flex: 1;
+}
+
+.page_new .news-content h3 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #222;
+}
+
+.page_new .news-content .date {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.page_new .news-content p {
+    font-size: 14px;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 10px;
+}
+
+.page_new .read-more {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.page_new .read-more:hover {
+    text-decoration: underline;
+}
+
+.page_new .container_new_list{
+  display: flex;
+  justify-content: space-between;
+  gap: 50px;
+}
+/* --------------------------new_detail */
+.new_detail .jewelry-news{
+  margin-top: 200px;
+  width: 40%;
+}
+.new_detail .main{
+  width: 55%;
+}
+.new_detail .news-item{
+  padding: 0;
+  margin: 0;
+  height: 200px;
 }
