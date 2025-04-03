@@ -143,7 +143,6 @@ body{
   bottom:0;
   right: 0;
   margin: 10px;
-  position: absolute;
   font-size: 11px;
   color: #C0C0C0;
 }
@@ -1121,8 +1120,232 @@ body{
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2), 0 2px 4px rgba(0, 0, 0, 0.1);
   }
   main{
-    min-height: 200vh;
+    min-height: 300vh;
   }
+  /* main cart */
+.container_page_cart {
+    background: #fff;
+    padding:0 24px 24px 24px;
+    width: 100%;
+}
+.container_page_cart .offers {
+    background-color: #e8fadf;
+    padding: 15px;
+    border-radius: 10px;
+    display: flex;
+    position: relative;
+    margin-bottom: 20px;
+    color: #71dd37;
+}
+
+.container_page_cart .offer-icon {
+    font-size: 24px;
+    margin-right: 10px;
+    color: #71dd37;
+}
+
+.container_page_cart .offer-text h3 {
+    font-size: 16px;
+    margin-bottom: 8px;
+    margin-top: 5px;
+}
+
+.container_page_cart .offer-text p {
+    margin: 5px;
+    font-size: 14px;
+    color: #71dd37;
+}
+
+.container_page_cart .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 20px;
+    cursor: pointer;
+}
+.container_page_cart .shopping-bag {
+    background-color: #fff;
+    padding: 0;
+}
+
+.container_page_cart .shopping-bag h2 {
+    font-size: 20px;
+    color: #767676;
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.shopping-bag-main{
+  border: solid 1px #dddddd;
+}
+.container_page_cart .product {
+    position: relative;
+    display: flex;
+    align-items: center;
+    border: 1px solid #eee;
+    padding: 18px 24px;
+    border-radius: 5px;
+    box-shadow: 3px -3px 8px rgba(123, 160, 255, 0.2);
+  }
+.container_page_cart .product img {
+    width: 100px;
+    margin-right: 15px;
+}
+
+.container_page_cart .product-details {
+    flex: 1;
+}
+
+.container_page_cart .product-details h4 {
+    font-size: 16px;
+    color: #585858;
+    margin-bottom: 5px;
+}
+.container_page_cart .decription{
+  display: flex;
+  align-items: center;
+}
+.container_page_cart .sold-by {
+    font-size: 12px;
+    color: #666;
+    margin: 5px 0;
+}
+
+.container_page_cart .stock-status {
+    font-size: 12px;
+}
+
+.container_page_cart .in-stock {
+    color: #71dd37;
+    background-color: #e6f4e6;
+    padding:7px;
+    border-radius: 3px;
+    margin: 0 0 0 10px;
+}
+
+.container_page_cart .rating span {
+    color: #ffd334;
+    font-size: 20px;
+}
+
+.container_page_cart .quantity {
+    display: flex;
+    align-items: center;
+    margin:10px 0 0 0;
+    width: 104px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 2px 0;
+    box-shadow: 3px -3px 8px rgba(123, 160, 255, 0.2);
+}
+
+.container_page_cart .quantity a {
+    margin: 0 5px;
+    font-size: 14px;
+}
+
+.container_page_cart .quantity input {
+  padding: 0;
+  margin-left: 12px;
+  width: 30px;
+  border: none;
+  text-align: center; 
+}
+
+.container_page_cart .product-actions {
+    text-align: right;
+}
+
+.container_page_cart .price, .total-price {
+    font-size: 16px;
+    color: #737373;
+}
+.container_page_cart .total-price {
+  color: #5975f2;
+  margin: 0;
+}
+.container_page_cart .price{
+  margin-top:50px;
+}
+
+.container_page_cart .wishlist-btn {
+    background-color: #d1d1ff;
+    border: 1px solid #ddd;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 12px;
+    color: #5a75f1;
+}
+
+.container_page_cart .remove-btn {
+    font-size: 25px;
+    cursor: pointer;
+    color: #666;
+    text-decoration: none;
+    position: absolute;
+    top: 4px;
+    right: 10px;
+}
+
+.container_page_cart .promotion-container label {
+    font-size: 16px;
+    color: #333;
+    display: block;
+    font-weight: bold;
+}
+
+.container_page_cart .promotion-container select {
+    padding: 5px;
+    margin: 10px 0;
+    width: 100%;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+.container_page_cart .promotion-container button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.container_page_cart .promotion-container p {
+    font-size: 14px;
+    margin: 5px 0;
+}
+.container_page_cart .btn-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.container_page_cart .btn {
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #fff;
+}
+
+.container_page_cart .btn-primary {
+    background-color: #007bff;
+}
+
+.container_page_cart .btn-success {
+    background-color: #28a745;
+}
+
+.container_page_cart .btn-danger {
+    background-color: #dc3545;
+}
+
+.container_page_cart .btn:hover {
+    opacity: 0.9;
+}
   /* Reset mặc định và đảm bảo layout rõ ràng */
   .arrow-steps.clearfix {
     margin-top: 80px;
@@ -1136,7 +1359,7 @@ body{
     width: 100%;
     max-width: 700px; /* Giới hạn chiều rộng tối đa */
     margin: 0 auto;
-    padding: 20px 0;
+    padding: 24px 0;
     --arrow-steps-width: 800px;
   }
   
@@ -1231,16 +1454,17 @@ body{
  /*  */
   .content_page_cart_bottom{
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
+    padding: 24px 0;
+    border-top: 1px solid #dddddd;
+    margin: 0;
+    width: 100%;
   }
   .content_page_cart_bottom .cart_left{
     width: 68%;
   }
   .content_page_cart_bottom .cart_right{
     width: 30%;
-  }
-  .promotion-container.active{
-    position: absolute;
   }
 
   /* ======================================== goldprice */

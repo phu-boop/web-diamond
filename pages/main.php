@@ -17,7 +17,7 @@
             <div class="container_pagecart">
                 <div class="content_cart">
                     <?php include('pages/main/menu_cart.php');?>
-                    <div class="container content_page_cart_bottom">
+                    <div class="content_page_cart_bottom">
                         <div class="cart_left">
                             <?php include('pages/main/cart.php'); ?>
                         </div>

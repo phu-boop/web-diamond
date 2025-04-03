@@ -1,1 +1,1 @@
-<p>giảm giá</p>
+<div></div>
