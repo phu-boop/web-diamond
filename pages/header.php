@@ -36,9 +36,13 @@
             <i class="fa-solid fa-user">
                 <div class="account_menu">
                     <ul>
-                        <li><a href="index.php?quanly=dangnhap"><i class="fa-solid fa-user"></i>Đăng nhập</a></li>
-                        <li><a href="index.php?quanly=dangxuat&&dangxuat=1"><i class="fa-solid fa-power-off"></i>Đăng xuất</a></li>
+                        <li><a href="#"><i class="fa-solid fa-user"></i>Đăng nhập</a></li>
+                        <li><a href="index.php?quanly=dangxuat&&dangxuat=1"><i class="fa-solid fa-power-off"></i>Log Out</a></li>
                         <li><a href="index.php?quanly=doimatkhau"><i class="fa-solid fa-rotate"></i>Đổi mật khẩu</a></li>
+                        <li><a href="#"><i class="fa-solid fa-gear"></i>Settings</a></li>
+                        <li><a href="#"><i class="fa-solid fa-credit-card"></i>Billing Plan <span class="badge">4</span></a></li>
+                        <li><a href="#"><i class="fa-solid fa-dollar-sign"></i>Pricing</a></li>
+                        <li><a href="#"><i class="fa-solid fa-circle-question"></i>FAQ</a></li>
                     </ul>
                 </div>
             </i>

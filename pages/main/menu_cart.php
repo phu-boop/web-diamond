@@ -1,14 +1,18 @@
 <div class="arrow-steps clearfix">
-    <div class="step current">
-        <span><a href="index.php?quanly=giohang&buoc=giamgia">Giỏ hàng</a></span>
-    </div>
-    <div class="step">
-        <span><a href="index.php?quanly=giohang&buoc=vanchuyen">Vận chuyển</a></span>
-    </div>
-    <div class="step">
-        <span><a href="index.php?quanly=giohang&buoc=thanhtoan">Thanh toán</a></span>
-    </div>
-    <div class="step">
-        <span><a href="index.php?quanly=giohang&buoc=donhangdadat">Lịch sử đơn hàng</a></span>
-    </div>
+    <a href="index.php?quanly=giohang&buoc=giamgia" class="step current">
+        <div class="icon"><i class="fas fa-shopping-cart"></i></div>
+        <span>Giỏ hàng</span>
+    </a>
+    <a href="index.php?quanly=giohang&buoc=vanchuyen" class="step">
+        <div class="icon"><i class="fas fa-truck"></i></div>
+        <span>Vận chuyển</span>
+    </a>
+    <a href="index.php?quanly=giohang&buoc=thanhtoan" class="step">
+        <div class="icon"><i class="fas fa-credit-card"></i></div>
+        <span>Thanh toán</span>
+    </a>
+    <a href="index.php?quanly=giohang&buoc=donhangdadat" class="step">
+        <div class="icon"><i class="fas fa-history"></i></div>
+        <span>Đơn hàng</span>
+    </a>
 </div>

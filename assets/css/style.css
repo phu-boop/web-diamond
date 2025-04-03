@@ -1103,134 +1103,131 @@ body{
   }
 
   /* ============================== page cart */
- /* menu_top */
- .arrow-steps {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  margin-bottom: 20px;
-  width: 100%;
-  overflow: hidden;
-}
-
-.arrow-steps .step {
-  background-color: #f2f2f2;
-  color: #666;
-  padding: 10px 20px;
-  font-size: 14px;
-  text-align: center;
-  position: relative;
-  flex-grow: 1;
-  z-index: 1;
-}
-
-.arrow-steps .step a {
-  text-decoration: none;
-  color: inherit;
-}
-
-.arrow-steps .step:first-child {
-  border-radius: 5px 0 0 5px;
-}
-
-.arrow-steps .step:last-child {
-  border-radius: 0 5px 5px 0;
-}
-
-.arrow-steps .step::after,
-.arrow-steps .step::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  right: 0;
-  border-top: 20px solid transparent;
-  border-bottom: 20px solid transparent;
-  z-index: 0;
-}
-
-.arrow-steps .step::before {
-  left: 0;
-  border-right: 20px solid #fff;
-}
-
-.arrow-steps .step::after {
-  border-left: 20px solid #f2f2f2;
-}
-
-/* Style for the 'current' menu item */
-.arrow-steps .step.current {
-  background-color: #2c3e50; /* Example: Dark blue background */
-  color: #fff; /* Example: White text */
-}
-
-.arrow-steps .step.current::after {
-  border-left-color: #2c3e50; /* Match the arrow notch color */
-}
-
-/* Adjust arrow color leading to the 'current' step */
-.arrow-steps .step.current::before {
-  border-right-color: #2c3e50; /* Match the arrow color pointing to current */
-}
-
-/* Adjust arrow color coming from the 'current' step */
-.arrow-steps .step.current + .step::before {
-  border-right-color: #2c3e50; /* Match the arrow color pointing away from current */
-}
-
-/* Style for non-'current' menu items */
-.arrow-steps .step:not(.current) {
-  background-color: #f2f2f2; /* Default background */
-  color: #666; /* Default text color */
-}
-
-.arrow-steps .step:not(.current)::after {
-  border-left-color: #f2f2f2; /* Default notch color */
-}
-
-/* Adjust arrow colors for non-'current' steps */
-.arrow-steps .step:not(.current) + .step::before {
-  border-right-color: #f2f2f2; /* Default arrow color */
-}
-
-.arrow-steps .step:not(.current)::before {
-  border-right-color: #fff; /* Separator color */
-}
-
-/* Remove the arrow before the first step */
-.arrow-steps .step:first-child::before {
-  border: none;
-}
-
-/* Add a bit of spacing between steps */
-.arrow-steps .step + .step {
-  margin-left: -10px;
-}
-
-/* Style the inner content (span) */
-.arrow-steps .step span {
-  position: relative;
-  z-index: 1;
-}
-
-/* Responsive adjustments if needed */
-@media (max-width: 768px) {
+  .container_pagecart{
+    background-color: #f8f8f8;
+    position: absolute;
+    top: 138px;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    min-height: 190vh;
+    border-top: solid 1px #e0e0e0;
+  }
+  .content_cart{
+    max-width: 1300px;
+    margin: 0 auto;
+    background-color:white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2), 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  main{
+    min-height: 200vh;
+  }
+  /* Reset mặc định và đảm bảo layout rõ ràng */
+  .arrow-steps.clearfix {
+    margin-top: 80px;
+  }
+  
   .arrow-steps {
-      font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px; /* Khoảng cách giữa các bước */
+    width: 100%;
+    max-width: 700px; /* Giới hạn chiều rộng tối đa */
+    margin: 0 auto;
+    padding: 20px 0;
+    --arrow-steps-width: 800px;
   }
-  .arrow-steps .step {
-      padding: 8px 15px;
+  
+  .step {
+    display: flex; /* Giữ flex để căn chỉnh icon và span */
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    width: 100px;
+    text-decoration: none; /* Loại bỏ gạch chân mặc định của <a> */
+    color: inherit; /* Giữ màu chữ mặc định */
   }
-  .arrow-steps .step::after,
-  .arrow-steps .step::before {
-      border-top-width: 15px;
-      border-bottom-width: 15px;
-      border-left-width: 15px;
-      border-right-width: 15px;
+  
+  .icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 60px;
+    height: 60px;
+    color: #b8b8ce;
+    border-radius: 50%;
+    font-size: 24px;
+    transition: background-color 0.3s ease;
+    background-color: #f6f6f6;
   }
-  .arrow-steps .step + .step {
-      margin-left: -8px;
+  
+  .step.current .icon {
+    color: #7b7bff;
+    background-color: #e7e7ff; /* Màu nền vòng tròn */
   }
-}
+  
+  /* Đường thẳng giữa các bước */
+  .step:not(:first-child)::after {
+    content: "";
+    position: absolute;
+    top: 30px; /* Căn giữa đường thẳng theo chiều dọc */
+    right: 80px;
+    width: calc((var(--arrow-steps-width) - 240px) / 4);
+    height: 4px; /* Độ dày đường thẳng */
+    background-color: #cdcdcd;
+  }
+  
+  .step.current:not(:first-child)::after {
+    background-color: #b3b3ff;
+  }
+  
+  /* Tùy chỉnh nhãn bên dưới */
+  .step span {
+    display: block;
+    margin-top: 10px;
+    color: #818080;
+    font-size: 14px;
+    font-weight: 700;
+  }
+  
+  .step.current span {
+    color: #9898ff; /* Màu chữ cho bước hiện tại */
+  }
+  
+  .step:hover {
+    text-decoration: none; /* Loại bỏ gạch chân khi hover */
+  }
+  
+  /* Responsive: Điều chỉnh cho màn hình nhỏ */
+  @media (max-width: 768px) {
+    .arrow-steps {
+      flex-direction: column;
+      gap: 30px;
+    }
+  
+    .step {
+      width: auto; /* Khi dọc, không cần cố định width */
+    }
+  
+    .step:not(:last-child)::after {
+      content: "";
+      top: auto;
+      bottom: -15px; /* Đặt đường thẳng bên dưới khi xếp dọc */
+      right: auto;
+      left: 50%; /* Căn giữa đường thẳng */
+      transform: translateX(-50%);
+      width: 2px; /* Chiều rộng đường thẳng khi dọc */
+      height: 20px; /* Chiều dài đường thẳng khi dọc */
+      background-color: #cdcdcd;
+    }
+  
+    .step.current:not(:last-child)::after {
+      background-color: #5c5cff;
+    }
+  }
  /*  */
   .content_page_cart_bottom{
     display: flex;

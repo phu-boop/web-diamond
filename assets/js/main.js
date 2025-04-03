@@ -240,3 +240,31 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
+document.addEventListener("DOMContentLoaded", function () {
+    const steps = document.querySelectorAll(".arrow-steps .step");
+    const urlParams = new URLSearchParams(window.location.search);
+    const currentStep = urlParams.get("buoc");
+
+    // Xóa lớp 'current' khỏi tất cả các bước
+    steps.forEach((step) => {
+        step.classList.remove("current");
+    });
+
+    // Danh sách thứ tự bước
+    const stepOrder = ["giamgia", "vanchuyen", "thanhtoan", "donhangdadat"];
+    let markAsCurrent = true;
+
+    steps.forEach((step) => {
+        const href = step.getAttribute("href");
+        const stepValue = href.split("buoc=")[1]; // Lấy giá trị sau 'buoc='
+
+        // Nếu bước hiện tại được tìm thấy, dừng việc đánh dấu các bước sau
+        if (stepValue === currentStep) {
+            step.classList.add("current");
+            markAsCurrent = false; // Không đánh dấu các bước sau
+        } else
+        if (markAsCurrent && stepOrder.indexOf(stepValue) < stepOrder.indexOf(currentStep)) {
+            step.classList.add("current"); // Đánh dấu các bước trước
+        }
+    });
+});
