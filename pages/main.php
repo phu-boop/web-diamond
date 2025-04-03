@@ -14,6 +14,7 @@
     }
     if($tam == 'giohang')
     { ?> 
+        <div class="wrapper_cart">
             <div class="container_pagecart">
                 <div class="content_cart">
                     <?php include('pages/main/menu_cart.php');?>
@@ -27,7 +28,8 @@
                     </div>
                 </div> 
             </div>
-        <?php
+        </div>
+    <?php
     }elseif($tam == 'dangnhap')
     {
         include('pages/main/login.php');

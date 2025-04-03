@@ -20,8 +20,6 @@ if (!empty($_SESSION['cart'])) {
     if (isset($_POST['promotion_id'])) {
         $_SESSION['selected_promotion'] = $_POST['promotion_id']; // Lưu khuyến mãi vào session
     }
-} else {
-    echo "<p style='text-align:center; font-size:18px; color:red;'>Giỏ hàng của bạn đang trống!</p>";
 }
 ?>
 <div class="container_page_cart">
@@ -74,114 +72,165 @@ if (!empty($_SESSION['cart'])) {
                 <?php endforeach; ?>
 
                 <!-- Promotion Section -->
-                <div class="promotion-container">
-                    <label>Chọn khuyến mãi:</label>
-                    <form method="POST" action="#">
-                        <select name="promotion_id" id="promotion_id" onchange="updatePrice()">
-                            <option value="khongco" data-type="none" data-value="0" 
-                                <?php echo (!isset($_SESSION['selected_promotion']) || $_SESSION['selected_promotion'] == 'khongco') ? 'selected' : ''; ?>>
-                                Không áp dụng
-                            </option>
-                            <?php
-                            while ($promo = mysqli_fetch_assoc($query)) { 
-                                $selected = (isset($_SESSION['selected_promotion']) && $_SESSION['selected_promotion'] == $promo['id_khuyenmai']) ? 'selected' : '';
-                            ?>
-                                <option value="<?= $promo['id_khuyenmai'] ?>"
-                                        data-type="<?= $promo['loai_khuyenmai'] ?>"
-                                        data-value="<?= $promo['giatri'] ?>"
-                                        <?= $selected ?>>
-                                    <?= $promo['ten_khuyenmai'] ?> 
-                                    (<?= $promo['loai_khuyenmai'] == 'phantram' ? 'Giảm ' . $promo['giatri'] . '%' :
-                                        ($promo['loai_khuyenmai'] == 'codinh' ? 'Giảm ' . number_format($promo['giatri'], 0) . ' VND' :
-                                        'Tặng ' . $promo['giatri'] . ' điểm') ?>)
-                                </option>
-                            <?php } ?>
-                        </select>
-                        <button name="chonkm">Lưu</button>
-                    </form>
+                 <div class="wrapper_promotion">
+                    <div class="promotion-container">
+                        <!-- Phần Offer -->
+                        <div class="offer-section">
+                            <h3>Ưu đãi</h3>
+                            <div class="promo-code">
+                                <form method="POST" action="#">
+                                    <select name="promotion_id" id="promotion_id" onchange="updatePrice()">
+                                        <option value="khongco" data-type="none" data-value="0" 
+                                            <?php echo (!isset($_SESSION['selected_promotion']) || $_SESSION['selected_promotion'] == 'khongco') ? 'selected' : ''; ?>>
+                                            Không áp dụng
+                                        </option>
+                                        <?php
+                                        while ($promo = mysqli_fetch_assoc($query)) { 
+                                            $selected = (isset($_SESSION['selected_promotion']) && $_SESSION['selected_promotion'] == $promo['id_khuyenmai']) ? 'selected' : '';
+                                        ?>
+                                            <option value="<?= $promo['id_khuyenmai'] ?>"
+                                                    data-type="<?= $promo['loai_khuyenmai'] ?>"
+                                                    data-value="<?= $promo['giatri'] ?>"
+                                                    <?= $selected ?>>
+                                                <?= $promo['ten_khuyenmai'] ?> 
+                                                (<?= $promo['loai_khuyenmai'] == 'phantram' ? 'Giảm ' . $promo['giatri'] . '%' :
+                                                    ($promo['loai_khuyenmai'] == 'codinh' ? 'Giảm ' . number_format($promo['giatri'], 0) . ' VND' :
+                                                    'Tặng ' . $promo['giatri'] . ' điểm') ?>)
+                                            </option>
+                                        <?php } ?>
+                                    </select>
+                                    <button name="chonkm" class="apply-btn">Lưu</button>
+                                </form>
+                            </div>
+                            <div class="gift-wrap">
+                                <p>Mua quà cho người thân yêu?</p>
+                                <p>Đóng gói quà tặng và ghi lời nhắn cá nhân trên thiệp, chỉ với 50.000 VND.</p>
+                                <a href="#" class="gift-link">Thêm gói quà tặng</a>
+                            </div>
+                        </div>
 
-                    <!-- Hiển thị giá -->
-                    <p>Giá gốc: <span id="original_price"><?= number_format($tongTien, 0, ',', '.'); ?> VND</span></p>
-                    <p>Giá sau khuyến mãi: <span id="discounted_price"><?= number_format($tongTien, 0, ',', '.'); ?> VND</span></p>
+                        <!-- Phần Price Details -->
+                        <div class="price-details">
+                            <h3>Chi tiết giá</h3>
+                            <div class="price-item">
+                                <span>Tổng giỏ hàng</span>
+                                <span id="bag-total"><?= number_format($tongTien, 0, ',', '.'); ?> VND</span>
+                            </div>
+                            <div class="price-item">
+                                <span>Giảm giá mã khuyến mãi</span>
+                                <a href="#" class="apply-coupon">Áp dụng mã</a>
+                            </div>
+                            <div class="price-item">
+                                <span>Tổng đơn hàng</span>
+                                <span id="order-total"><?= number_format($tongTien, 0, ',', '.'); ?> VND</span>
+                            </div>
+                            <div class="price-item">
+                                <span>Phí giao hàng</span>
+                                <span class="free-shipping">Free</span>
+                            </div>
+                            <div class="price-item">
+                                <span>Bạn đã tiết kiệm</span>
+                                <span id="total_discount"><?= number_format($tongTien, 0, ',', '.');?> VND</span>
+                            </div>
+                            <div class="price-item total">
+                                <span>Tổng cộng</span>
+                                <span id="final-total"><?= number_format($tongTien, 0, ',', '.'); ?> VND</span>
+                            </div>
+                        </div>
+                    </div>
+                    <?php if(isset($_SESSION['dangky'])): ?>
+                        <a href="index.php?quanly=giohang&buoc=vanchuyen" id="payButton" class="btn btn-success">Tiếp tục</a>
+                    <?php else: ?>
+                        <a href="?quanly=dangky" class="btn btn-success">Đăng ký đặt hàng</a>
+                    <?php endif; ?>
                 </div>
 
                 <!-- Buttons -->
                 <div class="btn-container">
-                    <a href="index.php" class="btn btn-primary">🔙 Tiếp tục mua hàng</a>
-                    <?php if(isset($_SESSION['dangky'])): ?>
-                        <a href="index.php?quanly=giohang&buoc=vanchuyen" id="payButton" class="btn btn-success">🛍 Tiếp tục</a>
-                    <?php else: ?>
-                        <a href="?quanly=dangky" class="btn btn-success">🛍 Đăng ký mua hàng</a>
-                    <?php endif; ?>
                     <a href="pages/main/add_cart.php?xoatatca" class="btn btn-danger">🛍 Xóa tất cả</a>
+                    <a href="index.php?quanly=sanpham" class="btn btn-primary"><i class="fa-regular fa-hand-point-left"></i> <span> Tiếp tục mua hàng</span></a>
                 </div>
             <?php else: ?>
-                <p>Giỏ hàng của bạn đang trống!</p>
+                <p class="page_cart_empty">Giỏ hàng của bạn đang trống!</p>
             <?php endif; ?>
     </div>
 </div>
 
 <!-- Script cập nhật giá -->
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        // Lấy giá trị khuyến mãi từ PHP session
-        <?php
-        if (isset($_SESSION['selected_promotion'])) {
-            $selectedPromotion = $_SESSION['selected_promotion'];
-            
-            // Truy vấn cơ sở dữ liệu để lấy chi tiết khuyến mãi
-            $sql = "SELECT * FROM tbl_khuyenmai WHERE id_khuyenmai = '$selectedPromotion'";
-            $query = mysqli_query($mysqli, $sql);
-            $promo = mysqli_fetch_assoc($query);
+document.addEventListener("DOMContentLoaded", function() {
+    // Khởi tạo giá trị ban đầu
+    let originalPrice = <?= $tongTien ?>;
+    let discountedPrice = originalPrice;
 
-            // Truyền các giá trị từ PHP vào JavaScript
-            $promotion_type = $promo['loai_khuyenmai'];
-            $promotion_value = $promo['giatri'];
-        } else {
-            $promotion_type = 'none';  // Không có khuyến mãi
-            $promotion_value = 0;
-        }
-        ?>
-        // Khởi tạo các biến trong JavaScript với giá trị từ PHP
-        let promotionType = "<?php echo $promotion_type; ?>";
-        let promotionValue = <?php echo $promotion_value; ?>;
-        let originalPrice = <?= $tongTien ?>;
-        let discountedPrice = originalPrice;
+    // Hàm cập nhật giá
+    function updatePrice() {
+        // Lấy phần tử select
+        let select = document.getElementById("promotion_id");
+        let selectedOption = select.options[select.selectedIndex];
 
-        // Hàm cập nhật giá
-        function updatePrice() {
-            // Lấy phần tử select
-            let select = document.getElementById("promotion_id");
-            let selectedOption = select.options[select.selectedIndex];
+        // Lấy loại khuyến mãi và giá trị khuyến mãi từ option được chọn
+        let type = selectedOption.getAttribute("data-type");
+        let value = parseFloat(selectedOption.getAttribute("data-value")) || 0;
 
-            // Lấy loại khuyến mãi và giá trị khuyến mãi
-            let type = selectedOption.getAttribute("data-type");
-            let value = parseFloat(selectedOption.getAttribute("data-value")) || 0;
+        // Tính giá sau khi áp dụng khuyến mãi
+        discountedPrice = originalPrice;
 
-            // Nếu đã có khuyến mãi từ $_SESSION
-            if (promotionType !== 'none') {
-                type = promotionType;
-                value = promotionValue;
-            }
-
-            // Tính giá sau khi áp dụng khuyến mãi
-            discountedPrice = originalPrice;
-            
-            if (type === "phantram") {
-                discountedPrice = originalPrice * (1 - value / 100);
-            } else if (type === "codinh") {
-                discountedPrice = originalPrice - value;
-            }
-
-            // Cập nhật giá sau khi giảm
-            document.getElementById("discounted_price").textContent = discountedPrice.toLocaleString() + " VND";
+        if (type === "phantram") {
+            discountedPrice = originalPrice * (1 - value / 100);
+        } else if (type === "codinh") {
+            discountedPrice = originalPrice - value;
         }
 
-        // Gọi hàm cập nhật giá ngay khi trang tải xong
-        updatePrice();
+        // Đảm bảo giá không âm
+        if (discountedPrice < 0) {
+            discountedPrice = 0;
+        }
+        let save = originalPrice - discountedPrice;
+        console.log(save);
+        // Cập nhật giá vào giao diện
+        document.getElementById("bag-total").textContent = originalPrice.toLocaleString('vi-VN') + " VND";
+        document.getElementById("order-total").textContent = discountedPrice.toLocaleString('vi-VN') + " VND";
+        document.getElementById("final-total").textContent = discountedPrice.toLocaleString('vi-VN') + " VND";
+        document.getElementById("total_discount").textContent = save.toLocaleString('vi-VN') + " VND";
+    }
 
-        // Cập nhật giá khi người dùng thay đổi lựa chọn khuyến mãi
-        let selectElement = document.getElementById("promotion_id");
-        selectElement.addEventListener("change", updatePrice);
+    // Gọi hàm cập nhật giá ngay khi trang tải xong
+    updatePrice();
+
+    // Cập nhật giá khi người dùng thay đổi lựa chọn khuyến mãi
+    let selectElement = document.getElementById("promotion_id");
+    selectElement.addEventListener("change", updatePrice);
+});
+document.addEventListener("DOMContentLoaded", function() {
+    // Thêm sự kiện click cho gift-link
+    let giftLink = document.querySelector(".gift-link");
+    giftLink.addEventListener("click", function(event) {
+        event.preventDefault(); // Ngăn liên kết chuyển hướng (vì hiện tại href="#")
+        alert("Rất tiếc, chương trình đóng gói quà tặng đã kết thúc. Hãy theo dõi để cập nhật các ưu đãi mới nhé!.");
     });
+});
+
+// Lấy tất cả các phần tử có class 'close-btn'
+const closeButtons = document.querySelectorAll('.close-btn');
+
+// Lặp qua từng button và thêm sự kiện click
+closeButtons.forEach(button => {
+    button.addEventListener('click', () => {
+        // Lấy phần tử có class 'offers'
+        const offers = document.querySelector('.offers');
+        // Thêm class 'hide' vào phần tử offers
+        offers.classList.add('active');
+    });
+});
+// Lấy element content_page_cart_bottom
+const contentElement = document.querySelector('.content_page_cart_bottom');
+// Lấy element wrapper_cart
+const wrapperElement = document.querySelector('.wrapper_cart');
+
+// Lấy height của contentElement
+const height = contentElement.offsetHeight +300;
+
+// Gán height vào wrapperElement
+wrapperElement.style.height = height + 'px';
 </script>

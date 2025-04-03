@@ -1103,26 +1103,34 @@ body{
 
   /* ============================== page cart */
   .container_pagecart{
+    
     background-color: #f8f8f8;
     position: absolute;
-    top: 138px;
+    top: 0;
     right: 0;
     left: 0;
     bottom: 0;
-    min-height: 190vh;
     border-top: solid 1px #e0e0e0;
   }
   .content_cart{
+    min-height: 843px;
     max-width: 1300px;
     margin: 0 auto;
     background-color:white;
     border-radius: 10px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2), 0 2px 4px rgba(0, 0, 0, 0.1);
+    position: relative;
   }
-  main{
-    min-height: 300vh;
+  .wrapper_cart{
+    position: relative;
+    min-height: 1011px;
   }
   /* main cart */
+.page_cart_empty{
+  color: #a20909;
+  margin-left: 468px;
+  font-size: 25px;
+}
 .container_page_cart {
     background: #fff;
     padding:0 24px 24px 24px;
@@ -1137,7 +1145,9 @@ body{
     margin-bottom: 20px;
     color: #71dd37;
 }
-
+.offers.active{
+  display: none;
+}
 .container_page_cart .offer-icon {
     font-size: 24px;
     margin-right: 10px;
@@ -1185,7 +1195,7 @@ body{
     border: 1px solid #eee;
     padding: 18px 24px;
     border-radius: 5px;
-    box-shadow: 3px -3px 8px rgba(123, 160, 255, 0.2);
+    box-shadow: 3px 3px 8px rgba(123, 160, 255, 0.2);
   }
 .container_page_cart .product img {
     width: 100px;
@@ -1287,7 +1297,6 @@ body{
     top: 4px;
     right: 10px;
 }
-
 .container_page_cart .promotion-container label {
     font-size: 16px;
     color: #333;
@@ -1296,7 +1305,7 @@ body{
 }
 
 .container_page_cart .promotion-container select {
-    padding: 5px;
+    padding: 10px;
     margin: 10px 0;
     width: 100%;
     border-radius: 5px;
@@ -1304,23 +1313,29 @@ body{
 }
 
 .container_page_cart .promotion-container button {
-    background-color: #007bff;
-    color: #fff;
+    background-color: #dde1ff;
+    color: #3041ff;
     border: none;
-    padding: 5px 10px;
+    padding: 10px 13px;
     border-radius: 5px;
     cursor: pointer;
+}
+.container_page_cart .promotion-container button:hover{
+  color: white;
+  background-color: #3e4be0;
 }
 
 .container_page_cart .promotion-container p {
     font-size: 14px;
     margin: 5px 0;
+    line-height: 25px;
+}
+.container_page_cart .gift-wrap p:first-child{
+  font-weight: 600;
+  color: #5c5c5c;
 }
 .container_page_cart .btn-container {
-    display: flex;
-    justify-content: space-between;
     margin-top: 20px;
-    text-align: center;
 }
 
 .container_page_cart .btn {
@@ -1332,15 +1347,30 @@ body{
 }
 
 .container_page_cart .btn-primary {
-    background-color: #007bff;
+  margin-top: 55px;
+  display: flex; /* Chỉ cần 1 display, flex là đủ */
+  background-color: white;
+  border: solid 2px #a9b7ff;
+  color: #5860f5;
+  padding: 8px 30px;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s ease; /* Thêm transition cho hiệu ứng mượt */
 }
 
-.container_page_cart .btn-success {
-    background-color: #28a745;
+/* Hiệu ứng hover */
+.container_page_cart .btn-primary:hover {
+  box-shadow: 0 0 8px rgba(169, 183, 255, 0.8);
 }
 
 .container_page_cart .btn-danger {
-    background-color: #dc3545;
+  background-color: #ffafaf;
+  color: #ff0000;
+}
+.container_page_cart .btn-danger:hover{
+  background-color: #ff0000;
+  color: white;
 }
 
 .container_page_cart .btn:hover {
@@ -1451,6 +1481,164 @@ body{
       background-color: #5c5cff;
     }
   }
+  .promotion-container {
+    background-color: white; /* Nền sáng giống trong ảnh */
+    padding: 20px;
+    border: 1px solid #e0e0e0; /* Viền nhạt */
+    border-radius: 8px; /* Bo góc */
+    font-family: Arial, sans-serif; /* Font chữ sans-serif */
+    max-width: 390px; /* Giới hạn chiều rộng */
+    margin: 20px auto; /* Căn giữa */
+    
+}
+
+.wrapper_promotion{
+  position: absolute;
+  top: 140px;
+    right: 23px;
+}
+
+.offer-section, .price-details {
+    margin-bottom: 20px;
+}
+
+.offer-section h3, .price-details h3 {
+
+    font-size: 16px;
+    font-weight: bold;
+    color: #646464; /* Màu chữ đậm */
+    margin-bottom: 15px;
+}
+.price-details h3{
+  margin: 0;
+  padding: 20px 0 10px 0;
+  border-top: 1px solid #e0e0e0;
+}
+/* Phần chọn mã khuyến mãi */
+.promo-code {
+    margin-bottom: 20px;
+}
+
+.promo-code form {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.promo-code select {
+    flex: 1;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #d0d0d0;
+    border-radius: 4px;
+    outline: none;
+    color: #555;
+    background-color: #fff;
+    transition: border-color 0.3s ease;
+}
+
+.promo-code select:focus {
+    border-color: #6c63ff; /* Viền tím khi focus */
+}
+
+.promo-code .apply-btn {
+    padding: 10px 20px;
+    background-color: #6c63ff; /* Màu tím giống nút "Apply" */
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.promo-code .apply-btn:hover {
+    background-color: #5a52d5; /* Tím đậm hơn khi hover */
+}
+
+/* Phần đóng gói quà tặng */
+.gift-wrap {
+    background-color: #f1f1f1; /* Nền nhạt hơn một chút */
+    padding: 15px;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #555;
+}
+
+.gift-wrap p {
+    margin: 5px 0;
+}
+
+.gift-wrap .gift-link {
+    color: #6c63ff; /* Màu tím giống nút "Apply" */
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.gift-wrap .gift-link:hover {
+    text-decoration: underline;
+}
+
+/* Phần chi tiết giá */
+.price-details .price-item {
+    display: flex;
+    justify-content: space-between;
+    color: #525252;
+    margin: 10px 0;
+    align-items: center;
+}
+.free-shipping{
+  background-color: #d9ffc4;
+  color: #71dd37 !important ;
+  padding: 7px 15px;
+  border-radius: 5px;
+}
+
+.price-details .price-item span {
+    font-weight: normal;
+}
+
+.price-details .price-item span:last-child {
+    font-weight: bold;
+    color: #4b4b4b; /* Giá trị in đậm, màu đen */
+}
+
+.price-details .price-item .apply-coupon {
+    color: #6c63ff; /* Màu tím */
+    text-decoration: none;
+}
+
+.price-details .price-item .apply-coupon:hover {
+    text-decoration: underline;
+}
+
+#total_discount{
+  color: #ca0f0f;
+}
+
+.price-details .total {
+    border-top: 1px solid #e0e0e0;
+    padding-top: 10px;
+    font-weight: bold;
+    color: #333;
+}
+
+.price-details .total span:last-child {
+    font-size: 16px;
+    color: #000;
+}
+.btn-success{
+  display: block;
+  width: 100%;
+  background-color: #ced2ff;
+  color: #3041ff !important;
+  font-weight: 600;
+  text-align: center;
+  margin: 0 !important;
+}
+.btn-success:hover{
+  background-color: #b0b6ff;
+}
  /*  */
   .content_page_cart_bottom{
     display: flex;
