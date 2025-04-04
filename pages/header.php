@@ -46,7 +46,7 @@
                     </ul>
                 </div>
             </i>
-            <a href="index.php?quanly=giohang">
+            <a href="index.php?quanly=giohang&buoc=giamgia">
                 <i class="fa-solid fa-lock"></i>
             </a>
         </div>

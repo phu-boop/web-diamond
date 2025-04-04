@@ -210,7 +210,15 @@ document.addEventListener("DOMContentLoaded", function() {
         alert("Rất tiếc, chương trình đóng gói quà tặng đã kết thúc. Hãy theo dõi để cập nhật các ưu đãi mới nhé!.");
     });
 });
-
+document.addEventListener("DOMContentLoaded", function() {
+    const currentUrl = window.location.href;
+    if (currentUrl.includes("buoc=giamgia")) {
+        const element = document.querySelector(".content_page_cart_bottom");
+        if (element) {
+            element.classList.add("active");
+        }
+    }
+});
 // Lấy tất cả các phần tử có class 'close-btn'
 const closeButtons = document.querySelectorAll('.close-btn');
 
@@ -222,7 +230,7 @@ closeButtons.forEach(button => {
         // Thêm class 'hide' vào phần tử offers
         offers.classList.add('active');
     });
-});
+})
 // Lấy element content_page_cart_bottom
 const contentElement = document.querySelector('.content_page_cart_bottom');
 // Lấy element wrapper_cart

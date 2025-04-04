@@ -1133,7 +1133,7 @@ body{
 }
 .container_page_cart {
     background: #fff;
-    padding:0 24px 24px 24px;
+    padding:0 10px 24px 24px;
     width: 100%;
 }
 .container_page_cart .offers {
@@ -1335,7 +1335,16 @@ body{
   color: #5c5c5c;
 }
 .container_page_cart .btn-container {
-    margin-top: 20px;
+  display: none;
+}
+.content_page_cart_bottom.active .wrapper_promotion{
+  position: absolute;
+  top: 140px;
+  right: 23px;
+}
+.content_page_cart_bottom.active .btn-container{
+  display: block;
+  margin-top: 20px;
 }
 
 .container_page_cart .btn {
@@ -1346,8 +1355,7 @@ body{
     color: #fff;
 }
 
-.container_page_cart .btn-primary {
-  margin-top: 55px;
+.btn.btn-primary {
   display: flex; /* Chỉ cần 1 display, flex là đủ */
   background-color: white;
   border: solid 2px #a9b7ff;
@@ -1358,9 +1366,8 @@ body{
   align-items: center;
   transition: all 0.3s ease; /* Thêm transition cho hiệu ứng mượt */
 }
-
 /* Hiệu ứng hover */
-.container_page_cart .btn-primary:hover {
+.btn.btn-primary:hover {
   box-shadow: 0 0 8px rgba(169, 183, 255, 0.8);
 }
 
@@ -1487,17 +1494,19 @@ body{
     border: 1px solid #e0e0e0; /* Viền nhạt */
     border-radius: 8px; /* Bo góc */
     font-family: Arial, sans-serif; /* Font chữ sans-serif */
-    max-width: 390px; /* Giới hạn chiều rộng */
     margin: 20px auto; /* Căn giữa */
     
 }
+.content_page_cart_bottom.active .promotion-container{
+  max-width: 390px; /* Giới hạn chiều rộng */
 
-.wrapper_promotion{
-  position: absolute;
-  top: 140px;
-    right: 23px;
 }
-
+.content_page_cart_bottom .offer-section,.content_page_cart_bottom .btn.btn-success{
+  display: none;
+}
+.content_page_cart_bottom.active .offer-section,.content_page_cart_bottom.active .btn.btn-success{
+  display: block;
+}
 .offer-section, .price-details {
     margin-bottom: 20px;
 }
@@ -1639,6 +1648,122 @@ body{
 .btn-success:hover{
   background-color: #b0b6ff;
 }
+/* transport */
+.container_page_transport {
+    background: #fff;
+    padding: 25px;
+    border-radius: 5px;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
+    width: 420px;
+    margin: 30px auto;
+    font-family: Arial, sans-serif;
+}
+
+.cart_right h2 {
+    text-align: center;
+    color: #575757;
+    margin-bottom: 20px;
+}
+
+.container_page_transport .form-group {
+    margin-bottom: 20px;
+}
+
+.container_page_transport label {
+    display: block;
+    font-weight: bold;
+    color: #555;
+    margin-bottom: 8px;
+}
+
+.container_page_transport input[type="text"],.container_page_transport  input[type="number"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    box-sizing: border-box;
+    transition: border 0.3s ease-in-out;
+}
+
+.container_page_transport input[type="text"]:focus,
+.container_page_transport input[type="number"]:focus {
+    border-color: #96aeff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(150, 174, 255, 0.5);
+}
+
+.container_page_transport button {
+    width: 100%;
+    padding: 12px;
+    background-color: #d4d8ff;
+    border: none;
+    color: rgb(53, 25, 210);
+    font-size: 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.container_page_transport button:hover {
+    background-color: #0c28e0;
+    color: white;
+}
+
+.cart_right .btn.btn-primary{
+  width: 93%;
+  margin: 0 auto;
+}
+/* page payment */
+.payment-method {
+    width: 420px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    margin:30px auto;
+    font-family: Arial, sans-serif;
+}
+
+.payment-method .payment-option {
+    padding: 15px 10px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    border: solid 1px #e3e3e3;
+    border-radius: 5px;
+}
+
+.payment-method .payment-option input[type="radio"] {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.payment-method .payment-option label {
+    font-size: 16px;
+    cursor: pointer;
+    color: #555;
+}
+
+.payment-method .payment-btn {
+    width: 100%;
+    padding: 12px;
+    background-color: #f44336;  /* Màu đỏ */
+    border: none;
+    color: white;
+    font-size: 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.payment-method .payment-btn:hover {
+    background-color: #d32f2f;
+}
+
+.payment-method .payment-btn:active {
+    background-color: #c62828;
+}
  /*  */
   .content_page_cart_bottom{
     display: flex;
@@ -1649,10 +1774,11 @@ body{
     width: 100%;
   }
   .content_page_cart_bottom .cart_left{
-    width: 68%;
+    width: 65%;
   }
   .content_page_cart_bottom .cart_right{
-    width: 30%;
+    margin-top: 92px;
+    flex: 1;
   }
 
   /* ======================================== goldprice */

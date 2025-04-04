@@ -69,8 +69,8 @@ if (isset($_SESSION['id_khachhang'])) {
 }
 ?>
 
+<h2>Nhập thông tin vận chuyển</h2>
 <div class="container_page_transport">
-    <h2>Nhập thông tin vận chuyển</h2>
     <form action="#" method="POST">
         <div class="form-group">
             <label for="ten">Tên người nhận:</label>
@@ -90,74 +90,11 @@ if (isset($_SESSION['id_khachhang'])) {
         </div>
         
         <?php if (!isset($ten) || !isset($sdt)) { ?>
-            <button name="themvanchuyen" type="submit">Gửi</button>
+            <button name="themvanchuyen" type="submit">Áp dụng</button>
         <?php } else { ?>
             <button name="capnhatvanchuyen" type="submit">Cập nhật</button>
-            <a href="index.php?quanly=giohang&buoc=thanhtoan">Tiếp theo</a>
         <?php } ?>
     </form>
 </div>
 
-<style>
-       .container_page_transport {
-    background: #fff;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);
-    width: 420px;
-    margin: 30px auto;
-    font-family: Arial, sans-serif;
-}
-
-h2 {
-    text-align: center;
-    color: #333;
-    margin-bottom: 20px;
-}
-
-.form-group {
-    margin-bottom: 20px;
-}
-
-label {
-    display: block;
-    font-weight: bold;
-    color: #555;
-    margin-bottom: 8px;
-}
-
-input[type="text"], input[type="number"] {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    font-size: 16px;
-    box-sizing: border-box;
-    transition: border 0.3s ease-in-out;
-}
-
-input[type="text"]:focus, input[type="number"]:focus {
-    border-color: #28a745;
-    outline: none;
-}
-
-button {
-    width: 100%;
-    padding: 12px;
-    background-color: #28a745;
-    border: none;
-    color: white;
-    font-size: 18px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease-in-out;
-}
-
-button:hover {
-    background-color: #218838;
-}
-
-button:active {
-    background-color: #1e7e34;
-}
-</style>
+<a href="index.php?quanly=giohang&buoc=thanhtoan" class="btn btn-primary"> <span>Thanh Toán</span> <i class="fa-solid fa-arrow-right"></i></a>

@@ -42,7 +42,7 @@ if (isset($_POST['themgiohang']) || isset($_POST['muangay'])) {
             $_SESSION['cart'] = $new_product;
         }
     }
-    isset($_POST['muangay']) ? header('location:../../?quanly=giohang') : header("Location:../../?quanly=chitietsanpham&id=" . $id);
+    isset($_POST['muangay']) ? header('location:../../?quanly=giohang&buoc=giamgia') : header("Location:../../?quanly=chitietsanpham&id=" . $id);
 }
 // Xóa sản phẩm khỏi giỏ hàng
 if (isset($_GET['xoa'])) {
@@ -71,7 +71,7 @@ if(isset($_GET['cong'])){
         $product[] = $cart_itm;
     }
     $_SESSION['cart'] = $product;
-    header('location:../../?quanly=giohang');
+    header('location:../../?quanly=giohang&buoc=giamgia');
 }
 if(isset($_GET['giam'])){
     $id = $_GET['giam'];
@@ -88,7 +88,7 @@ if(isset($_GET['giam'])){
         $product[]=$cart_itm;
     }
     $_SESSION['cart']=$product;
-    header('location:../../?quanly=giohang');
+    header('location:../../?quanly=giohang&buoc=giamgia');
 }
 
 ?>
