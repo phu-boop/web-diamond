@@ -414,8 +414,10 @@ body{
 /* detail product */
 .product-container {
   font-family: sans-serif;
+  margin-top: 80px;
 }
 .describe,.product_similar {
+
   display: flex;
   max-width: 1100px;
   margin: 0 auto;
@@ -425,6 +427,7 @@ body{
   width: 55%;
 }
 .describe .product-image {
+  padding: 60px;
   background-color: #f9f8f8;
   border-radius: 5px;
   flex: 1;
@@ -641,18 +644,18 @@ body{
   display: none;
 }
 .wrapper.active .click_img{
-  width: 70%;
+  width: 66%;
   position: absolute;
   z-index: 10000;
-  top: 0;
-  height: 100%;
+  top: -50px;
+  height: 139%;
   display: flex;
   justify-content: center;
   right: 250px;
 }
 .wrapper.active .click_img img{
-  width: 100%;
-  object-fit: cover;
+  width:58%;
+  object-fit: contain;
 }
 .wrapper.active .container_fullscreen .remove_img i{
   margin-top: 50px;
@@ -1732,6 +1735,7 @@ body{
     margin-bottom: 10px;
     border: solid 1px #e3e3e3;
     border-radius: 5px;
+    height: 50px;
 }
 
 .payment-method .payment-option input[type="radio"] {
@@ -1744,7 +1748,11 @@ body{
     cursor: pointer;
     color: #555;
 }
-
+.payment-option img{
+  width: 85px;
+  height: 43px;
+  object-fit: cover;
+}
 .payment-method .payment-btn {
     width: 100%;
     padding: 12px;

@@ -4,7 +4,7 @@
     <form action="pages/main/menu_cart/handle_cart.php?promotion_id=<?php echo isset($_SESSION['selected_promotion'])? $_SESSION['selected_promotion'] : 0 ?>; " method="POST">
     <div class="payment-option">
             <input type="radio" id="tienmat" name="payment" value="tienmat">
-            <label for="tienmat">Tiền mặt</label>
+            <label for="tienmat">Thanh toán khi nhận hàng</label>
         </div>
         <div class="payment-option">
             <input type="radio" id="chuyenkhoan" name="payment" value="chuyenkhoan" checked>
@@ -12,7 +12,7 @@
         </div>
         <div class="payment-option">
             <input type="radio" id="vnpay" name="payment" value="vnpay">
-            <label for="vnpay">Vnpay</label>
+            <label for="vnpay"><img src="assets/images/Paypal.png" alt=""><span></span></label>
         </div>
         <button type="submit" class="payment-btn">Thanh toán ngay</button>
         </form>
