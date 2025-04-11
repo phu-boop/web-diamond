@@ -1717,6 +1717,9 @@ body{
   width: 93%;
   margin: 0 auto;
 }
+.content_page_cart_bottom.active .btn-primary{
+  display: inline;
+}
 /* page payment */
 .payment-method {
     width: 420px;
@@ -1969,6 +1972,13 @@ body{
   display: flex;
   justify-content: space-between;
   gap: 50px;
+}
+
+.payment-method .btn.btn-danger{
+  background-color: #A50064;
+  color: white;
+  margin-top: 20px;
+  font-weight: 1000;
 }
 /* --------------------------new_detail */
 .new_detail .jewelry-news{

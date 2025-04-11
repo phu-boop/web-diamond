@@ -13,6 +13,6 @@
     </a>
     <a href="index.php?quanly=giohang&buoc=donhangdadat" class="step">
         <div class="icon"><i class="fas fa-history"></i></div>
-        <span>Đơn hàng</span>
+        <span>Đơn mua</span>
     </a>
 </div>
