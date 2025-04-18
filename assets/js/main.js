@@ -267,4 +267,27 @@ document.addEventListener("DOMContentLoaded", function () {
             step.classList.add("current"); // Đánh dấu các bước trước
         }
     });
+    // hết chương trình 
+    let close = document.getElementById('closs');
+    close.addEventListener('click',function () {
+        alert("chương trình đã hết hạn !");
+    })
+});
+// ivoice story
+
+
+// Gọi hàm khi trang được tải
+document.addEventListener('DOMContentLoaded', function toggleCartClasses() {
+    const targetUrl = "http://localhost/web_trang_suc/index.php?quanly=giohang&buoc=donhangdadat";
+    if (window.location.href === targetUrl) {
+        const cartLeft = document.querySelector('.cart_left');
+        const cartRight = document.querySelector('.cart_right');
+        
+        if (cartLeft) {
+            cartLeft.classList.add('display-none');
+        }
+        if (cartRight) {
+            cartRight.classList.add('active');
+        }
+    }
 });

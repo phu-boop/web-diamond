@@ -834,21 +834,18 @@ body{
 
 .filter-container {
   align-items: center;
-  gap: 10px;
 }
 .filter{
   display: flex;
   align-items: center;
+  gap: 17px;
+  padding-left: 70px;
 }
 .filter select {
   padding: 5px;
   border: 1px solid #ccc;
   border-radius: 4px;
   color: #888888;
-}
-.sort-container {
-  margin-left: auto;
-
 }
 .sort-container label{
   display: block;
@@ -1992,4 +1989,11 @@ body{
   padding: 0;
   margin: 0;
   height: 200px;
+}
+/* ======================================= invoice history */
+.cart_left.display-none{
+  display: none !important;
+}
+.cart_right.active{
+  width: 100%;
 }

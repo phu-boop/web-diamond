@@ -197,5 +197,6 @@
 
     // Xóa giỏ hàng sau khi đặt hàng thành công
     unset($_SESSION['cart']);
-    header("location:../../index.php?quanly=giohang&buoc=donhangdadat")
+
+    header("location:../../../index.php?quanly=giohang&buoc=donhangdadat")
 ?>

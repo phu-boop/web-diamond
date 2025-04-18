@@ -160,7 +160,7 @@ $sql_query_similar = mysqli_query($mysqli, $sql_similar);
                 <div class="offer-title">Ưu đãi:</div>
                 <div class="offer-content">
                     <span><i class="fa-solid fa-gifts"></i> Ưu đãi thêm 200K cho hóa đơn từ 2.5 triệu bằng thẻ tín dụng Muadee by HDBank
-                        <a href="#">Xem chi tiết</a>
+                        <a id="closs" href="#">Xem chi tiết</a>
                     </span>
                 </div>
             </div>
