@@ -40,9 +40,6 @@
                         <li><a href="index.php?quanly=dangxuat&&dangxuat=1"><i class="fa-solid fa-power-off"></i>Log Out</a></li>
                         <li><a href="index.php?quanly=doimatkhau"><i class="fa-solid fa-rotate"></i>Đổi mật khẩu</a></li>
                         <li><a href="#"><i class="fa-solid fa-gear"></i>Settings</a></li>
-                        <li><a href="#"><i class="fa-solid fa-credit-card"></i>Billing Plan <span class="badge">4</span></a></li>
-                        <li><a href="#"><i class="fa-solid fa-dollar-sign"></i>Pricing</a></li>
-                        <li><a href="#"><i class="fa-solid fa-circle-question"></i>FAQ</a></li>
                     </ul>
                 </div>
             </i>
@@ -99,6 +96,7 @@
                                     <li><a href="index.php?quanly=timkiem&key=Vàng">Vàng</a></li>
                                     <li><a href="index.php?quanly=timkiem&key=Bạc">Bạc</a></li>
                                     <li><a href="index.php?quanly=timkiem&key=Platinum">Platinum</a></li>
+                                    <li><a href="index.php?quanly=timkiem&key=Kim cương">Kim cương</a></li>
                                 </ul>
                             </div>
                             <div class="dropdown-column">

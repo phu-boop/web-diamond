@@ -1997,3 +1997,19 @@ body{
 .cart_right.active{
   width: 100%;
 }
+/* ================buy now */
+.buy_now .btn_buy_now{
+  position: fixed;
+  z-index: 1080;
+  box-shadow: 0 1px 20px 1px #ff3e1d;
+  inset-block-end: 3rem;
+  inset-inline-end: 1.625rem;
+  padding: 10px 20px;
+  background-color:#ff3e1d ;
+  color: white;
+  border-radius: 10px;
+  transition: 0.3s;
+}
+.buy_now .btn_buy_now:hover{
+  box-shadow: none;
+}

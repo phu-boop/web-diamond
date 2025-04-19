@@ -38,6 +38,10 @@
         include('dashboard.php');
     }elseif($tam == 'quanlykhachhang' && $query == 'xem'){
         include('register_MNG/list.php');
+    }elseif($tam=='quanlykhachhang' && $query == 'them'){
+        include('register_MNG/create.php');
+    }elseif($tam == 'quanlykhachhang' && $query == 'sua'){
+        include('register_MNG/edit.php');
     }
     else{
         include('dashboard.php');

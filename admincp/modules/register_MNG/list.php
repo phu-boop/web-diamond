@@ -28,10 +28,10 @@ $query = mysqli_query($mysqli, $sql); // $mysqli là biến kết nối database
                     <td><?php echo $row['diachi']; ?></td>
                     <td><?php echo $row['dienthoai']; ?></td>
                     <td>
-                        <a class="btn edit" href="?action=quanlydangky&query=sua&id=<?php echo $row['id_dangky']; ?>">
+                        <a class="btn edit" href="?action=quanlykhachhang&query=sua&id=<?php echo $row['id_dangky']; ?>">
                             <i class="fa-regular fa-pen-to-square"></i>
                         </a>
-                        <a class="btn remove" href="modules/dangky/handle.php?id=<?php echo $row['id_dangky']; ?>">
+                        <a class="btn remove" href="modules/register_MNG/handle.php?id=<?php echo $row['id_dangky']; ?>">
                             <i class="fa-solid fa-trash"></i>
                         </a>
                     </td>

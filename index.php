@@ -40,6 +40,11 @@
     </wrapper>
     <script src="https://kit.fontawesome.com/c6a9a4ea28.js" crossorigin="anonymous"></script>
     <script src="assets/js/main.js" defer></script>
+    <div class="buy_now">
+        <a href="index.php?quanly=giohang&buoc=giamgia" class="btn_buy_now">
+            Giỏ hàng
+        </a>
+    </div>
 </body>
 </html>
 
