@@ -1,44 +1,14 @@
-    <!-- CSS nội tuyến -->
-    <style>
-        .dashboard_container { max-width: 1200px; margin: 0 auto; }
-        
-        /* Thẻ số liệu */
-        .cards { display: flex; gap: 20px; margin-bottom: 30px; }
-        .card { background: #fff; padding: 15px; border-radius: 8px; flex: 1; text-align: center; box-shadow: 0 2px 5px rgba(0,0,0,0.1); transition: transform 0.2s; }
-        .card:hover { transform: translateY(-5px); }
-        .card h3 { margin: 0 0 8px; color: #555; font-size: 16px; }
-        .card p { margin: 0; font-size: 20px; font-weight: bold; }
-        .card .change { font-size: 12px; margin-top: 5px; }
-        .card .up { color: #28a745; }
-        .card .down { color: #dc3545; }
 
-        /* Biểu đồ */
-        .charts { display: flex; gap: 20px; margin-bottom: 30px; flex-wrap: wrap; }
-        .chart { background: #fff; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); flex: 1; min-width: 300px; max-width: 500px; }
-        .chart h2 { margin: 0 0 10px; color: #333; font-size: 18px; text-align: center; }
-        .chart select { padding: 5px; margin-bottom: 10px; border-radius: 5px; border: 1px solid #ddd; width: 100%; }
-        .chart canvas { max-height: 200px; width: 100%; }
-
-        /* Đơn hàng gần đây */
-        .recent-orders { background: #fff; padding: 15px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); margin-bottom: 30px; }
-        .recent-orders h3 { margin: 0 0 10px; color: #333; font-size: 18px; }
-        table { width: 100%; border-collapse: collapse; }
-        th, td { padding: 8px; border: 1px solid #ddd; text-align: left; font-size: 14px; }
-        th { background: #f4f4f4; font-weight: bold; }
-
-        /* Tìm kiếm */
-        .search { margin-bottom: 30px; }
-        .search input { padding: 8px; width: 300px; border: 1px solid #ddd; border-radius: 5px; }
-        .search button { padding: 8px 15px; background: #6c63ff; color: #fff; border: none; border-radius: 5px; cursor: pointer; transition: background 0.3s; }
-        .search button:hover { background: #5a54d9; }
-    </style>
 <div class="dashboard_container">
     <!-- Thẻ số liệu -->
     <div class="cards">
         <?php
         // Tháng hiện tại và tháng trước
-        $current_month = '2025-04';
-        $previous_month = '2025-03';
+        // Lấy tháng hiện tại (theo định dạng YYYY-MM)
+        $current_month = date('Y-m');
+
+        // Lấy tháng trước đó
+        $previous_month = date('Y-m', strtotime('-1 month'));
 
         // Tổng khách hàng (dùng cột ngay_dangky)
         $sql_total_customers_current = "SELECT COUNT(*) as total FROM tbl_dangky WHERE DATE_FORMAT(ngay_dangky, '%Y-%m') = '$current_month'";
@@ -114,20 +84,6 @@
             </p>
         </div>
         <div class="card">
-            <h3>Tổng Đơn Hàng</h3>
-            <p><?php echo $total_orders_current; ?></p>
-            <p class="change <?php echo $order_growth >= 0 ? 'up' : 'down'; ?>">
-                <?php echo $order_growth >= 0 ? '+' : ''; ?><?php echo number_format($order_growth, 2); ?>%
-            </p>
-        </div>
-        <div class="card">
-            <h3>Tổng Doanh Thu</h3>
-            <p><?php echo number_format($total_revenue_current, 0, ',', '.'); ?> VNĐ</p>
-            <p class="change <?php echo $revenue_growth >= 0 ? 'up' : 'down'; ?>">
-                <?php echo $revenue_growth >= 0 ? '+' : ''; ?><?php echo number_format($revenue_growth, 2); ?>%
-            </p>
-        </div>
-        <div class="card">
             <h3>Tổng Sản Phẩm</h3>
             <p><?php echo $total_products; ?></p>
             <p class="change up">+0.00%</p>
@@ -193,42 +149,61 @@
                 fetchData();
             </script>
         </div>
-
-        <!-- Biểu đồ trạng thái đơn hàng -->
-        <div class="chart">
-            <h2>Trạng Thái Đơn Hàng</h2>
-            <canvas id="orderStatusChart"></canvas>
-            <?php
-            $status_counts = [0 => 0, 1 => 0]; // 0: Chưa xử lý, 1: Đã xử lý
-            $sql_status = "SELECT trangthai_giohang, COUNT(*) as count 
-                           FROM tbl_giohang 
-                           GROUP BY trangthai_giohang";
-            $result_status = mysqli_query($mysqli, $sql_status);
-            if (!$result_status) {
-                die("Lỗi truy vấn Trạng Thái Đơn Hàng: " . mysqli_error($mysqli));
-            }
-            while ($row = mysqli_fetch_assoc($result_status)) {
-                $status_counts[$row['trangthai_giohang']] = $row['count'];
-            }
-            ?>
-            <script>
-                const orderStatusChart = new Chart(document.getElementById('orderStatusChart'), {
-                    type: 'doughnut',
-                    data: {
-                        labels: ['Chưa xử lý', 'Đã xử lý'],
-                        datasets: [{
-                            data: [<?php echo $status_counts[0]; ?>, <?php echo $status_counts[1]; ?>],
-                            backgroundColor: ['#40c4ff', '#6c63ff']
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        plugins: {
-                            legend: { position: 'bottom' }
-                        }
+        <div class="card_and_char">
+            <div>
+                <div class="card">
+                    <h3>Tổng Đơn Hàng</h3>
+                    <p><?php echo $total_orders_current; ?></p>
+                    <p class="change <?php echo $order_growth >= 0 ? 'up' : 'down'; ?>">
+                        <?php echo $order_growth >= 0 ? '+' : ''; ?><?php echo number_format($order_growth, 2); ?>%
+                    </p>
+                </div>
+                <div class="card">
+                    <h3>Tổng Doanh Thu</h3>
+                    <p><?php echo number_format($total_revenue_current, 0, ',', '.'); ?> VNĐ</p>
+                    <p class="change <?php echo $revenue_growth >= 0 ? 'up' : 'down'; ?>">
+                        <?php echo $revenue_growth >= 0 ? '+' : ''; ?><?php echo number_format($revenue_growth, 2); ?>%
+                    </p>
+                </div>
+            </div>
+            <div>
+                <!-- Biểu đồ trạng thái đơn hàng -->
+                <div class="chart">
+                    <h2>Trạng Thái Đơn Hàng</h2>
+                    <canvas id="orderStatusChart"></canvas>
+                    <?php
+                    $status_counts = [0 => 0, 1 => 0]; // 0: Chưa xử lý, 1: Đã xử lý
+                    $sql_status = "SELECT trangthai_giohang, COUNT(*) as count 
+                                FROM tbl_giohang 
+                                GROUP BY trangthai_giohang";
+                    $result_status = mysqli_query($mysqli, $sql_status);
+                    if (!$result_status) {
+                        die("Lỗi truy vấn Trạng Thái Đơn Hàng: " . mysqli_error($mysqli));
                     }
-                });
-            </script>
+                    while ($row = mysqli_fetch_assoc($result_status)) {
+                        $status_counts[$row['trangthai_giohang']] = $row['count'];
+                    }
+                    ?>
+                    <script>
+                        const orderStatusChart = new Chart(document.getElementById('orderStatusChart'), {
+                            type: 'doughnut',
+                            data: {
+                                labels: ['Chưa xử lý', 'Đã xử lý'],
+                                datasets: [{
+                                    data: [<?php echo $status_counts[0]; ?>, <?php echo $status_counts[1]; ?>],
+                                    backgroundColor: ['#40c4ff', '#6c63ff']
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                plugins: {
+                                    legend: { position: 'bottom' }
+                                }
+                            }
+                        });
+                    </script>
+                </div>
+            </div>
         </div>
     </div>
 

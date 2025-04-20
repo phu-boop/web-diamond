@@ -18,5 +18,19 @@ document.addEventListener("DOMContentLoaded", function () {
         toolbar: 'bold italic underline | link image',
         height: 300
     });
-    
 });
+    function customizeContentIfNeeded() {
+        const expectedUrl = 'http://localhost/web_trang_suc/admincp/index.php?action=quanlythongke&query=xem';
+        const currentUrl = window.location.href;
+
+        if (currentUrl === expectedUrl) {
+            const contentEl = document.getElementById('content');
+            if (contentEl) {
+                contentEl.style.padding = '0'; // Xóa padding
+                contentEl.style.background = '#f4f4f4'; // Thêm màu nền
+            }
+        }
+    }
+
+    // Gọi hàm khi trang đã load xong
+    window.addEventListener('DOMContentLoaded', customizeContentIfNeeded);
