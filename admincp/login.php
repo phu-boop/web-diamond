@@ -11,7 +11,7 @@ if(isset($_POST['login']))
     if($count > 0)
     {
         $_SESSION['username'] = $username;
-        header('location: index.php');
+        header('location: index.php?action=quanlythongke&query=xem');
     }
     else
     {

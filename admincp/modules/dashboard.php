@@ -1,7 +1,5 @@
 
 <div class="dashboard_container">
-    <!-- Thẻ số liệu -->
-    <div class="cards">
         <?php
         // Tháng hiện tại và tháng trước
         // Lấy tháng hiện tại (theo định dạng YYYY-MM)
@@ -9,7 +7,6 @@
 
         // Lấy tháng trước đó
         $previous_month = date('Y-m', strtotime('-1 month'));
-
         // Tổng khách hàng (dùng cột ngay_dangky)
         $sql_total_customers_current = "SELECT COUNT(*) as total FROM tbl_dangky WHERE DATE_FORMAT(ngay_dangky, '%Y-%m') = '$current_month'";
         $result_total_customers_current = mysqli_query($mysqli, $sql_total_customers_current);
@@ -26,7 +23,7 @@
         }
         $row_total_customers_prev = mysqli_fetch_assoc($result_total_customers_prev);
         $total_customers_prev = $row_total_customers_prev['total'];
-
+        echo $total_customers_prev;
         $customer_growth = $total_customers_prev > 0 ? (($total_customers_current - $total_customers_prev) / $total_customers_prev) * 100 : 0;
 
         // Tổng đơn hàng
@@ -76,19 +73,6 @@
         $row_total_products = mysqli_fetch_assoc($result_total_products);
         $total_products = $row_total_products['total'];
         ?>
-        <div class="card">
-            <h3>Tổng Khách Hàng</h3>
-            <p><?php echo $total_customers_current; ?></p>
-            <p class="change <?php echo $customer_growth >= 0 ? 'up' : 'down'; ?>">
-                <?php echo $customer_growth >= 0 ? '+' : ''; ?><?php echo number_format($customer_growth, 2); ?>%
-            </p>
-        </div>
-        <div class="card">
-            <h3>Tổng Sản Phẩm</h3>
-            <p><?php echo $total_products; ?></p>
-            <p class="change up">+0.00%</p>
-        </div>
-    </div>
 
     <!-- Biểu đồ -->
     <div class="charts">
@@ -150,16 +134,18 @@
             </script>
         </div>
         <div class="card_and_char">
-            <div>
+            <div class="card_and_char_top">
                 <div class="card">
-                    <h3>Tổng Đơn Hàng</h3>
+                    <img src="../assets/images/profit.png" alt="">
+                    <h3>Đơn Hàng</h3>
                     <p><?php echo $total_orders_current; ?></p>
                     <p class="change <?php echo $order_growth >= 0 ? 'up' : 'down'; ?>">
                         <?php echo $order_growth >= 0 ? '+' : ''; ?><?php echo number_format($order_growth, 2); ?>%
                     </p>
                 </div>
                 <div class="card">
-                    <h3>Tổng Doanh Thu</h3>
+                    <img src="../assets/images/sell.png" alt="">
+                    <h3>Doanh Thu</h3>
                     <p><?php echo number_format($total_revenue_current, 0, ',', '.'); ?> VNĐ</p>
                     <p class="change <?php echo $revenue_growth >= 0 ? 'up' : 'down'; ?>">
                         <?php echo $revenue_growth >= 0 ? '+' : ''; ?><?php echo number_format($revenue_growth, 2); ?>%
@@ -168,7 +154,7 @@
             </div>
             <div>
                 <!-- Biểu đồ trạng thái đơn hàng -->
-                <div class="chart">
+                <div class="chart small">
                     <h2>Trạng Thái Đơn Hàng</h2>
                     <canvas id="orderStatusChart"></canvas>
                     <?php
@@ -263,46 +249,63 @@
                 }
             </script>
         </div>
-
-        <!-- Biểu đồ sản phẩm theo danh mục -->
-        <div class="chart">
-            <h2>Sản Phẩm Theo Danh Mục</h2>
-            <canvas id="categoryChart"></canvas>
-            <?php
-            $category_data = [];
-            $sql_category = "SELECT d.tendanhmuc, COUNT(s.id_sanpham) as count 
-                             FROM tbl_danhmuc d 
-                             LEFT JOIN tbl_sanpham s ON d.id_danhmuc = s.id_danhmuc 
-                             GROUP BY d.id_danhmuc, d.tendanhmuc";
-            $result_category = mysqli_query($mysqli, $sql_category);
-            if (!$result_category) {
-                die("Lỗi truy vấn Sản Phẩm Theo Danh Mục: " . mysqli_error($mysqli));
-            }
-            $labels = [];
-            $data = [];
-            while ($row = mysqli_fetch_assoc($result_category)) {
-                $labels[] = $row['tendanhmuc'];
-                $data[] = $row['count'];
-            }
-            ?>
-            <script>
-                const categoryChart = new Chart(document.getElementById('categoryChart'), {
-                    type: 'doughnut',
-                    data: {
-                        labels: [<?php echo "'" . implode("','", $labels) . "'"; ?>],
-                        datasets: [{
-                            data: [<?php echo implode(',', $data); ?>],
-                            backgroundColor: ['#40c4ff', '#6c63ff', '#ffca28', '#ff7043']
-                        }]
-                    },
-                    options: {
-                        responsive: true,
-                        plugins: {
-                            legend: { position: 'bottom' }
+        <div class="card_and_char">
+            <div class="card_and_char_top">
+                <div class="card">
+                    <img src="../assets/images/customer.png" alt="">
+                    <h3>Khách Hàng</h3>
+                    <p><?php echo $total_customers_current; ?></p>
+                    <p class="change <?php echo $customer_growth >= 0 ? 'up' : 'down'; ?>">
+                        <?php echo $customer_growth >= 0 ? '+' : ''; ?><?php echo number_format($customer_growth, 2); ?>%
+                    </p>
+                </div>
+                <div class="card">
+                    <img src="../assets/images/product.png" alt="">
+                    <h3>Sản Phẩm</h3>
+                    <p><?php echo $total_products; ?></p>
+                    <p class="change up">+0.00%</p>
+                </div>
+            </div>
+            <!-- Biểu đồ sản phẩm theo danh mục -->
+            <div class="chart small">
+                <h2>Sản Phẩm Theo Danh Mục</h2>
+                <canvas id="categoryChart"></canvas>
+                <?php
+                $category_data = [];
+                $sql_category = "SELECT d.tendanhmuc, COUNT(s.id_sanpham) as count 
+                                FROM tbl_danhmuc d 
+                                LEFT JOIN tbl_sanpham s ON d.id_danhmuc = s.id_danhmuc 
+                                GROUP BY d.id_danhmuc, d.tendanhmuc";
+                $result_category = mysqli_query($mysqli, $sql_category);
+                if (!$result_category) {
+                    die("Lỗi truy vấn Sản Phẩm Theo Danh Mục: " . mysqli_error($mysqli));
+                }
+                $labels = [];
+                $data = [];
+                while ($row = mysqli_fetch_assoc($result_category)) {
+                    $labels[] = $row['tendanhmuc'];
+                    $data[] = $row['count'];
+                }
+                ?>
+                <script>
+                    const categoryChart = new Chart(document.getElementById('categoryChart'), {
+                        type: 'doughnut',
+                        data: {
+                            labels: [<?php echo "'" . implode("','", $labels) . "'"; ?>],
+                            datasets: [{
+                                data: [<?php echo implode(',', $data); ?>],
+                                backgroundColor: ['#40c4ff', '#6c63ff', '#ffca28', '#ff7043']
+                            }]
+                        },
+                        options: {
+                            responsive: true,
+                            plugins: {
+                                legend: { position: 'bottom' }
+                            }
                         }
-                    }
-                });
-            </script>
+                    });
+                </script>
+            </div>
         </div>
     </div>
 

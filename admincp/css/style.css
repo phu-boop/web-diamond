@@ -967,18 +967,16 @@ input[type="text"]:focus,input[type="file"]:focus {
 /* Biểu đồ */
 .dashboard_container .charts {
     display: flex;
-    gap: 20px;
+    justify-content: space-between;
+    gap: 24px;
     margin-bottom: 30px;
-    flex-wrap: wrap;
 }
 .dashboard_container .chart {
     background: #fff;
     padding: 15px;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    flex: 1;
-    min-width: 300px;
-    max-width: 500px;
+    width: 70%;
 }
 .dashboard_container .chart h2 {
     margin: 0 0 10px;
@@ -994,7 +992,7 @@ input[type="text"]:focus,input[type="file"]:focus {
     width: 100%;
 }
 .dashboard_container .chart canvas {
-    max-height: 200px;
+    max-height: 400px;
     width: 100%;
 }
 
@@ -1049,3 +1047,15 @@ input[type="text"]:focus,input[type="file"]:focus {
 .dashboard_container .search button:hover {
     background: #5a54d9;
 }
+.card_and_char_top{
+    display: flex;
+    gap: 24px;
+}
+.card_and_char{
+    flex: 1;
+}
+.dashboard_container .chart.small{
+    width: 100%;
+    margin-top: 24px;
+}
+/* ================================================== chart=============================== */
