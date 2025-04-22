@@ -277,17 +277,25 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 // Gọi hàm khi trang được tải
-document.addEventListener('DOMContentLoaded', function toggleCartClasses() {
+document.addEventListener('DOMContentLoaded', function () {
     const targetUrl = "http://localhost/web_trang_suc/index.php?quanly=giohang&buoc=donhangdadat";
     if (window.location.href === targetUrl) {
         const cartLeft = document.querySelector('.cart_left');
         const cartRight = document.querySelector('.cart_right');
+        const wrapper_cart = document.querySelector('.wrapper_cart');
+        const contentCart = document.querySelector('.content_cart');
         
         if (cartLeft) {
             cartLeft.classList.add('display-none');
         }
         if (cartRight) {
             cartRight.classList.add('active');
+        }
+
+        // Điều chỉnh chiều cao của container_pagecart bằng với content_cart
+        if (wrapper_cart && contentCart) {
+            const contentCartHeight = contentCart.offsetHeight;
+            wrapper_cart.style.height = contentCartHeight + 500 + 'px';
         }
     }
 });
