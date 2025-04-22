@@ -197,6 +197,9 @@
 
     // Xóa giỏ hàng sau khi đặt hàng thành công
     unset($_SESSION['cart']);
-
-    header("location:../../../index.php?quanly=giohang&buoc=donhangdadat")
+    
+    echo "<script>
+        alert('Bạn đã đặt hàng thành công! Cảm ơn quý khách đã đặt hàng. Chúng tôi sẽ gửi mail xác nhận đơn hàng cho bạn!');
+        window.location.href = '../../../index.php?quanly=giohang&buoc=donhangdadat';
+      </script>";
 ?>

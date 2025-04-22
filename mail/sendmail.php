@@ -33,7 +33,7 @@ class Mailer {
             $mail->Body    = $noidung;
         
             $mail->send();
-            echo 'Message has been sent';
+            echo 'Chúng tôi đã gửi email xác nhận đơn hàng thành công!';
         } catch (Exception $e) {
             echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
         }
