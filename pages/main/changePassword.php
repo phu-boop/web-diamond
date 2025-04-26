@@ -1,26 +1,31 @@
 <?php
-if(isset($_POST['changePassword']))
-{
-    $current_password=md5($_POST['current_password']);
-    $new_password=md5($_POST['new_password']);
-    $confirm_password=md5($_POST['confirm_password']);
-    if($confirm_password==$new_password)
+if (isset($_SESSION['id_khachhang'])) {
+    if(isset($_POST['changePassword']))
     {
-        if(isset($_SESSION['id_khachhang']))
+        $current_password=md5($_POST['current_password']);
+        $new_password=md5($_POST['new_password']);
+        $confirm_password=md5($_POST['confirm_password']);
+        if($confirm_password==$new_password)
         {
-            $sql = "UPDATE tbl_dangky SET matkhau = '$new_password' WHERE matkhau='$current_password' AND id_dangky = '".$_SESSION['id_khachhang']."'";
-            $query=mysqli_query($mysqli,$sql);
-            if (mysqli_affected_rows($mysqli) > 0) {
-                echo "<script>alert('Đổi mật khẩu thành công!');window.location.href='index.php';</script>";
-            } else {
-                echo "<script>alert('mật khẩu không đúng!');</script>";
+            if(isset($_SESSION['id_khachhang']))
+            {
+                $sql = "UPDATE tbl_dangky SET matkhau = '$new_password' WHERE matkhau='$current_password' AND id_dangky = '".$_SESSION['id_khachhang']."'";
+                $query=mysqli_query($mysqli,$sql);
+                if (mysqli_affected_rows($mysqli) > 0) {
+                    echo "<script>alert('Đổi mật khẩu thành công!');window.location.href='index.php';</script>";
+                } else {
+                    echo "<script>alert('mật khẩu không đúng!');</script>";
+                }
+            }else{
+                echo "<script>alert('Vui lòng đăng nhập để đổi mật khẩu!');</script>";
             }
         }else{
-            echo "<script>alert('Vui lòng đăng nhập để đổi mật khẩu!');</script>";
+            echo "<script>alert('xác nhận mật khẩu không đúng!');</script>";
         }
-    }else{
-        echo "<script>alert('xác nhận mật khẩu không đúng!');</script>";
     }
+}else {
+    echo "<script>alert('Bạn cần đăng nhập để thực hiện chức năng này!');</script>";
+    echo "<script>window.location.href='index.php?quanly=dangnhap';</script>";
 }
 ?>
 <div class="page_changePassword">

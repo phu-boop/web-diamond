@@ -1,3 +1,3 @@
 <footer class="admin-footer">
-    <p>&copy; 2025 Accusoft. All rights reserved.</p>
+    <p>© 2025 Nhóm 12. All rights reserved. | Dự án WebShop | Môn Lập trình Web</p>
 </footer>

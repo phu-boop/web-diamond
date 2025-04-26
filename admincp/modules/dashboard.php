@@ -23,7 +23,6 @@
         }
         $row_total_customers_prev = mysqli_fetch_assoc($result_total_customers_prev);
         $total_customers_prev = $row_total_customers_prev['total'];
-        echo $total_customers_prev;
         $customer_growth = $total_customers_prev > 0 ? (($total_customers_current - $total_customers_prev) / $total_customers_prev) * 100 : 0;
 
         // Tổng đơn hàng
@@ -63,15 +62,6 @@
         $total_revenue_prev = $row_total_revenue_prev['total'] ?? 0;
 
         $revenue_growth = $total_revenue_prev > 0 ? (($total_revenue_current - $total_revenue_prev) / $total_revenue_prev) * 100 : 0;
-
-        // Tổng sản phẩm (không có cột thời gian, không tính được tăng trưởng)
-        $sql_total_products = "SELECT COUNT(*) as total FROM tbl_sanpham";
-        $result_total_products = mysqli_query($mysqli, $sql_total_products);
-        if (!$result_total_products) {
-            die("Lỗi truy vấn Tổng Sản Phẩm: " . mysqli_error($mysqli));
-        }
-        $row_total_products = mysqli_fetch_assoc($result_total_products);
-        $total_products = $row_total_products['total'];
         ?>
 
     <!-- Biểu đồ -->
@@ -140,7 +130,7 @@
                     <h3>Đơn Hàng</h3>
                     <p><?php echo $total_orders_current; ?></p>
                     <p class="change <?php echo $order_growth >= 0 ? 'up' : 'down'; ?>">
-                        <?php echo $order_growth >= 0 ? '+' : ''; ?><?php echo number_format($order_growth, 2); ?>%
+                        <?php echo $order_growth >= 0 ? '<i class="fa-solid fa-arrow-up"></i>' : '<i class="fa-solid fa-arrow-down"></i>'; ?><?php echo number_format($order_growth, 2); ?>%
                     </p>
                 </div>
                 <div class="card">
@@ -148,7 +138,7 @@
                     <h3>Doanh Thu</h3>
                     <p><?php echo number_format($total_revenue_current, 0, ',', '.'); ?> VNĐ</p>
                     <p class="change <?php echo $revenue_growth >= 0 ? 'up' : 'down'; ?>">
-                        <?php echo $revenue_growth >= 0 ? '+' : ''; ?><?php echo number_format($revenue_growth, 2); ?>%
+                        <?php echo $revenue_growth >= 0 ? '<i class="fa-solid fa-arrow-up"></i>' : '<i class="fa-solid fa-arrow-down"></i>'; ?><?php echo number_format($revenue_growth, 2); ?>%
                     </p>
                 </div>
             </div>
@@ -256,14 +246,12 @@
                     <h3>Khách Hàng</h3>
                     <p><?php echo $total_customers_current; ?></p>
                     <p class="change <?php echo $customer_growth >= 0 ? 'up' : 'down'; ?>">
-                        <?php echo $customer_growth >= 0 ? '+' : ''; ?><?php echo number_format($customer_growth, 2); ?>%
+                        <?php echo $customer_growth >= 0 ? '<i class="fa-solid fa-arrow-up"></i>' : '<i class="fa-solid fa-arrow-down"></i>'; ?><?php echo number_format($customer_growth, 2); ?>%
                     </p>
                 </div>
                 <div class="card">
                     <img src="../assets/images/product.png" alt="">
                     <h3>Sản Phẩm</h3>
-                    <p><?php echo $total_products; ?></p>
-                    <p class="change up">+0.00%</p>
                 </div>
             </div>
             <!-- Biểu đồ sản phẩm theo danh mục -->
@@ -387,7 +375,7 @@
                     <td><?php echo $row['ngay_mua']; ?></td>
                     <td><?php echo number_format($row['tongtien'], 0, ',', '.'); ?> VNĐ</td>
                     <td><?php echo $row['trangthai_giohang'] == 1 ? 'Đã xử lý' : 'Chưa xử lý'; ?></td>
-                    <td><?php echo $row['pt_thanhthoan']; ?></td>
+                    <td><?php echo $row['pt_thanhtoan']; ?></td>
                 </tr>
                 <?php } ?>
             </tbody>

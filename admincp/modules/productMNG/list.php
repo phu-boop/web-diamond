@@ -14,7 +14,7 @@ $sql = "
 // Thêm điều kiện tìm kiếm nếu có từ khóa tìm kiếm
 if (!empty($search)) {
     $search = mysqli_real_escape_string($mysqli, $search);
-    $sql .= " WHERE tbl_sanpham.tensanpham LIKE '%$search%'";
+    $sql .= " AND tbl_sanpham.tensanpham LIKE '%$search%'";
 }
 
 // Thêm phần sắp xếp và giới hạn kết quả

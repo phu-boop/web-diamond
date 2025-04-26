@@ -36,9 +36,9 @@
             <i class="fa-solid fa-user">
                 <div class="account_menu">
                     <ul>
-                        <li><a href="#"><i class="fa-solid fa-user"></i>Đăng nhập</a></li>
-                        <li><a href="index.php?quanly=dangxuat&&dangxuat=1"><i class="fa-solid fa-power-off"></i>Log Out</a></li>
-                        <li><a href="index.php?quanly=doimatkhau"><i class="fa-solid fa-rotate"></i>Đổi mật khẩu</a></li>
+                        <li id="dangnhap"><a href="index.php?quanly=dangnhap"><i class="fa-solid fa-user"></i>Đăng nhập</a></li>
+                        <li id="dangxuat"><a href="index.php?quanly=dangxuat&&dangxuat=1"><i class="fa-solid fa-power-off"></i>Đăng xuất</a></li>
+                        <li id="doimatkhau"><a href="index.php?quanly=doimatkhau"><i class="fa-solid fa-rotate"></i>Đổi mật khẩu</a></li>
                         <li><a href="#"><i class="fa-solid fa-gear"></i>Settings</a></li>
                     </ul>
                 </div>

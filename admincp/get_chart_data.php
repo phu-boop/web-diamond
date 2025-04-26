@@ -6,7 +6,7 @@ $queryDaily = "SELECT DATE(ngay_mua) as ngay, SUM(tongtien) as doanhthu
                FROM tbl_giohang 
                WHERE trangthai_giohang
                GROUP BY DATE(ngay_mua) 
-               ORDER BY ngay_mua ASC 
+               ORDER BY ngay_mua DESC 
                LIMIT 7";
 
 $resultDaily = mysqli_query($mysqli, $queryDaily);
@@ -20,7 +20,7 @@ $queryMonthly = "SELECT DATE_FORMAT(ngay_mua, '%Y-%m') as thang, SUM(tongtien) a
                  FROM tbl_giohang 
                  WHERE trangthai_giohang
                  GROUP BY YEAR(ngay_mua), MONTH(ngay_mua) 
-                 ORDER BY ngay_mua ASC 
+                 ORDER BY ngay_mua DESC 
                  LIMIT 6";
 
 $resultMonthly = mysqli_query($mysqli, $queryMonthly);
@@ -34,7 +34,7 @@ $queryYearly = "SELECT YEAR(ngay_mua) as nam, SUM(tongtien) as doanhthu
                 FROM tbl_giohang 
                 WHERE trangthai_giohang
                 GROUP BY YEAR(ngay_mua) 
-                ORDER BY ngay_mua ASC 
+                ORDER BY ngay_mua DESC 
                 LIMIT 3";
 
 $resultYearly = mysqli_query($mysqli, $queryYearly);
@@ -48,20 +48,32 @@ $daily = ['labels' => [], 'values' => []];
 $monthly = ['labels' => [], 'values' => []];
 $yearly = ['labels' => [], 'values' => []];
 
+// Lấy dữ liệu hàng ngày
 while ($row = mysqli_fetch_assoc($resultDaily)) {
     $daily['labels'][] = $row['ngay'];
     $daily['values'][] = (float) $row['doanhthu'];
 }
+// Đảo ngược mảng
+$daily['labels'] = array_reverse($daily['labels']);
+$daily['values'] = array_reverse($daily['values']);
 
+// Lấy dữ liệu hàng tháng
 while ($row = mysqli_fetch_assoc($resultMonthly)) {
     $monthly['labels'][] = $row['thang'];
     $monthly['values'][] = (float) $row['doanhthu'];
 }
+// Đảo ngược mảng
+$monthly['labels'] = array_reverse($monthly['labels']);
+$monthly['values'] = array_reverse($monthly['values']);
 
+// Lấy dữ liệu hàng năm
 while ($row = mysqli_fetch_assoc($resultYearly)) {
     $yearly['labels'][] = $row['nam'];
     $yearly['values'][] = (float) $row['doanhthu'];
 }
+// Đảo ngược mảng
+$yearly['labels'] = array_reverse($yearly['labels']);
+$yearly['values'] = array_reverse($yearly['values']);
 
 // Kiểm tra dữ liệu có hay không
 if (empty($daily['labels']) || empty($monthly['labels']) || empty($yearly['labels'])) {

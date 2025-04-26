@@ -6,16 +6,24 @@ if(isset($_POST['submit'])) {
     $diachi = $_POST['diachi'];
     $matkhau = md5($_POST['matkhau']);
     $dienthoai = $_POST['dienthoai'];
-
-    $sql = "INSERT INTO tbl_dangky (tenkhachhang, email, diachi, matkhau, dienthoai) VALUES ('$tenkhachhang', '$email', '$diachi', '$matkhau', '$dienthoai')";
-    
-    if(mysqli_query($mysqli,$sql))
-    {
-        $_SESSION['id_khachhang']=mysqli_insert_id($mysqli);
-        $_SESSION['dangky']=$tenkhachhang;
-        $_SESSION['mail']=$email;
-        echo "<script>window.location.href='index.php?quanly=dangnhap';</script>";
-
+    $ngay_dangky = date('Y-m-d H:i:s'); // Lấy thời điểm hiện tại
+    $sql_email = "SELECT * FROM tbl_dangky WHERE email='$email' LIMIT 1";
+    if($result = mysqli_query($mysqli, $sql_email)) {
+        if(mysqli_num_rows($result) > 0) {
+            echo '<script>alert("Email đã tồn tại!");</script>';
+        } else {
+            // Thực hiện thêm mới
+            $sql = "INSERT INTO tbl_dangky (tenkhachhang, email, diachi, matkhau, dienthoai, ngay_dangky) VALUES ('$tenkhachhang', '$email', '$diachi', '$matkhau', '$dienthoai', '$ngay_dangky')";
+            
+            if(mysqli_query($mysqli,$sql)) {
+                $_SESSION['id_khachhang'] = mysqli_insert_id($mysqli);
+                $_SESSION['dangky'] = $tenkhachhang;
+                $_SESSION['mail'] = $email;
+                echo "<script>window.location.href='index.php?quanly=dangnhap';</script>";
+            }
+        }
+    } else {
+        echo '<script>alert("Có lỗi xảy ra!");</script>';
     }
 }
 ?>

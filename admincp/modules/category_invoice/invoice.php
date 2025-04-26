@@ -32,10 +32,6 @@ if (!$lietke_donhang) {
                     <p><h2>Danh Sách Đơn hàng</h2></p>
                 </div>
                 <div class="search">
-                    <button class="btn add_category">
-                        <i class="fa-solid fa-plus"></i>
-                        tùy
-                    </button>
                     <form method="GET" action="index.php">
                         <input type="hidden" name="action" value="quanlydonhang">
                         <input type="hidden" name="query" value="xemdanhsach">
