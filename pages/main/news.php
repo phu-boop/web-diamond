@@ -35,7 +35,7 @@
          <div class="container_new_list">
             <div class="jewelry-news">
                 <?php
-                $sql = "SELECT * FROM tbl_baiviet ORDER BY id_baiviet DESC";
+                $sql = "SELECT * FROM tbl_baiviet ORDER BY id_baiviet DESC LIMIT 0,3";
                 $query_sql = mysqli_query($mysqli, $sql);
                 while ($row = mysqli_fetch_array($query_sql)) {
                 ?>

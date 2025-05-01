@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", function () {
     let form_container = document.querySelector(".form_container");
     let remove_create= document.querySelector(".remove_create");

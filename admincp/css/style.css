@@ -700,6 +700,10 @@ input[type="text"]:focus,input[type="file"]:focus {
     color: 727eff;
     font-weight: bold;
 }
+.page_invoice_list .status-cancel {
+    color: #d35b46;
+    font-weight: bold;
+}
 .page_invoice_list tr td:nth-child(4){
     color: #605abb;
 } 

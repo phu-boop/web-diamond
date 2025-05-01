@@ -48,7 +48,7 @@
                 </div>
                 <div class="jewelry-news">
                     <?php
-                    $sql = "SELECT * FROM tbl_baiviet WHERE id_baiviet!='" . mysqli_real_escape_string($mysqli, $_GET['id']) . "' ORDER BY id_baiviet DESC";
+                    $sql = "SELECT * FROM tbl_baiviet WHERE id_baiviet!='" . mysqli_real_escape_string($mysqli, $_GET['id']) . "' ORDER BY id_baiviet DESC LIMIT 0,10";
                     $query_sql = mysqli_query($mysqli, $sql);
                     while ($row = mysqli_fetch_array($query_sql)) {
                     ?>

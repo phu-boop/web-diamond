@@ -1,18 +1,4 @@
 document.addEventListener("DOMContentLoaded", function() {
-    let product_image = document.querySelector(".product-image");
-
-    if (product_image) {
-        product_image.addEventListener("click", function() {
-            toggle_active("product-image");
-        });
-    }
-
-    function toggle_active(className) {
-        let class_element = document.querySelector(`.${className}`);
-        if (class_element) {
-            class_element.classList.toggle("active");
-        } 
-    }
     // size
     let add=document.querySelector(".right");
     let element=document.querySelector(".img_size");
@@ -42,6 +28,20 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     }
     //detail
+    let product_image = document.querySelector(".product-image");
+
+    if (product_image) {
+        product_image.addEventListener("click", function() {
+            toggle_active("product-image");
+        });
+    }
+
+    function toggle_active(className) {
+        let class_element = document.querySelector(`.${className}`);
+        if (class_element) {
+            class_element.classList.toggle("active");
+        } 
+    }
     let menu_detail = document.getElementsByClassName("menu_detail");
     let menu_detail_bottom=document.getElementsByClassName("menu_detail_bottom");
     let index;
@@ -58,7 +58,6 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
     }
-    //câu hỏi thường gặp
     document.querySelectorAll(".faq-question").forEach(question => {
         question.addEventListener("click", function () {
             this.classList.toggle("active");
@@ -91,7 +90,7 @@ document.addEventListener("DOMContentLoaded", function () {
             navbar.classList.remove("sticky");
         }
     });
-    //menu screen
+    //menu navbar
     let menu = document.querySelector(".menu-toggle");
     let block = document.querySelector(".screen");
     if (menu && block) {
@@ -166,6 +165,7 @@ document.addEventListener("DOMContentLoaded", function () {
         this.addActive_1();
 
     }
+    // Lấy giá trị của thuộc tính data-index từ phần tử có class 'gallery-item-3'
     setListProduct() {
         for (let el of this.carouselArray) {
             if (el.classList.contains('gallery-item-3')) {
@@ -173,7 +173,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 return dataIndex;
             }
         }
-    }  
+    }
     addActive_1(){
         var valueToCompare = this.setListProduct();
         var previousActive = document.querySelector('.active_1');

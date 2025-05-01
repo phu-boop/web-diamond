@@ -1,68 +1,87 @@
 
 <div class="dashboard_container">
-        <?php
-        // Tháng hiện tại và tháng trước
-        // Lấy tháng hiện tại (theo định dạng YYYY-MM)
-        $current_month = date('Y-m');
+    <?php
+    include "config/config.php"; // Kết nối CSDL
 
-        // Lấy tháng trước đó
-        $previous_month = date('Y-m', strtotime('-1 month'));
-        // Tổng khách hàng (dùng cột ngay_dangky)
-        $sql_total_customers_current = "SELECT COUNT(*) as total FROM tbl_dangky WHERE DATE_FORMAT(ngay_dangky, '%Y-%m') = '$current_month'";
-        $result_total_customers_current = mysqli_query($mysqli, $sql_total_customers_current);
-        if (!$result_total_customers_current) {
-            die("Lỗi truy vấn Tổng Khách Hàng (tháng hiện tại): " . mysqli_error($mysqli));
-        }
-        $row_total_customers_current = mysqli_fetch_assoc($result_total_customers_current);
-        $total_customers_current = $row_total_customers_current['total'];
+    // Tháng hiện tại và tháng trước
+    $current_month = date('Y-m');
+    $previous_month = date('Y-m', strtotime('-1 month')); 
 
-        $sql_total_customers_prev = "SELECT COUNT(*) as total FROM tbl_dangky WHERE DATE_FORMAT(ngay_dangky, '%Y-%m') = '$previous_month'";
-        $result_total_customers_prev = mysqli_query($mysqli, $sql_total_customers_prev);
-        if (!$result_total_customers_prev) {
-            die("Lỗi truy vấn Tổng Khách Hàng (tháng trước): " . mysqli_error($mysqli));
-        }
-        $row_total_customers_prev = mysqli_fetch_assoc($result_total_customers_prev);
-        $total_customers_prev = $row_total_customers_prev['total'];
-        $customer_growth = $total_customers_prev > 0 ? (($total_customers_current - $total_customers_prev) / $total_customers_prev) * 100 : 0;
+    // Truy vấn tổng khách hàng tháng hiện tại
+    $sql_customers_current = "SELECT COUNT(*) as total 
+    FROM tbl_dangky 
+    WHERE DATE_FORMAT(ngay_dangky, '%Y-%m') = '$current_month'";
+    $result_customers_current = mysqli_query($mysqli, $sql_customers_current);
+    $total_customers_current = 0;
+    if ($result_customers_current && mysqli_num_rows($result_customers_current) > 0) {
+    $row_customers_current = mysqli_fetch_assoc($result_customers_current);
+    $total_customers_current = $row_customers_current['total'];
+    }
 
-        // Tổng đơn hàng
-        $sql_total_orders_current = "SELECT COUNT(*) as total FROM tbl_giohang WHERE DATE_FORMAT(ngay_mua, '%Y-%m') = '$current_month'";
-        $result_total_orders_current = mysqli_query($mysqli, $sql_total_orders_current);
-        if (!$result_total_orders_current) {
-            die("Lỗi truy vấn Tổng Đơn Hàng (tháng hiện tại): " . mysqli_error($mysqli));
-        }
-        $row_total_orders_current = mysqli_fetch_assoc($result_total_orders_current);
-        $total_orders_current = $row_total_orders_current['total'];
+    // Truy vấn tổng tất cả sản phẩm
+    $sql_products = "SELECT COUNT(*) as total 
+    FROM tbl_sanpham";
+    $result_products = mysqli_query($mysqli, $sql_products);
+    $total_product = 0;
+    if ($result_products && mysqli_num_rows($result_products) > 0) {
+    $row_products = mysqli_fetch_assoc($result_products);
+    $total_product = $row_products['total'];
+    }
 
-        $sql_total_orders_prev = "SELECT COUNT(*) as total FROM tbl_giohang WHERE DATE_FORMAT(ngay_mua, '%Y-%m') = '$previous_month'";
-        $result_total_orders_prev = mysqli_query($mysqli, $sql_total_orders_prev);
-        if (!$result_total_orders_prev) {
-            die("Lỗi truy vấn Tổng Đơn Hàng (tháng trước): " . mysqli_error($mysqli));
-        }
-        $row_total_orders_prev = mysqli_fetch_assoc($result_total_orders_prev);
-        $total_orders_prev = $row_total_orders_prev['total'];
+    // Tổng đơn hàng 
+    $sql_total_orders_current = "SELECT COUNT(*) as total 
+                                FROM tbl_giohang 
+                                WHERE DATE_FORMAT(ngay_mua, '%Y-%m') = '$current_month' 
+                                AND trangthai_giohang = 1";
+    $result_total_orders_current = mysqli_query($mysqli, $sql_total_orders_current);
+    if (!$result_total_orders_current) {
+        echo json_encode(['error' => 'Lỗi truy vấn Tổng Đơn Hàng (tháng hiện tại): ' . mysqli_error($mysqli)]);
+        exit;
+    }
+    $row_total_orders_current = mysqli_fetch_assoc($result_total_orders_current);
+    $total_orders_current = $row_total_orders_current['total'];
 
-        $order_growth = $total_orders_prev > 0 ? (($total_orders_current - $total_orders_prev) / $total_orders_prev) * 100 : 0;
+    $sql_total_orders_prev = "SELECT COUNT(*) as total 
+                            FROM tbl_giohang 
+                            WHERE DATE_FORMAT(ngay_mua, '%Y-%m') = '$previous_month' 
+                            AND trangthai_giohang = 1";
+    $result_total_orders_prev = mysqli_query($mysqli, $sql_total_orders_prev);
+    if (!$result_total_orders_prev) {
+        echo json_encode(['error' => 'Lỗi truy vấn Tổng Đơn Hàng (tháng trước): ' . mysqli_error($mysqli)]);
+        exit;
+    }
+    $row_total_orders_prev = mysqli_fetch_assoc($result_total_orders_prev);
+    $total_orders_prev = $row_total_orders_prev['total'];
+    $order_growth = $total_orders_prev > 0 ? (($total_orders_current - $total_orders_prev) / $total_orders_prev) * 100 : 0;
 
-        // Tổng doanh thu
-        $sql_total_revenue_current = "SELECT SUM(tongtien) as total FROM tbl_giohang WHERE DATE_FORMAT(ngay_mua, '%Y-%m') = '$current_month'";
-        $result_total_revenue_current = mysqli_query($mysqli, $sql_total_revenue_current);
-        if (!$result_total_revenue_current) {
-            die("Lỗi truy vấn Tổng Doanh Thu (tháng hiện tại): " . mysqli_error($mysqli));
-        }
-        $row_total_revenue_current = mysqli_fetch_assoc($result_total_revenue_current);
-        $total_revenue_current = $row_total_revenue_current['total'] ?? 0;
+    // Tổng doanh thu (giữ nguyên)
+    $sql_total_revenue_current = "SELECT SUM(COALESCE(tongtien, 0)) as total 
+                                FROM tbl_giohang 
+                                WHERE DATE_FORMAT(ngay_mua, '%Y-%m') = '$current_month' 
+                                AND trangthai_giohang = 1";
+    $result_total_revenue_current = mysqli_query($mysqli, $sql_total_revenue_current);
+    if (!$result_total_revenue_current) {
+        echo json_encode(['error' => 'Lỗi truy vấn Tổng Doanh Thu (tháng hiện tại): ' . mysqli_error($mysqli)]);
+        exit;
+    }
+    $row_total_revenue_current = mysqli_fetch_assoc($result_total_revenue_current);
+    $total_revenue_current = $row_total_revenue_current['total'] ?? 0;
 
-        $sql_total_revenue_prev = "SELECT SUM(tongtien) as total FROM tbl_giohang WHERE DATE_FORMAT(ngay_mua, '%Y-%m') = '$previous_month'";
-        $result_total_revenue_prev = mysqli_query($mysqli, $sql_total_revenue_prev);
-        if (!$result_total_revenue_prev) {
-            die("Lỗi truy vấn Tổng Doanh Thu (tháng trước): " . mysqli_error($mysqli));
-        }
-        $row_total_revenue_prev = mysqli_fetch_assoc($result_total_revenue_prev);
-        $total_revenue_prev = $row_total_revenue_prev['total'] ?? 0;
+    $sql_total_revenue_prev = "SELECT SUM(COALESCE(tongtien, 0)) as total 
+                            FROM tbl_giohang 
+                            WHERE DATE_FORMAT(ngay_mua, '%Y-%m') = '$previous_month' 
+                            AND trangthai_giohang = 1";
+    $result_total_revenue_prev = mysqli_query($mysqli, $sql_total_revenue_prev);
+    if (!$result_total_revenue_prev) {
+        echo json_encode(['error' => 'Lỗi truy vấn Tổng Doanh Thu (tháng trước): ' . mysqli_error($mysqli)]);
+        exit;
+    }
+    $row_total_revenue_prev = mysqli_fetch_assoc($result_total_revenue_prev);
+    $total_revenue_prev = $row_total_revenue_prev['total'] ?? 0;
 
-        $revenue_growth = $total_revenue_prev > 0 ? (($total_revenue_current - $total_revenue_prev) / $total_revenue_prev) * 100 : 0;
-        ?>
+    $revenue_growth = $total_revenue_prev > 0 ? (($total_revenue_current - $total_revenue_prev) / $total_revenue_prev) * 100 : 0;
+
+    ?>
 
     <!-- Biểu đồ -->
     <div class="charts">
@@ -186,7 +205,7 @@
     <div class="charts">
         <!-- Biểu đồ số lượng khách hàng -->
         <div class="chart">
-            <h2>Biểu Đồ Số Lượng Khách Hàng</h2>
+            <h2>Biểu Đồ Số Lượng Khách Hàng Mua hàng</h2>
             <select id="customerFilter" onchange="updateCustomerChart(this.value)">
                 <option value="daily">Theo ngày</option>
                 <option value="monthly" selected>Theo tháng</option>
@@ -243,15 +262,13 @@
             <div class="card_and_char_top">
                 <div class="card">
                     <img src="../assets/images/customer.png" alt="">
-                    <h3>Khách Hàng</h3>
+                    <h3>Tổng Khách Hàng</h3>
                     <p><?php echo $total_customers_current; ?></p>
-                    <p class="change <?php echo $customer_growth >= 0 ? 'up' : 'down'; ?>">
-                        <?php echo $customer_growth >= 0 ? '<i class="fa-solid fa-arrow-up"></i>' : '<i class="fa-solid fa-arrow-down"></i>'; ?><?php echo number_format($customer_growth, 2); ?>%
-                    </p>
                 </div>
                 <div class="card">
                     <img src="../assets/images/product.png" alt="">
                     <h3>Sản Phẩm</h3>
+                    <p><?php echo $total_product; ?></p>
                 </div>
             </div>
             <!-- Biểu đồ sản phẩm theo danh mục -->

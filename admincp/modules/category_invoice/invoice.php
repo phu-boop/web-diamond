@@ -64,9 +64,11 @@ if (!$lietke_donhang) {
                     <td><?php echo $row['pt_thanhtoan']; ?></td>
                     <?php if($row['trangthai_giohang']==1) { ?>
                     <td class="status-pending"><a href="index.php?action=quanlydonhang&&query=xemchitiet&id=<?php echo $row['id_giohang'] ?>" class="btn new_invoice">Đơn Mới</a></td>
-                    <?php } else { ?>
+                    <?php } elseif($row['trangthai_giohang']==0) { ?>
                     <td class="status-viewed">..Đã xem</td>
-                    <?php } ?>
+                    <?php } else{ ?>
+                    <td class="status-cancel">..Đã hủy</td>
+                    <?php }  ?>
                     <td><a href="index.php?action=quanlydonhang&&query=xemchitiet&id=<?php echo $row['id_giohang'] ?>" class="btn check_invoice">Xem chi tiết</a></td>
                 </tr>
                 <?php } ?>

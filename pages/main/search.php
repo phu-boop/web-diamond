@@ -7,6 +7,7 @@ if(isset($_GET['key']))
 }
 ?>
 <div class="container_page_product">
+    <img class="img_big" src="assets/images/search.jpg" alt="">
     <div class="container">
         <div class="content-1">
             <div class="container collection">

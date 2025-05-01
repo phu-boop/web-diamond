@@ -66,6 +66,7 @@ $pages = ceil($total_products / 16);
 ?>
 
 <div class="container_page_product">
+    <img src="assets/images/watch.jpg" alt="">
     <div class="filter">
         <div class="filter-container">
             <div class="title">giá sản phẩm:</div>

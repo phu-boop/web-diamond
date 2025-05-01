@@ -6,7 +6,8 @@ include "config/config.php";
 $query_daily = "SELECT DATE(ngay_mua) as date, COUNT(DISTINCT id_khachhang) as count 
                 FROM tbl_giohang 
                 GROUP BY DATE(ngay_mua) 
-                ORDER BY date ASC";
+                ORDER BY date ASC
+                LIMIT 7";
 $result = $mysqli->query($query_daily);
 
 $daily = ["labels" => [], "values" => []];

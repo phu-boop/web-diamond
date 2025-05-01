@@ -17,7 +17,7 @@
         <div class="form_container">
             <div class="form_add_category">
                 <div class="top">
-                    <h2>Thêm danh mục</h2>
+                    <h2>Thêm khuyến mãi</h2>
                     <i class="fa-solid fa-xmark remove_create"></i>
                 </div>
                 <form method="POST" action="modules/promotionMNG/handle.php">

@@ -7,6 +7,32 @@ if (isset($_SESSION['id_khachhang'])) {
     exit();
 }
 
+// Xử lý hủy đơn hàng
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['cancel_order_id'])) {
+    $order_id = intval($_POST['cancel_order_id']);
+
+    // Kiểm tra đơn hàng có thuộc về khách hàng và đang ở trạng thái "Đang xử lý"
+    $query = "SELECT trangthai_giohang FROM tbl_giohang WHERE id_giohang = $order_id AND id_khachhang = $id_khachhang";
+    $result = mysqli_query($mysqli, $query);
+
+    if ($result && mysqli_num_rows($result) > 0) {
+        $row = mysqli_fetch_assoc($result);
+        if ($row['trangthai_giohang'] == 1) {
+            // Cập nhật trạng thái đơn hàng thành "Đã hủy" (trangthai_giohang = 3)
+            $update_query = "UPDATE tbl_giohang SET trangthai_giohang = 3 WHERE id_giohang = $order_id";
+            if (mysqli_query($mysqli, $update_query)) {
+                echo "<script>alert('Đơn hàng đã được hủy thành công!');</script>";
+            } else {
+                echo "<script>alert('Lỗi: Không thể hủy đơn hàng.');</script>";
+            }
+        } else {
+            echo "<script>alert('Đơn hàng không thể hủy vì không ở trạng thái đang xử lý.');</script>";
+        }
+    } else {
+        echo "<script>alert('Đơn hàng không tồn tại hoặc không thuộc về bạn.');</script>";
+    }
+}
+
 // Lấy tất cả đơn hàng của khách hàng
 $query = "SELECT * FROM tbl_giohang WHERE id_khachhang = $id_khachhang ORDER BY ngay_mua DESC";
 $result = mysqli_query($mysqli, $query);
@@ -18,12 +44,12 @@ $result = mysqli_query($mysqli, $query);
         <?php if (mysqli_num_rows($result) > 0) { ?>
             <?php while ($row = mysqli_fetch_assoc($result)) { 
                 $order_id = $row['id_giohang'];
-                $status_class = ($row['trangthai_giohang'] == 1) ? 'status-pending' : 'status-completed';
-                $status_text = ($row['trangthai_giohang'] == 1) ? 'Đang xử lý...' : 'Đã hoàn thành';
+                $status_class = ($row['trangthai_giohang'] == 1) ? 'status-pending' : ($row['trangthai_giohang'] == 3 ? 'status-canceled' : 'status-completed');
+                $status_text = ($row['trangthai_giohang'] == 1) ? 'Đang xử lý...' : ($row['trangthai_giohang'] == 3 ? 'Đã hủy' : 'Đã xử lý');
                 $payment_method = ($row['pt_thanhtoan'] == 'chuyen_khoan') ? 'Chuyển Khoản' : 'Tiền Mặt';
 
                 // Truy vấn thông tin vận chuyển từ tbl_vanchuyen
-                $id_vanchuyen = $row['id_vanchuyen']; // Giả định tbl_giohang có cột id_vanchuyen
+                $id_vanchuyen = $row['id_vanchuyen'];
                 $shipping_query = "SELECT * FROM tbl_vanchuyen WHERE id_vanchuyen = $id_vanchuyen AND id_dangky = $id_khachhang LIMIT 1";
                 $shipping_result = mysqli_query($mysqli, $shipping_query);
                 $shipping_info = null;
@@ -52,6 +78,7 @@ $result = mysqli_query($mysqli, $query);
                             <th>Ngày Mua</th>
                             <th>Tổng Tiền</th>
                             <th>Phương Thức Thanh Toán</th>
+                            <th>Hành Động</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -61,9 +88,17 @@ $result = mysqli_query($mysqli, $query);
                             <td><?php echo htmlspecialchars($row['ngay_mua']); ?></td>
                             <td><?php echo number_format($row['tongtien'], 0, ',', '.') . ' VNĐ'; ?></td>
                             <td><?php echo $payment_method; ?></td>
+                            <td>
+                                <?php if ($row['trangthai_giohang'] == 1) { ?>
+                                    <form method="POST" onsubmit="return confirm('Bạn có chắc chắn muốn hủy đơn hàng này?');">
+                                        <input type="hidden" name="cancel_order_id" value="<?php echo $order_id; ?>">
+                                        <button type="submit" class="cancel-order-btn">Hủy Đơn</button>
+                                    </form>
+                                <?php } ?>
+                            </td>
                         </tr>
                         <tr class="order-details" style="display: <?php echo $display_style; ?>;">
-                            <td colspan="5">
+                            <td colspan="6">
                                 <!-- Phần thông tin vận chuyển -->
                                 <div class="shipping-info">
                                     <h4><i class="fa-solid fa-truck"></i> Thông Tin Vận Chuyển</h4>
@@ -118,3 +153,20 @@ $result = mysqli_query($mysqli, $query);
         <?php } ?>
     </div>
 </div>
+
+<style>
+.cancel-order-btn {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+.cancel-order-btn:hover {
+    background-color: #cc0000;
+}
+.status-canceled {
+    color: #ff4d4d; /* Màu đỏ cho trạng thái Đã hủy */
+}
+</style>
