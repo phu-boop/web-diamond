@@ -9,7 +9,10 @@
 - Thêm sản phẩm vào giỏ hàng.
 - Quản lý sản phẩm và đơn hàng (dành cho admin).
 
-## Yêu cầu
+## link video demo sản phẩm 
+https://drive.google.com/file/d/1UId2zdR7i_wm7qoQku8QGzttTL9Wgixb/view?usp=drive_link
+
+## Yêu cầu để cài đặt
 - XAMPP (Apache, MySQL, PHP >= 7.4).
 - Trình duyệt web (Chrome, Firefox, v.v.).
 - Kết nối internet để tích hợp thanh toán.
@@ -18,7 +21,6 @@
 1. **Clone repository**:
 2. **Lấy file .sql import vào database của xampp**
 3. **Bỏ foder web_ban_hang vừa clone về vào htdocs trong xampp và truy cập http://localhost/web_trang_suc/index.php**
-
-## Trang Quản Trị http://localhost/web_trang_suc/admincp/login.php
-1. Tk : admin
-2. mk : 123
+4. Trang Quản Trị http://localhost/web_trang_suc/admincp/login.php
+5. Tk : admin
+6. mk : 123
